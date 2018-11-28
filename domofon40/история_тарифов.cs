@@ -57,7 +57,7 @@ namespace domofon40
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Ошибка соединения {ex.Message}");
             }
             int tgggg = DateTime.Today.Year;
             int tmm = DateTime.Today.Month;
@@ -70,7 +70,8 @@ namespace domofon40
             { }
             bindingSource1.Position = строка;
             int видна = dataGridView1.FirstDisplayedScrollingRowIndex;
-            dataGridView1.FirstDisplayedScrollingRowIndex = видна + 12 - tmm;
+          //  dataGridView1.FirstDisplayedScrollingRowIndex = видна + 12 - tmm;
+            dataGridView1.FirstDisplayedScrollingRowIndex = строка - 12 ; // +- 12 строк видно
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
        //     bindingSource1.ListChanged += bindingSource1_ListChanged;
             dataGridView1.EditingControlShowing += dataGridView1_EditingControlShowing;
@@ -146,6 +147,7 @@ namespace domofon40
         }
         void Control_KeyPress(object sender, KeyPressEventArgs pressE)
         {
+            // только положительные
             клKey.int_KeyPress(sender, pressE);
         }
 

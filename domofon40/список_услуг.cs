@@ -15,35 +15,43 @@ namespace domofon40
         public список_услуг()
         {
             InitializeComponent();
+            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
         }
-     //   bool изменено = false;
+    
         domofon40.domofon14Entities de = new domofon14Entities();
-     //   List<услуги> услугиЛист = new List<услуги>();
+   
         BindingList<услуги> услугиBinding = new BindingList<услуги>();
         private void список_услуг_Load(object sender, EventArgs e)
         {
-            de.клиенты.Load();
-            de.виды_услуг.Load();
-            de.услуги
-                 .Where(n => n.вид_услуги == клВид_услуги.вид_услуги)
-                .OrderBy(n => n.порядок)
-                .Load();
+            try
+            {
+                de.клиенты.Load();
+                de.виды_услуг.Load();
+                de.услуги
+                     .Where(n => n.вид_услуги == клВид_услуги.вид_услуги)
+                    .OrderBy(n => n.порядок)
+                    .Load();
 
-           
-            услугиBinding = de.услуги
-                .Local
-                .ToBindingList();
 
-           bindingSource1.DataSource = услугиBinding;
-           bindingSource1.Sort = "порядок";
-            //наименColumn.DefaultCellStyle.NullValue = "null";
-            //наименColumn.DefaultCellStyle.DataSourceNullValue = "";
-            //обозначениеColumn.DefaultCellStyle.NullValue = "null";
-            //обозначениеColumn.DefaultCellStyle.DataSourceNullValue = "";
+                услугиBinding = de.услуги
+                    .Local
+                    .ToBindingList();
 
-            dataGridView1.CellValidating += DataGridView1_CellValidating;
-            bindingSource1.ListChanged += bindingSource1_ListChanged;
-            FormClosing += список_услуг_FormClosing;
+                bindingSource1.DataSource = услугиBinding;
+                bindingSource1.Sort = "порядок";
+                //наименColumn.DefaultCellStyle.NullValue = "null";
+                //наименColumn.DefaultCellStyle.DataSourceNullValue = "";
+                //обозначениеColumn.DefaultCellStyle.NullValue = "null";
+                //обозначениеColumn.DefaultCellStyle.DataSourceNullValue = "";
+
+                dataGridView1.CellValidating += DataGridView1_CellValidating;
+                bindingSource1.ListChanged += bindingSource1_ListChanged;
+                FormClosing += список_услуг_FormClosing;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки {ex.Message}");
+            }
            
         }
 
@@ -89,8 +97,8 @@ namespace domofon40
 
         private void button1_Click(object sender, EventArgs e)
         {
-            клВид_услуги.выбран = false;
-            выбор_вида_услуги выборВида = new выбор_вида_услуги();
+            //клВид_услуги.выбран = false;
+            //выбор_вида_услуги выборВида = new выбор_вида_услуги();
             //выборВида.ShowDialog();
             //if (клВид_услуги.выбран || выборВида.DialogResult== DialogResult.OK)
             //{

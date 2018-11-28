@@ -209,17 +209,7 @@ namespace domofon40
 
         }
 
-        //private void button7_Click(object sender, EventArgs e)
-        //{
-        //     работы uRow = bindingSource1.Current as работы;
-        //        MessageBox.Show(uRow.опл_работы.Count.ToString());
-        //}
-
-        //private void button7_Click(object sender, EventArgs e)
-        //{
-        //    работыЛист.Sort((a, b) => a.стоимость.CompareTo(b.стоимость));
-        //    dataGridView1.Refresh();
-        //}
+        
 
     }
 }

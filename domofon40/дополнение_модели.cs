@@ -612,6 +612,14 @@ namespace domofon40
         {
             return прейскурант.Trim() + "  " + наимен.Trim();
         }
+
+        public int выполнено
+        {
+            get
+            {
+                return опл_работы.Count;
+            }
+        }
     }
 
     public partial class опл_работы
