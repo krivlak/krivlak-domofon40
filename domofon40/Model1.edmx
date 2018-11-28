@@ -1,0 +1,2468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище domofon14Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="del_оплаты">
+          <Key>
+            <PropertyRef Name="оплата" />
+          </Key>
+          <Property Name="оплата" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="номер" Type="int" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="сотрудник" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="удалена" Type="datetime" Nullable="false" />
+          <Property Name="дата" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="del_оплачено">
+          <Key>
+            <PropertyRef Name="код" />
+          </Key>
+          <Property Name="код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="оплата" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="месяц" Type="int" Nullable="false" />
+          <Property Name="год" Type="int" Nullable="false" />
+          <Property Name="сумма" Type="int" Nullable="false" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дата" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="виды_оплат">
+          <Key>
+            <PropertyRef Name="вид_оплаты" />
+          </Key>
+          <Property Name="вид_оплаты" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="порядок" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="виды_услуг">
+          <Key>
+            <PropertyRef Name="вид_услуги" />
+          </Key>
+          <Property Name="вид_услуги" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="порядок" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="воз_работы">
+          <Key>
+            <PropertyRef Name="код" />
+          </Key>
+          <Property Name="код" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="оплата" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="работа" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="сумма" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="возврат">
+          <Key>
+            <PropertyRef Name="код" />
+          </Key>
+          <Property Name="код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="оплата" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="месяц" Type="int" Nullable="false" />
+          <Property Name="год" Type="int" Nullable="false" />
+          <Property Name="сумма" Type="int" Nullable="false" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="годы">
+          <Key>
+            <PropertyRef Name="год" />
+          </Key>
+          <Property Name="год" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="дома">
+          <Key>
+            <PropertyRef Name="дом" />
+          </Key>
+          <Property Name="дом" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="улица" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="номер" Type="int" Nullable="false" />
+          <Property Name="корпус" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="изменен" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="звонки">
+          <Key>
+            <PropertyRef Name="звонок" />
+          </Key>
+          <Property Name="звонок" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дата" Type="datetime" Nullable="false" />
+          <Property Name="прим" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="клиенты">
+          <Key>
+            <PropertyRef Name="клиент" />
+          </Key>
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="фамилия" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="имя" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="отчество" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="дом" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="квартира" Type="int" Nullable="false" />
+          <Property Name="фио" Type="varchar" MaxLength="35" StoreGeneratedPattern="Computed" />
+          <Property Name="прим" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="подъезд" Type="int" Nullable="false" />
+          <Property Name="телефон" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ввод" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="льготы">
+          <Key>
+            <PropertyRef Name="льгота" />
+          </Key>
+          <Property Name="льгота" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дата_с" Type="datetime" Nullable="false" />
+          <Property Name="дата_по" Type="datetime" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="процент" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="месяцы">
+          <Key>
+            <PropertyRef Name="месяц" />
+          </Key>
+          <Property Name="месяц" Type="int" Nullable="false" />
+          <Property Name="наимен" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="начало">
+          <Key>
+            <PropertyRef Name="дата" />
+          </Key>
+          <Property Name="дата" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="опл_работы">
+          <Key>
+            <PropertyRef Name="задание" />
+          </Key>
+          <Property Name="оплата" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="работа" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="стоимость" Type="int" Nullable="false" />
+          <Property Name="мастер" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ст_материалов" Type="int" Nullable="false" />
+          <Property Name="задание" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="номер" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="оплаты">
+          <Key>
+            <PropertyRef Name="оплата" />
+          </Key>
+          <Property Name="оплата" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="номер" Type="int" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дата" Type="date" Nullable="false" />
+          <Property Name="сотрудник" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="вид_оплаты" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="оплачено">
+          <Key>
+            <PropertyRef Name="код" />
+          </Key>
+          <Property Name="код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="оплата" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="месяц" Type="int" Nullable="false" />
+          <Property Name="год" Type="int" Nullable="false" />
+          <Property Name="сумма" Type="int" Nullable="false" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дней" Type="int" Nullable="false" />
+          <Property Name="длина_мес" Type="int" Nullable="false" />
+          <Property Name="цена" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="отключения">
+          <Key>
+            <PropertyRef Name="отключение" />
+          </Key>
+          <Property Name="отключение" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дата_с" Type="datetime" Nullable="false" />
+          <Property Name="дата_по" Type="datetime" />
+          <Property Name="прим" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="мастер" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="повторы">
+          <Key>
+            <PropertyRef Name="подключение" />
+          </Key>
+          <Property Name="подключение" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дата_с" Type="datetime" Nullable="false" />
+          <Property Name="прим" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="мастер" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="подключения">
+          <Key>
+            <PropertyRef Name="подключение" />
+          </Key>
+          <Property Name="подключение" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дата_с" Type="datetime" Nullable="false" />
+          <Property Name="дата_по" Type="datetime" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="номер_дог" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="дата_дог" Type="datetime" Nullable="false" />
+          <Property Name="номер_пп" Type="int" Nullable="false" />
+          <Property Name="мастер" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="поселки">
+          <Key>
+            <PropertyRef Name="поселок" />
+          </Key>
+          <Property Name="поселок" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="порядок" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="примечания">
+          <Key>
+            <PropertyRef Name="услуга" />
+            <PropertyRef Name="клиент" />
+          </Key>
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="прим" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="простои">
+          <Key>
+            <PropertyRef Name="простой" />
+          </Key>
+          <Property Name="простой" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="дата_с" Type="datetime" Nullable="false" />
+          <Property Name="дата_по" Type="datetime" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="раб_дней">
+          <Key>
+            <PropertyRef Name="клиент" />
+            <PropertyRef Name="услуга" />
+            <PropertyRef Name="год" />
+            <PropertyRef Name="месяц" />
+          </Key>
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="год" Type="int" Nullable="false" />
+          <Property Name="месяц" Type="int" Nullable="false" />
+          <Property Name="дней" Type="int" Nullable="false" />
+          <Property Name="прим" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="работы">
+          <Key>
+            <PropertyRef Name="работа" />
+          </Key>
+          <Property Name="работа" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="порядок" Type="int" Nullable="false" />
+          <Property Name="стоимость" Type="int" Nullable="false" />
+          <Property Name="ст_материалов" Type="int" Nullable="false" />
+          <Property Name="прейскурант" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="сотрудники">
+          <Key>
+            <PropertyRef Name="сотрудник" />
+          </Key>
+          <Property Name="сотрудник" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="фамилия" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="имя" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="отчество" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="порядок" Type="int" Nullable="false" />
+          <Property Name="прим" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="адрес" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="телефон" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="фото" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="дата_рож" Type="datetime" />
+          <Property Name="фио" Type="varchar" MaxLength="55" StoreGeneratedPattern="Computed" />
+          <Property Name="принят" Type="datetime" />
+          <Property Name="уволен" Type="datetime" />
+          <Property Name="должность" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="кассир" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="улицы">
+          <Key>
+            <PropertyRef Name="улица" />
+          </Key>
+          <Property Name="улица" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="поселок" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="услуги">
+          <Key>
+            <PropertyRef Name="услуга" />
+          </Key>
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="порядок" Type="int" Nullable="false" />
+          <Property Name="вид_услуги" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="обозначение" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="услуги_клиента">
+          <Key>
+            <PropertyRef Name="клиент" />
+            <PropertyRef Name="услуга" />
+          </Key>
+          <Property Name="клиент" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="филиалы">
+          <Key>
+            <PropertyRef Name="филиал" />
+          </Key>
+          <Property Name="филиал" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="адрес" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="порядок" Type="int" Nullable="false" />
+          <Property Name="телефон" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="фирмы">
+          <Key>
+            <PropertyRef Name="фирма" />
+          </Key>
+          <Property Name="фирма" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="порядок" Type="int" Nullable="false" />
+          <Property Name="название" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="адрес" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="факт_адрес" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="телефон" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="р_счет" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="к_счет" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="банк" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="город" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="бик" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="код" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="инн" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="окпо" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="оконх" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="груз_пол" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="цены">
+          <Key>
+            <PropertyRef Name="год" />
+            <PropertyRef Name="месяц" />
+            <PropertyRef Name="услуга" />
+          </Key>
+          <Property Name="год" Type="int" Nullable="false" />
+          <Property Name="месяц" Type="int" Nullable="false" />
+          <Property Name="стоимость" Type="int" Nullable="false" />
+          <Property Name="услуга" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="шаблоны">
+          <Key>
+            <PropertyRef Name="шаблон" />
+          </Key>
+          <Property Name="шаблон" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="наимен" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="путь" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_воз_работы_оплаты">
+          <End Role="оплаты" Type="Self.оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="воз_работы" Type="Self.воз_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="воз_работы">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_воз_работы_работы">
+          <End Role="работы" Type="Self.работы" Multiplicity="1" />
+          <End Role="воз_работы" Type="Self.воз_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="работы">
+              <PropertyRef Name="работа" />
+            </Principal>
+            <Dependent Role="воз_работы">
+              <PropertyRef Name="работа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_возврат_оплаты">
+          <End Role="оплаты" Type="Self.оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="возврат" Type="Self.возврат" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="возврат">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_возврат_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="возврат" Type="Self.возврат" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="возврат">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_дома_улицы">
+          <End Role="улицы" Type="Self.улицы" Multiplicity="1" />
+          <End Role="дома" Type="Self.дома" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="улицы">
+              <PropertyRef Name="улица" />
+            </Principal>
+            <Dependent Role="дома">
+              <PropertyRef Name="улица" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_звонки_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="звонки" Type="Self.звонки" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="звонки">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_клиенты_дома">
+          <End Role="дома" Type="Self.дома" Multiplicity="1" />
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="дома">
+              <PropertyRef Name="дом" />
+            </Principal>
+            <Dependent Role="клиенты">
+              <PropertyRef Name="дом" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_льготы_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="льготы" Type="Self.льготы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="льготы">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_льготы_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="льготы" Type="Self.льготы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="льготы">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_опл_работы_оплаты">
+          <End Role="оплаты" Type="Self.оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="опл_работы" Type="Self.опл_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="опл_работы">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_опл_работы_работы">
+          <End Role="работы" Type="Self.работы" Multiplicity="1" />
+          <End Role="опл_работы" Type="Self.опл_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="работы">
+              <PropertyRef Name="работа" />
+            </Principal>
+            <Dependent Role="опл_работы">
+              <PropertyRef Name="работа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_опл_работы_сотрудники">
+          <End Role="сотрудники" Type="Self.сотрудники" Multiplicity="1" />
+          <End Role="опл_работы" Type="Self.опл_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="опл_работы">
+              <PropertyRef Name="мастер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплаты_виды_оплат">
+          <End Role="виды_оплат" Type="Self.виды_оплат" Multiplicity="1" />
+          <End Role="оплаты" Type="Self.оплаты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="виды_оплат">
+              <PropertyRef Name="вид_оплаты" />
+            </Principal>
+            <Dependent Role="оплаты">
+              <PropertyRef Name="вид_оплаты" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплаты_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="оплаты" Type="Self.оплаты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="оплаты">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплаты_сотрудники">
+          <End Role="сотрудники" Type="Self.сотрудники" Multiplicity="1" />
+          <End Role="оплаты" Type="Self.оплаты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="оплаты">
+              <PropertyRef Name="сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплачено_оплаты">
+          <End Role="оплаты" Type="Self.оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="оплачено" Type="Self.оплачено" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="оплачено">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплачено_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="оплачено" Type="Self.оплачено" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="оплачено">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_отключения_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="отключения" Type="Self.отключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="отключения">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_отключения_сотрудники">
+          <End Role="сотрудники" Type="Self.сотрудники" Multiplicity="1" />
+          <End Role="отключения" Type="Self.отключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="отключения">
+              <PropertyRef Name="мастер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_отключения_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="отключения" Type="Self.отключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="отключения">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_повторы_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="повторы" Type="Self.повторы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="повторы">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_повторы_сотрудники">
+          <End Role="сотрудники" Type="Self.сотрудники" Multiplicity="1" />
+          <End Role="повторы" Type="Self.повторы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="повторы">
+              <PropertyRef Name="мастер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_повторы_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="повторы" Type="Self.повторы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="повторы">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_подключения_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="подключения" Type="Self.подключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="подключения">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_подключения_сотрудники">
+          <End Role="сотрудники" Type="Self.сотрудники" Multiplicity="1" />
+          <End Role="подключения" Type="Self.подключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="подключения">
+              <PropertyRef Name="мастер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_подключения_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="подключения" Type="Self.подключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="подключения">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_примечания_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="примечания" Type="Self.примечания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="примечания">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_примечания_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="примечания" Type="Self.примечания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="примечания">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_простои_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="простои" Type="Self.простои" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="простои">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_простои_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="простои" Type="Self.простои" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="простои">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_раб_дней_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="раб_дней" Type="Self.раб_дней" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="раб_дней">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_раб_дней_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="раб_дней" Type="Self.раб_дней" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="раб_дней">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_улицы_поселки">
+          <End Role="поселки" Type="Self.поселки" Multiplicity="1" />
+          <End Role="улицы" Type="Self.улицы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="поселки">
+              <PropertyRef Name="поселок" />
+            </Principal>
+            <Dependent Role="улицы">
+              <PropertyRef Name="поселок" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_услуги_виды_услуг">
+          <End Role="виды_услуг" Type="Self.виды_услуг" Multiplicity="1" />
+          <End Role="услуги" Type="Self.услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="виды_услуг">
+              <PropertyRef Name="вид_услуги" />
+            </Principal>
+            <Dependent Role="услуги">
+              <PropertyRef Name="вид_услуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_услуги_клиента_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="услуги_клиента" Type="Self.услуги_клиента" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="услуги_клиента">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_услуги_клиента_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="услуги_клиента" Type="Self.услуги_клиента" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="услуги_клиента">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_цены_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="цены" Type="Self.цены" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="цены">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище domofon14ModelContainer">
+          <EntitySet Name="del_оплаты" EntityType="Self.del_оплаты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="del_оплачено" EntityType="Self.del_оплачено" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="виды_оплат" EntityType="Self.виды_оплат" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="виды_услуг" EntityType="Self.виды_услуг" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="воз_работы" EntityType="Self.воз_работы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="возврат" EntityType="Self.возврат" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="годы" EntityType="Self.годы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="дома" EntityType="Self.дома" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="звонки" EntityType="Self.звонки" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="клиенты" EntityType="Self.клиенты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="льготы" EntityType="Self.льготы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="месяцы" EntityType="Self.месяцы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="начало" EntityType="Self.начало" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="опл_работы" EntityType="Self.опл_работы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="оплаты" EntityType="Self.оплаты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="оплачено" EntityType="Self.оплачено" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="отключения" EntityType="Self.отключения" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="повторы" EntityType="Self.повторы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="подключения" EntityType="Self.подключения" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="поселки" EntityType="Self.поселки" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="примечания" EntityType="Self.примечания" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="простои" EntityType="Self.простои" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="раб_дней" EntityType="Self.раб_дней" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="работы" EntityType="Self.работы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="сотрудники" EntityType="Self.сотрудники" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="улицы" EntityType="Self.улицы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="услуги" EntityType="Self.услуги" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="услуги_клиента" EntityType="Self.услуги_клиента" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="филиалы" EntityType="Self.филиалы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="фирмы" EntityType="Self.фирмы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="цены" EntityType="Self.цены" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="шаблоны" EntityType="Self.шаблоны" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_воз_работы_оплаты" Association="Self.FK_воз_работы_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="воз_работы" EntitySet="воз_работы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_воз_работы_работы" Association="Self.FK_воз_работы_работы">
+            <End Role="работы" EntitySet="работы" />
+            <End Role="воз_работы" EntitySet="воз_работы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_возврат_оплаты" Association="Self.FK_возврат_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="возврат" EntitySet="возврат" />
+          </AssociationSet>
+          <AssociationSet Name="FK_возврат_услуги" Association="Self.FK_возврат_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="возврат" EntitySet="возврат" />
+          </AssociationSet>
+          <AssociationSet Name="FK_дома_улицы" Association="Self.FK_дома_улицы">
+            <End Role="улицы" EntitySet="улицы" />
+            <End Role="дома" EntitySet="дома" />
+          </AssociationSet>
+          <AssociationSet Name="FK_звонки_клиенты" Association="Self.FK_звонки_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="звонки" EntitySet="звонки" />
+          </AssociationSet>
+          <AssociationSet Name="FK_клиенты_дома" Association="Self.FK_клиенты_дома">
+            <End Role="дома" EntitySet="дома" />
+            <End Role="клиенты" EntitySet="клиенты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_льготы_клиенты" Association="Self.FK_льготы_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="льготы" EntitySet="льготы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_льготы_услуги" Association="Self.FK_льготы_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="льготы" EntitySet="льготы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_опл_работы_оплаты" Association="Self.FK_опл_работы_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="опл_работы" EntitySet="опл_работы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_опл_работы_работы" Association="Self.FK_опл_работы_работы">
+            <End Role="работы" EntitySet="работы" />
+            <End Role="опл_работы" EntitySet="опл_работы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_опл_работы_сотрудники" Association="Self.FK_опл_работы_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="опл_работы" EntitySet="опл_работы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплаты_виды_оплат" Association="Self.FK_оплаты_виды_оплат">
+            <End Role="виды_оплат" EntitySet="виды_оплат" />
+            <End Role="оплаты" EntitySet="оплаты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплаты_клиенты" Association="Self.FK_оплаты_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="оплаты" EntitySet="оплаты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплаты_сотрудники" Association="Self.FK_оплаты_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="оплаты" EntitySet="оплаты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплачено_оплаты" Association="Self.FK_оплачено_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="оплачено" EntitySet="оплачено" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплачено_услуги" Association="Self.FK_оплачено_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="оплачено" EntitySet="оплачено" />
+          </AssociationSet>
+          <AssociationSet Name="FK_отключения_клиенты" Association="Self.FK_отключения_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="отключения" EntitySet="отключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_отключения_сотрудники" Association="Self.FK_отключения_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="отключения" EntitySet="отключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_отключения_услуги" Association="Self.FK_отключения_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="отключения" EntitySet="отключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_повторы_клиенты" Association="Self.FK_повторы_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="повторы" EntitySet="повторы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_повторы_сотрудники" Association="Self.FK_повторы_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="повторы" EntitySet="повторы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_повторы_услуги" Association="Self.FK_повторы_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="повторы" EntitySet="повторы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_подключения_клиенты" Association="Self.FK_подключения_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="подключения" EntitySet="подключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_подключения_сотрудники" Association="Self.FK_подключения_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="подключения" EntitySet="подключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_подключения_услуги" Association="Self.FK_подключения_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="подключения" EntitySet="подключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_примечания_клиенты" Association="Self.FK_примечания_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="примечания" EntitySet="примечания" />
+          </AssociationSet>
+          <AssociationSet Name="FK_примечания_услуги" Association="Self.FK_примечания_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="примечания" EntitySet="примечания" />
+          </AssociationSet>
+          <AssociationSet Name="FK_простои_клиенты" Association="Self.FK_простои_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="простои" EntitySet="простои" />
+          </AssociationSet>
+          <AssociationSet Name="FK_простои_услуги" Association="Self.FK_простои_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="простои" EntitySet="простои" />
+          </AssociationSet>
+          <AssociationSet Name="FK_раб_дней_клиенты" Association="Self.FK_раб_дней_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="раб_дней" EntitySet="раб_дней" />
+          </AssociationSet>
+          <AssociationSet Name="FK_раб_дней_услуги" Association="Self.FK_раб_дней_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="раб_дней" EntitySet="раб_дней" />
+          </AssociationSet>
+          <AssociationSet Name="FK_улицы_поселки" Association="Self.FK_улицы_поселки">
+            <End Role="поселки" EntitySet="поселки" />
+            <End Role="улицы" EntitySet="улицы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_услуги_виды_услуг" Association="Self.FK_услуги_виды_услуг">
+            <End Role="виды_услуг" EntitySet="виды_услуг" />
+            <End Role="услуги" EntitySet="услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_услуги_клиента_клиенты" Association="Self.FK_услуги_клиента_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="услуги_клиента" EntitySet="услуги_клиента" />
+          </AssociationSet>
+          <AssociationSet Name="FK_услуги_клиента_услуги" Association="Self.FK_услуги_клиента_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="услуги_клиента" EntitySet="услуги_клиента" />
+          </AssociationSet>
+          <AssociationSet Name="FK_цены_услуги" Association="Self.FK_цены_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="цены" EntitySet="цены" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="domofon14Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="del_оплаты">
+          <Key>
+            <PropertyRef Name="оплата" />
+          </Key>
+          <Property Name="оплата" Type="Guid" Nullable="false" />
+          <Property Name="номер" Type="Int32" Nullable="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="сотрудник" Type="Guid" Nullable="false" />
+          <Property Name="удалена" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="дата" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="del_оплачено">
+          <Key>
+            <PropertyRef Name="код" />
+          </Key>
+          <Property Name="код" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="оплата" Type="Guid" Nullable="false" />
+          <Property Name="месяц" Type="Int32" Nullable="false" />
+          <Property Name="год" Type="Int32" Nullable="false" />
+          <Property Name="сумма" Type="Int32" Nullable="false" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="дата" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="виды_услуг">
+          <Key>
+            <PropertyRef Name="вид_услуги" />
+          </Key>
+          <Property Name="вид_услуги" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="порядок" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="услуги" Relationship="Self.FK_услуги_виды_услуг" FromRole="виды_услуг" ToRole="услуги" />
+        </EntityType>
+        <EntityType Name="годы">
+          <Key>
+            <PropertyRef Name="год" />
+          </Key>
+          <Property Name="год" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="клиенты">
+          <Key>
+            <PropertyRef Name="клиент" />
+          </Key>
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="фамилия" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="имя" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="отчество" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="дом" Type="Guid" Nullable="false" />
+          <Property Name="квартира" Type="Int32" Nullable="false" />
+          <Property Name="фио" Type="String" MaxLength="35" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="прим" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="подъезд" Type="Int32" Nullable="false" />
+          <Property Name="телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ввод" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="оплаты" Relationship="Self.FK_оплаты_клиенты" FromRole="клиенты" ToRole="оплаты" />
+          <NavigationProperty Name="отключения" Relationship="Self.FK_отключения_клиенты" FromRole="клиенты" ToRole="отключения" />
+          <NavigationProperty Name="повторы" Relationship="Self.FK_повторы_клиенты" FromRole="клиенты" ToRole="повторы" />
+          <NavigationProperty Name="подключения" Relationship="Self.FK_подключения_клиенты" FromRole="клиенты" ToRole="подключения" />
+          <NavigationProperty Name="примечания" Relationship="Self.FK_примечания_клиенты" FromRole="клиенты" ToRole="примечания" />
+          <NavigationProperty Name="раб_дней" Relationship="Self.FK_раб_дней_клиенты" FromRole="клиенты" ToRole="раб_дней" />
+          <NavigationProperty Name="услуги" Relationship="Self.услуги_клиента" FromRole="клиенты" ToRole="услуги" />
+          <NavigationProperty Name="звонки" Relationship="domofon14Model.FK_звонки_клиенты" FromRole="клиенты" ToRole="звонки" />
+          <NavigationProperty Name="простои" Relationship="domofon14Model.FK_простои_клиенты" FromRole="клиенты" ToRole="простои" />
+          <NavigationProperty Name="дома" Relationship="domofon14Model.FK_клиенты_дома" FromRole="клиенты" ToRole="дома" />
+          <NavigationProperty Name="льготы" Relationship="domofon14Model.FK_льготы_клиенты" FromRole="клиенты" ToRole="льготы" />
+        </EntityType>
+        <EntityType Name="месяцы">
+          <Key>
+            <PropertyRef Name="месяц" />
+          </Key>
+          <Property Name="месяц" Type="Int32" Nullable="false" />
+          <Property Name="наимен" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="оплаты">
+          <Key>
+            <PropertyRef Name="оплата" />
+          </Key>
+          <Property Name="оплата" Type="Guid" Nullable="false" />
+          <Property Name="номер" Type="Int32" Nullable="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="дата" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="сотрудник" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="клиенты" Relationship="Self.FK_оплаты_клиенты" FromRole="оплаты" ToRole="клиенты" />
+          <NavigationProperty Name="опл_работы" Relationship="domofon14Model.FK_опл_работы_оплаты" FromRole="оплаты" ToRole="опл_работы" />
+          <NavigationProperty Name="возврат" Relationship="domofon14Model.FK_возврат_оплаты" FromRole="оплаты" ToRole="возврат" />
+          <NavigationProperty Name="сотрудники" Relationship="domofon14Model.FK_оплаты_сотрудники" FromRole="оплаты" ToRole="сотрудники" />
+          <NavigationProperty Name="оплачено" Relationship="domofon14Model.FK_оплачено_оплаты" FromRole="оплаты" ToRole="оплачено" />
+          <Property Name="вид_оплаты" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="виды_оплат" Relationship="domofon14Model.FK__оплаты__вид_опла__7FB5F314" FromRole="оплаты" ToRole="виды_оплат" />
+          <NavigationProperty Name="воз_работы" Relationship="domofon14Model.FK_воз_работы_оплаты" FromRole="оплаты" ToRole="воз_работы" />
+        </EntityType>
+        <EntityType Name="отключения">
+          <Key>
+            <PropertyRef Name="отключение" />
+          </Key>
+          <Property Name="отключение" Type="Guid" Nullable="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="дата_с" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="дата_по" Type="DateTime" Precision="3" />
+          <Property Name="прим" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="мастер" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="клиенты" Relationship="Self.FK_отключения_клиенты" FromRole="отключения" ToRole="клиенты" />
+          <NavigationProperty Name="услуги" Relationship="Self.FK_отключения_услуги" FromRole="отключения" ToRole="услуги" />
+          <NavigationProperty Name="сотрудники" Relationship="domofon14Model.FK_отключения_сотрудники" FromRole="отключения" ToRole="сотрудники" />
+        </EntityType>
+        <EntityType Name="повторы">
+          <Key>
+            <PropertyRef Name="подключение" />
+          </Key>
+          <Property Name="подключение" Type="Guid" Nullable="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="дата_с" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="прим" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="мастер" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="клиенты" Relationship="Self.FK_повторы_клиенты" FromRole="повторы" ToRole="клиенты" />
+          <NavigationProperty Name="услуги" Relationship="Self.FK_повторы_услуги" FromRole="повторы" ToRole="услуги" />
+          <NavigationProperty Name="сотрудники" Relationship="domofon14Model.FK_повторы_сотрудники" FromRole="повторы" ToRole="сотрудники" />
+        </EntityType>
+        <EntityType Name="подключения">
+          <Key>
+            <PropertyRef Name="подключение" />
+          </Key>
+          <Property Name="подключение" Type="Guid" Nullable="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="дата_с" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="дата_по" Type="DateTime" Precision="3" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="номер_дог" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="дата_дог" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="номер_пп" Type="Int32" Nullable="false" />
+          <Property Name="мастер" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="клиенты" Relationship="Self.FK_подключения_клиенты" FromRole="подключения" ToRole="клиенты" />
+          <NavigationProperty Name="услуги" Relationship="Self.FK_подключения_услуги" FromRole="подключения" ToRole="услуги" />
+          <NavigationProperty Name="сотрудники" Relationship="domofon14Model.FK_подключения_сотрудники" FromRole="подключения" ToRole="сотрудники" />
+        </EntityType>
+        <EntityType Name="поселки">
+          <Key>
+            <PropertyRef Name="поселок" />
+          </Key>
+          <Property Name="поселок" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="порядок" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="улицы" Relationship="domofon14Model.FK_улицы_поселки" FromRole="поселки" ToRole="улицы" />
+        </EntityType>
+        <EntityType Name="примечания">
+          <Key>
+            <PropertyRef Name="услуга" />
+            <PropertyRef Name="клиент" />
+          </Key>
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="прим" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="клиенты" Relationship="Self.FK_примечания_клиенты" FromRole="примечания" ToRole="клиенты" />
+          <NavigationProperty Name="услуги" Relationship="Self.FK_примечания_услуги" FromRole="примечания" ToRole="услуги" />
+        </EntityType>
+        <EntityType Name="раб_дней">
+          <Key>
+            <PropertyRef Name="клиент" />
+            <PropertyRef Name="услуга" />
+            <PropertyRef Name="год" />
+            <PropertyRef Name="месяц" />
+          </Key>
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="год" Type="Int32" Nullable="false" />
+          <Property Name="месяц" Type="Int32" Nullable="false" />
+          <Property Name="дней" Type="Int32" Nullable="false" />
+          <Property Name="прим" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="клиенты" Relationship="Self.FK_раб_дней_клиенты" FromRole="раб_дней" ToRole="клиенты" />
+          <NavigationProperty Name="услуги" Relationship="Self.FK_раб_дней_услуги" FromRole="раб_дней" ToRole="услуги" />
+        </EntityType>
+        <EntityType Name="работы">
+          <Key>
+            <PropertyRef Name="работа" />
+          </Key>
+          <Property Name="работа" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="порядок" Type="Int32" Nullable="false" />
+          <Property Name="стоимость" Type="Int32" Nullable="false" />
+          <Property Name="ст_материалов" Type="Int32" Nullable="false" />
+          <Property Name="прейскурант" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="опл_работы" Relationship="domofon14Model.FK_опл_работы_работы" FromRole="работы" ToRole="опл_работы" />
+          <NavigationProperty Name="воз_работы" Relationship="domofon14Model.FK_воз_работы_работы" FromRole="работы" ToRole="воз_работы" />
+        </EntityType>
+        <EntityType Name="услуги">
+          <Key>
+            <PropertyRef Name="услуга" />
+          </Key>
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="порядок" Type="Int32" Nullable="false" />
+          <Property Name="вид_услуги" Type="Guid" Nullable="false" />
+          <Property Name="обозначение" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="виды_услуг" Relationship="Self.FK_услуги_виды_услуг" FromRole="услуги" ToRole="виды_услуг" />
+          <NavigationProperty Name="отключения" Relationship="Self.FK_отключения_услуги" FromRole="услуги" ToRole="отключения" />
+          <NavigationProperty Name="повторы" Relationship="Self.FK_повторы_услуги" FromRole="услуги" ToRole="повторы" />
+          <NavigationProperty Name="подключения" Relationship="Self.FK_подключения_услуги" FromRole="услуги" ToRole="подключения" />
+          <NavigationProperty Name="примечания" Relationship="Self.FK_примечания_услуги" FromRole="услуги" ToRole="примечания" />
+          <NavigationProperty Name="раб_дней" Relationship="Self.FK_раб_дней_услуги" FromRole="услуги" ToRole="раб_дней" />
+          <NavigationProperty Name="цены" Relationship="Self.FK_цены_услуги" FromRole="услуги" ToRole="цены" />
+          <NavigationProperty Name="клиенты" Relationship="Self.услуги_клиента" FromRole="услуги" ToRole="клиенты" />
+          <NavigationProperty Name="простои" Relationship="domofon14Model.FK_простои_услуги" FromRole="услуги" ToRole="простои" />
+          <NavigationProperty Name="возврат" Relationship="domofon14Model.FK_возврат_услуги" FromRole="услуги" ToRole="возврат" />
+          <NavigationProperty Name="оплачено" Relationship="domofon14Model.FK_оплачено_услуги" FromRole="услуги" ToRole="оплачено" />
+          <NavigationProperty Name="льготы" Relationship="domofon14Model.FK_льготы_услуги" FromRole="услуги" ToRole="льготы" />
+        </EntityType>
+        <EntityType Name="филиалы">
+          <Key>
+            <PropertyRef Name="филиал" />
+          </Key>
+          <Property Name="филиал" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="порядок" Type="Int32" Nullable="false" />
+          <Property Name="телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="фирмы">
+          <Key>
+            <PropertyRef Name="фирма" />
+          </Key>
+          <Property Name="фирма" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="порядок" Type="Int32" Nullable="false" />
+          <Property Name="название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="адрес" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="факт_адрес" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="телефон" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="р_счет" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="к_счет" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="банк" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="город" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="бик" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="код" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="инн" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="окпо" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="оконх" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="груз_пол" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="цены">
+          <Key>
+            <PropertyRef Name="год" />
+            <PropertyRef Name="месяц" />
+            <PropertyRef Name="услуга" />
+          </Key>
+          <Property Name="год" Type="Int32" Nullable="false" />
+          <Property Name="месяц" Type="Int32" Nullable="false" />
+          <Property Name="стоимость" Type="Int32" Nullable="false" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="услуги" Relationship="Self.FK_цены_услуги" FromRole="цены" ToRole="услуги" />
+        </EntityType>
+        <EntityType Name="шаблоны">
+          <Key>
+            <PropertyRef Name="шаблон" />
+          </Key>
+          <Property Name="шаблон" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="наимен" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="путь" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_услуги_виды_услуг">
+          <End Role="виды_услуг" Type="Self.виды_услуг" Multiplicity="1" />
+          <End Role="услуги" Type="Self.услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="виды_услуг">
+              <PropertyRef Name="вид_услуги" />
+            </Principal>
+            <Dependent Role="услуги">
+              <PropertyRef Name="вид_услуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплаты_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="оплаты" Type="Self.оплаты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="оплаты">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_отключения_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="отключения" Type="Self.отключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="отключения">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_повторы_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="повторы" Type="Self.повторы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="повторы">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_подключения_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="подключения" Type="Self.подключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="подключения">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_примечания_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="примечания" Type="Self.примечания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="примечания">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_раб_дней_клиенты">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="1" />
+          <End Role="раб_дней" Type="Self.раб_дней" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="раб_дней">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_отключения_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="отключения" Type="Self.отключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="отключения">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_повторы_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="повторы" Type="Self.повторы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="повторы">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_подключения_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="подключения" Type="Self.подключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="подключения">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_примечания_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="примечания" Type="Self.примечания" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="примечания">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_раб_дней_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1" />
+          <End Role="раб_дней" Type="Self.раб_дней" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="раб_дней">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_цены_услуги">
+          <End Role="услуги" Type="Self.услуги" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="цены" Type="Self.цены" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="цены">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="услуги_клиента">
+          <End Role="клиенты" Type="Self.клиенты" Multiplicity="*" />
+          <End Role="услуги" Type="Self.услуги" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="domofon14Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="del_оплаты" EntityType="Self.del_оплаты" />
+          <EntitySet Name="del_оплачено" EntityType="Self.del_оплачено" />
+          <EntitySet Name="виды_услуг" EntityType="Self.виды_услуг" />
+          <EntitySet Name="годы" EntityType="Self.годы" />
+          <EntitySet Name="клиенты" EntityType="Self.клиенты" />
+          <EntitySet Name="месяцы" EntityType="Self.месяцы" />
+          <EntitySet Name="оплаты" EntityType="Self.оплаты" />
+          <EntitySet Name="отключения" EntityType="Self.отключения" />
+          <EntitySet Name="повторы" EntityType="Self.повторы" />
+          <EntitySet Name="подключения" EntityType="Self.подключения" />
+          <EntitySet Name="поселки" EntityType="Self.поселки" />
+          <EntitySet Name="примечания" EntityType="Self.примечания" />
+          <EntitySet Name="раб_дней" EntityType="Self.раб_дней" />
+          <EntitySet Name="работы" EntityType="Self.работы" />
+          <EntitySet Name="услуги" EntityType="Self.услуги" />
+          <EntitySet Name="филиалы" EntityType="Self.филиалы" />
+          <EntitySet Name="фирмы" EntityType="Self.фирмы" />
+          <EntitySet Name="цены" EntityType="Self.цены" />
+          <EntitySet Name="шаблоны" EntityType="Self.шаблоны" />
+          <AssociationSet Name="FK_услуги_виды_услуг" Association="Self.FK_услуги_виды_услуг">
+            <End Role="виды_услуг" EntitySet="виды_услуг" />
+            <End Role="услуги" EntitySet="услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплаты_клиенты" Association="Self.FK_оплаты_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="оплаты" EntitySet="оплаты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_отключения_клиенты" Association="Self.FK_отключения_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="отключения" EntitySet="отключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_повторы_клиенты" Association="Self.FK_повторы_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="повторы" EntitySet="повторы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_подключения_клиенты" Association="Self.FK_подключения_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="подключения" EntitySet="подключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_примечания_клиенты" Association="Self.FK_примечания_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="примечания" EntitySet="примечания" />
+          </AssociationSet>
+          <AssociationSet Name="FK_раб_дней_клиенты" Association="Self.FK_раб_дней_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="раб_дней" EntitySet="раб_дней" />
+          </AssociationSet>
+          <AssociationSet Name="FK_отключения_услуги" Association="Self.FK_отключения_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="отключения" EntitySet="отключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_повторы_услуги" Association="Self.FK_повторы_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="повторы" EntitySet="повторы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_подключения_услуги" Association="Self.FK_подключения_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="подключения" EntitySet="подключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_примечания_услуги" Association="Self.FK_примечания_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="примечания" EntitySet="примечания" />
+          </AssociationSet>
+          <AssociationSet Name="FK_раб_дней_услуги" Association="Self.FK_раб_дней_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="раб_дней" EntitySet="раб_дней" />
+          </AssociationSet>
+          <AssociationSet Name="FK_цены_услуги" Association="Self.FK_цены_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="цены" EntitySet="цены" />
+          </AssociationSet>
+          <AssociationSet Name="услуги_клиента" Association="Self.услуги_клиента">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="услуги" EntitySet="услуги" />
+          </AssociationSet>
+          <FunctionImport Name="ввод_тарифов" ReturnType="Collection(domofon14Model.ввод_тарифов_Result)">
+          <Parameter Name="услуга" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="должники1дома">
+          <Parameter Name="дом" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="звонки_на_сотовый" />
+          <FunctionImport Name="список_разрешений" ReturnType="Collection(domofon14Model.список_разрешений_Result)" />
+          <EntitySet Name="опл_работы" EntityType="domofon14Model.опл_работы" />
+          <AssociationSet Name="FK_опл_работы_оплаты" Association="domofon14Model.FK_опл_работы_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="опл_работы" EntitySet="опл_работы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_опл_работы_работы" Association="domofon14Model.FK_опл_работы_работы">
+            <End Role="работы" EntitySet="работы" />
+            <End Role="опл_работы" EntitySet="опл_работы" />
+          </AssociationSet>
+          <EntitySet Name="звонки" EntityType="domofon14Model.звонки" />
+          <AssociationSet Name="FK_звонки_клиенты" Association="domofon14Model.FK_звонки_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="звонки" EntitySet="звонки" />
+          </AssociationSet>
+          <EntitySet Name="простои" EntityType="domofon14Model.простои" />
+          <AssociationSet Name="FK_простои_клиенты" Association="domofon14Model.FK_простои_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="простои" EntitySet="простои" />
+          </AssociationSet>
+          <AssociationSet Name="FK_простои_услуги" Association="domofon14Model.FK_простои_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="простои" EntitySet="простои" />
+          </AssociationSet>
+          <EntitySet Name="возврат" EntityType="domofon14Model.возврат" />
+          <EntitySet Name="сотрудники" EntityType="domofon14Model.сотрудники" />
+          <AssociationSet Name="FK_возврат_оплаты" Association="domofon14Model.FK_возврат_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="возврат" EntitySet="возврат" />
+          </AssociationSet>
+          <AssociationSet Name="FK_возврат_услуги" Association="domofon14Model.FK_возврат_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="возврат" EntitySet="возврат" />
+          </AssociationSet>
+          <AssociationSet Name="FK_опл_работы_сотрудники" Association="domofon14Model.FK_опл_работы_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="опл_работы" EntitySet="опл_работы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплаты_сотрудники" Association="domofon14Model.FK_оплаты_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="оплаты" EntitySet="оплаты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_отключения_сотрудники" Association="domofon14Model.FK_отключения_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="отключения" EntitySet="отключения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_повторы_сотрудники" Association="domofon14Model.FK_повторы_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="повторы" EntitySet="повторы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_подключения_сотрудники" Association="domofon14Model.FK_подключения_сотрудники">
+            <End Role="сотрудники" EntitySet="сотрудники" />
+            <End Role="подключения" EntitySet="подключения" />
+          </AssociationSet>
+          <EntitySet Name="улицы" EntityType="domofon14Model.улицы" />
+          <AssociationSet Name="FK_улицы_поселки" Association="domofon14Model.FK_улицы_поселки">
+            <End Role="поселки" EntitySet="поселки" />
+            <End Role="улицы" EntitySet="улицы" />
+          </AssociationSet>
+          <EntitySet Name="дома" EntityType="domofon14Model.дома" />
+          <AssociationSet Name="FK_дома_улицы" Association="domofon14Model.FK_дома_улицы">
+            <End Role="улицы" EntitySet="улицы" />
+            <End Role="дома" EntitySet="дома" />
+          </AssociationSet>
+          <AssociationSet Name="FK_клиенты_дома" Association="domofon14Model.FK_клиенты_дома">
+            <End Role="дома" EntitySet="дома" />
+            <End Role="клиенты" EntitySet="клиенты" />
+          </AssociationSet>
+          <EntitySet Name="оплачено" EntityType="domofon14Model.оплачено" />
+          <AssociationSet Name="FK_оплачено_оплаты" Association="domofon14Model.FK_оплачено_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="оплачено" EntitySet="оплачено" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплачено_услуги" Association="domofon14Model.FK_оплачено_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="оплачено" EntitySet="оплачено" />
+          </AssociationSet>
+          <EntitySet Name="льготы" EntityType="domofon14Model.льготы" />
+          <AssociationSet Name="FK_льготы_клиенты" Association="domofon14Model.FK_льготы_клиенты">
+            <End Role="клиенты" EntitySet="клиенты" />
+            <End Role="льготы" EntitySet="льготы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_льготы_услуги" Association="domofon14Model.FK_льготы_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="льготы" EntitySet="льготы" />
+          </AssociationSet>
+          <EntitySet Name="начало" EntityType="domofon14Model.начало" />
+          <EntitySet Name="виды_оплат" EntityType="domofon14Model.виды_оплат" />
+          <AssociationSet Name="FK__оплаты__вид_опла__7FB5F314" Association="domofon14Model.FK__оплаты__вид_опла__7FB5F314">
+            <End Role="виды_оплат" EntitySet="виды_оплат" />
+            <End Role="оплаты" EntitySet="оплаты" />
+          </AssociationSet>
+          <EntitySet Name="воз_работы" EntityType="domofon14Model.воз_работы" />
+          <AssociationSet Name="FK_воз_работы_оплаты" Association="domofon14Model.FK_воз_работы_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="воз_работы" EntitySet="воз_работы" />
+          </AssociationSet>
+          <AssociationSet Name="FK_воз_работы_работы" Association="domofon14Model.FK_воз_работы_работы">
+            <End Role="работы" EntitySet="работы" />
+            <End Role="воз_работы" EntitySet="воз_работы" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="ввод_тарифов_Result">
+          <Property Type="Int32" Name="год" Nullable="false" />
+          <Property Type="Int32" Name="месяц" Nullable="false" />
+          <Property Type="String" Name="наимен" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="тариф" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="список_разрешений_Result">
+          <Property Type="Guid" Name="разрешение" Nullable="false" />
+          <Property Type="Guid" Name="клиент" Nullable="false" />
+          <Property Type="DateTime" Name="дата_с" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="дата_по" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="номер" Nullable="false" />
+          <Property Type="String" Name="телефон" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="эл_почта" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="фио" Nullable="true" MaxLength="35" />
+          <Property Type="String" Name="наимен_улицы" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="номер_дома" Nullable="false" />
+          <Property Type="String" Name="корпус" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="квартира" Nullable="false" />
+          <Property Type="Int32" Name="ввод" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="опл_работы">
+          <Key>
+            <PropertyRef Name="задание" />
+          </Key>
+          <Property Name="оплата" Type="Guid" Nullable="false" />
+          <Property Name="работа" Type="Guid" Nullable="false" />
+          <Property Name="стоимость" Type="Int32" Nullable="false" />
+          <Property Name="мастер" Type="Guid" Nullable="false" />
+          <Property Name="ст_материалов" Type="Int32" Nullable="false" />
+          <Property Name="задание" Type="Guid" Nullable="false" />
+          <Property Name="номер" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="оплаты" Relationship="domofon14Model.FK_опл_работы_оплаты" FromRole="опл_работы" ToRole="оплаты" />
+          <NavigationProperty Name="работы" Relationship="domofon14Model.FK_опл_работы_работы" FromRole="опл_работы" ToRole="работы" />
+          <NavigationProperty Name="сотрудники" Relationship="domofon14Model.FK_опл_работы_сотрудники" FromRole="опл_работы" ToRole="сотрудники" />
+        </EntityType>
+        <Association Name="FK_опл_работы_оплаты">
+          <End Type="domofon14Model.оплаты" Role="оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="domofon14Model.опл_работы" Role="опл_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="опл_работы">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_опл_работы_работы">
+          <End Type="domofon14Model.работы" Role="работы" Multiplicity="1" />
+          <End Type="domofon14Model.опл_работы" Role="опл_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="работы">
+              <PropertyRef Name="работа" />
+            </Principal>
+            <Dependent Role="опл_работы">
+              <PropertyRef Name="работа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="звонки">
+          <Key>
+            <PropertyRef Name="звонок" />
+          </Key>
+          <Property Name="звонок" Type="Guid" Nullable="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="дата" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="прим" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="клиенты" Relationship="domofon14Model.FK_звонки_клиенты" FromRole="звонки" ToRole="клиенты" />
+        </EntityType>
+        <Association Name="FK_звонки_клиенты">
+          <End Type="domofon14Model.клиенты" Role="клиенты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="domofon14Model.звонки" Role="звонки" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="звонки">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="простои">
+          <Key>
+            <PropertyRef Name="простой" />
+          </Key>
+          <Property Name="простой" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="дата_с" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="дата_по" Type="DateTime" Precision="3" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="клиенты" Relationship="domofon14Model.FK_простои_клиенты" FromRole="простои" ToRole="клиенты" />
+          <NavigationProperty Name="услуги" Relationship="domofon14Model.FK_простои_услуги" FromRole="простои" ToRole="услуги" />
+        </EntityType>
+        <Association Name="FK_простои_клиенты">
+          <End Type="domofon14Model.клиенты" Role="клиенты" Multiplicity="1" />
+          <End Type="domofon14Model.простои" Role="простои" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="простои">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_простои_услуги">
+          <End Type="domofon14Model.услуги" Role="услуги" Multiplicity="1" />
+          <End Type="domofon14Model.простои" Role="простои" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="простои">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="возврат">
+          <Key>
+            <PropertyRef Name="код" />
+          </Key>
+          <Property Name="код" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="оплата" Type="Guid" Nullable="false" />
+          <Property Name="месяц" Type="Int32" Nullable="false" />
+          <Property Name="год" Type="Int32" Nullable="false" />
+          <Property Name="сумма" Type="Int32" Nullable="false" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="оплаты" Relationship="domofon14Model.FK_возврат_оплаты" FromRole="возврат" ToRole="оплаты" />
+          <NavigationProperty Name="услуги" Relationship="domofon14Model.FK_возврат_услуги" FromRole="возврат" ToRole="услуги" />
+        </EntityType>
+        <EntityType Name="сотрудники">
+          <Key>
+            <PropertyRef Name="сотрудник" />
+          </Key>
+          <Property Name="сотрудник" Type="Guid" Nullable="false" />
+          <Property Name="фамилия" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="имя" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="отчество" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="порядок" Type="Int32" Nullable="false" />
+          <Property Name="фио" Type="String" MaxLength="55" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="принят" Type="DateTime" Precision="3" />
+          <Property Name="уволен" Type="DateTime" Precision="3" />
+          <Property Name="должность" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="кассир" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="опл_работы" Relationship="domofon14Model.FK_опл_работы_сотрудники" FromRole="сотрудники" ToRole="опл_работы" />
+          <NavigationProperty Name="оплаты" Relationship="domofon14Model.FK_оплаты_сотрудники" FromRole="сотрудники" ToRole="оплаты" />
+          <NavigationProperty Name="отключения" Relationship="domofon14Model.FK_отключения_сотрудники" FromRole="сотрудники" ToRole="отключения" />
+          <NavigationProperty Name="повторы" Relationship="domofon14Model.FK_повторы_сотрудники" FromRole="сотрудники" ToRole="повторы" />
+          <NavigationProperty Name="подключения" Relationship="domofon14Model.FK_подключения_сотрудники" FromRole="сотрудники" ToRole="подключения" />
+          <Property Name="прим" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="адрес" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="телефон" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="фото" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="дата_рож" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_возврат_оплаты">
+          <End Type="domofon14Model.оплаты" Role="оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="domofon14Model.возврат" Role="возврат" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="возврат">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_возврат_услуги">
+          <End Type="domofon14Model.услуги" Role="услуги" Multiplicity="1" />
+          <End Type="domofon14Model.возврат" Role="возврат" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="возврат">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_опл_работы_сотрудники">
+          <End Type="domofon14Model.сотрудники" Role="сотрудники" Multiplicity="1" />
+          <End Type="domofon14Model.опл_работы" Role="опл_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="опл_работы">
+              <PropertyRef Name="мастер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплаты_сотрудники">
+          <End Type="domofon14Model.сотрудники" Role="сотрудники" Multiplicity="1" />
+          <End Type="domofon14Model.оплаты" Role="оплаты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="оплаты">
+              <PropertyRef Name="сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_отключения_сотрудники">
+          <End Type="domofon14Model.сотрудники" Role="сотрудники" Multiplicity="1" />
+          <End Type="domofon14Model.отключения" Role="отключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="отключения">
+              <PropertyRef Name="мастер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_повторы_сотрудники">
+          <End Type="domofon14Model.сотрудники" Role="сотрудники" Multiplicity="1" />
+          <End Type="domofon14Model.повторы" Role="повторы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="повторы">
+              <PropertyRef Name="мастер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_подключения_сотрудники">
+          <End Type="domofon14Model.сотрудники" Role="сотрудники" Multiplicity="1" />
+          <End Type="domofon14Model.подключения" Role="подключения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудники">
+              <PropertyRef Name="сотрудник" />
+            </Principal>
+            <Dependent Role="подключения">
+              <PropertyRef Name="мастер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="улицы">
+          <Key>
+            <PropertyRef Name="улица" />
+          </Key>
+          <Property Name="улица" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="поселок" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="поселки" Relationship="domofon14Model.FK_улицы_поселки" FromRole="улицы" ToRole="поселки" />
+          <NavigationProperty Name="дома" Relationship="domofon14Model.FK_дома_улицы" FromRole="улицы" ToRole="дома" />
+        </EntityType>
+        <Association Name="FK_улицы_поселки">
+          <End Type="domofon14Model.поселки" Role="поселки" Multiplicity="1" />
+          <End Type="domofon14Model.улицы" Role="улицы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="поселки">
+              <PropertyRef Name="поселок" />
+            </Principal>
+            <Dependent Role="улицы">
+              <PropertyRef Name="поселок" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="дома">
+          <Key>
+            <PropertyRef Name="дом" />
+          </Key>
+          <Property Name="дом" Type="Guid" Nullable="false" />
+          <Property Name="улица" Type="Guid" Nullable="false" />
+          <Property Name="номер" Type="Int32" Nullable="false" />
+          <Property Name="корпус" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="изменен" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="улицы" Relationship="domofon14Model.FK_дома_улицы" FromRole="дома" ToRole="улицы" />
+          <NavigationProperty Name="клиенты" Relationship="domofon14Model.FK_клиенты_дома" FromRole="дома" ToRole="клиенты" />
+        </EntityType>
+        <Association Name="FK_дома_улицы">
+          <End Type="domofon14Model.улицы" Role="улицы" Multiplicity="1" />
+          <End Type="domofon14Model.дома" Role="дома" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="улицы">
+              <PropertyRef Name="улица" />
+            </Principal>
+            <Dependent Role="дома">
+              <PropertyRef Name="улица" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_клиенты_дома">
+          <End Type="domofon14Model.дома" Role="дома" Multiplicity="1" />
+          <End Type="domofon14Model.клиенты" Role="клиенты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="дома">
+              <PropertyRef Name="дом" />
+            </Principal>
+            <Dependent Role="клиенты">
+              <PropertyRef Name="дом" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="оплачено">
+          <Key>
+            <PropertyRef Name="код" />
+          </Key>
+          <Property Name="код" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="оплата" Type="Guid" Nullable="false" />
+          <Property Name="месяц" Type="Int32" Nullable="false" />
+          <Property Name="год" Type="Int32" Nullable="false" />
+          <Property Name="сумма" Type="Int32" Nullable="false" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="цена" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="оплаты" Relationship="domofon14Model.FK_оплачено_оплаты" FromRole="оплачено" ToRole="оплаты" />
+          <NavigationProperty Name="услуги" Relationship="domofon14Model.FK_оплачено_услуги" FromRole="оплачено" ToRole="услуги" />
+          <Property Name="дней" Type="Int32" Nullable="false" />
+          <Property Name="длина_мес" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_оплачено_оплаты">
+          <End Type="domofon14Model.оплаты" Role="оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="domofon14Model.оплачено" Role="оплачено" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="оплачено">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплачено_услуги">
+          <End Type="domofon14Model.услуги" Role="услуги" Multiplicity="1" />
+          <End Type="domofon14Model.оплачено" Role="оплачено" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="оплачено">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="льготы">
+          <Key>
+            <PropertyRef Name="льгота" />
+          </Key>
+          <Property Name="льгота" Type="Guid" Nullable="false" />
+          <Property Name="клиент" Type="Guid" Nullable="false" />
+          <Property Name="дата_с" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="дата_по" Type="DateTime" Precision="3" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="клиенты" Relationship="domofon14Model.FK_льготы_клиенты" FromRole="льготы" ToRole="клиенты" />
+          <NavigationProperty Name="услуги" Relationship="domofon14Model.FK_льготы_услуги" FromRole="льготы" ToRole="услуги" />
+          <Property Name="процент" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_льготы_клиенты">
+          <End Type="domofon14Model.клиенты" Role="клиенты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="domofon14Model.льготы" Role="льготы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="клиенты">
+              <PropertyRef Name="клиент" />
+            </Principal>
+            <Dependent Role="льготы">
+              <PropertyRef Name="клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_льготы_услуги">
+          <End Type="domofon14Model.услуги" Role="услуги" Multiplicity="1" />
+          <End Type="domofon14Model.льготы" Role="льготы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="льготы">
+              <PropertyRef Name="услуга" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="начало">
+          <Key>
+            <PropertyRef Name="дата" />
+          </Key>
+          <Property Name="дата" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="виды_оплат">
+          <Key>
+            <PropertyRef Name="вид_оплаты" />
+          </Key>
+          <Property Name="вид_оплаты" Type="Guid" Nullable="false" />
+          <Property Name="наимен" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="порядок" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="оплаты" Relationship="domofon14Model.FK__оплаты__вид_опла__7FB5F314" FromRole="виды_оплат" ToRole="оплаты" />
+        </EntityType>
+        <Association Name="FK__оплаты__вид_опла__7FB5F314">
+          <End Type="domofon14Model.виды_оплат" Role="виды_оплат" Multiplicity="1" />
+          <End Type="domofon14Model.оплаты" Role="оплаты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="виды_оплат">
+              <PropertyRef Name="вид_оплаты" />
+            </Principal>
+            <Dependent Role="оплаты">
+              <PropertyRef Name="вид_оплаты" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="воз_работы">
+          <Key>
+            <PropertyRef Name="код" />
+          </Key>
+          <Property Name="код" Type="Guid" Nullable="false" />
+          <Property Name="оплата" Type="Guid" Nullable="false" />
+          <Property Name="работа" Type="Guid" Nullable="false" />
+          <Property Name="сумма" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="оплаты" Relationship="domofon14Model.FK_воз_работы_оплаты" FromRole="воз_работы" ToRole="оплаты" />
+          <NavigationProperty Name="работы" Relationship="domofon14Model.FK_воз_работы_работы" FromRole="воз_работы" ToRole="работы" />
+        </EntityType>
+        <Association Name="FK_воз_работы_оплаты">
+          <End Type="domofon14Model.оплаты" Role="оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="domofon14Model.воз_работы" Role="воз_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="воз_работы">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_воз_работы_работы">
+          <End Type="domofon14Model.работы" Role="работы" Multiplicity="1" />
+          <End Type="domofon14Model.воз_работы" Role="воз_работы" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="работы">
+              <PropertyRef Name="работа" />
+            </Principal>
+            <Dependent Role="воз_работы">
+              <PropertyRef Name="работа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище domofon14ModelContainer" CdmEntityContainer="domofon14Entities">
+          <EntitySetMapping Name="del_оплаты">
+            <EntityTypeMapping TypeName="domofon14Model.del_оплаты">
+              <MappingFragment StoreEntitySet="del_оплаты">
+                <ScalarProperty Name="оплата" ColumnName="оплата" />
+                <ScalarProperty Name="номер" ColumnName="номер" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="сотрудник" ColumnName="сотрудник" />
+                <ScalarProperty Name="удалена" ColumnName="удалена" />
+                <ScalarProperty Name="дата" ColumnName="дата" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="del_оплачено">
+            <EntityTypeMapping TypeName="domofon14Model.del_оплачено">
+              <MappingFragment StoreEntitySet="del_оплачено">
+                <ScalarProperty Name="код" ColumnName="код" />
+                <ScalarProperty Name="оплата" ColumnName="оплата" />
+                <ScalarProperty Name="месяц" ColumnName="месяц" />
+                <ScalarProperty Name="год" ColumnName="год" />
+                <ScalarProperty Name="сумма" ColumnName="сумма" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="дата" ColumnName="дата" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="виды_услуг">
+            <EntityTypeMapping TypeName="domofon14Model.виды_услуг">
+              <MappingFragment StoreEntitySet="виды_услуг">
+                <ScalarProperty Name="вид_услуги" ColumnName="вид_услуги" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="порядок" ColumnName="порядок" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="годы">
+            <EntityTypeMapping TypeName="domofon14Model.годы">
+              <MappingFragment StoreEntitySet="годы">
+                <ScalarProperty Name="год" ColumnName="год" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="клиенты">
+            <EntityTypeMapping TypeName="domofon14Model.клиенты">
+              <MappingFragment StoreEntitySet="клиенты">
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="фамилия" ColumnName="фамилия" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+                <ScalarProperty Name="отчество" ColumnName="отчество" />
+                <ScalarProperty Name="дом" ColumnName="дом" />
+                <ScalarProperty Name="квартира" ColumnName="квартира" />
+                <ScalarProperty Name="фио" ColumnName="фио" />
+                <ScalarProperty Name="прим" ColumnName="прим" />
+                <ScalarProperty Name="подъезд" ColumnName="подъезд" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="ввод" ColumnName="ввод" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="месяцы">
+            <EntityTypeMapping TypeName="domofon14Model.месяцы">
+              <MappingFragment StoreEntitySet="месяцы">
+                <ScalarProperty Name="месяц" ColumnName="месяц" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="оплаты">
+            <EntityTypeMapping TypeName="domofon14Model.оплаты">
+              <MappingFragment StoreEntitySet="оплаты">
+                <ScalarProperty Name="вид_оплаты" ColumnName="вид_оплаты" />
+                <ScalarProperty Name="оплата" ColumnName="оплата" />
+                <ScalarProperty Name="номер" ColumnName="номер" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="дата" ColumnName="дата" />
+                <ScalarProperty Name="сотрудник" ColumnName="сотрудник" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="отключения">
+            <EntityTypeMapping TypeName="domofon14Model.отключения">
+              <MappingFragment StoreEntitySet="отключения">
+                <ScalarProperty Name="отключение" ColumnName="отключение" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="дата_с" ColumnName="дата_с" />
+                <ScalarProperty Name="дата_по" ColumnName="дата_по" />
+                <ScalarProperty Name="прим" ColumnName="прим" />
+                <ScalarProperty Name="мастер" ColumnName="мастер" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="повторы">
+            <EntityTypeMapping TypeName="domofon14Model.повторы">
+              <MappingFragment StoreEntitySet="повторы">
+                <ScalarProperty Name="подключение" ColumnName="подключение" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="дата_с" ColumnName="дата_с" />
+                <ScalarProperty Name="прим" ColumnName="прим" />
+                <ScalarProperty Name="мастер" ColumnName="мастер" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="подключения">
+            <EntityTypeMapping TypeName="domofon14Model.подключения">
+              <MappingFragment StoreEntitySet="подключения">
+                <ScalarProperty Name="подключение" ColumnName="подключение" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="дата_с" ColumnName="дата_с" />
+                <ScalarProperty Name="дата_по" ColumnName="дата_по" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="номер_дог" ColumnName="номер_дог" />
+                <ScalarProperty Name="дата_дог" ColumnName="дата_дог" />
+                <ScalarProperty Name="номер_пп" ColumnName="номер_пп" />
+                <ScalarProperty Name="мастер" ColumnName="мастер" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="поселки">
+            <EntityTypeMapping TypeName="domofon14Model.поселки">
+              <MappingFragment StoreEntitySet="поселки">
+                <ScalarProperty Name="поселок" ColumnName="поселок" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="порядок" ColumnName="порядок" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="примечания">
+            <EntityTypeMapping TypeName="domofon14Model.примечания">
+              <MappingFragment StoreEntitySet="примечания">
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="прим" ColumnName="прим" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="раб_дней">
+            <EntityTypeMapping TypeName="domofon14Model.раб_дней">
+              <MappingFragment StoreEntitySet="раб_дней">
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="год" ColumnName="год" />
+                <ScalarProperty Name="месяц" ColumnName="месяц" />
+                <ScalarProperty Name="дней" ColumnName="дней" />
+                <ScalarProperty Name="прим" ColumnName="прим" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="работы">
+            <EntityTypeMapping TypeName="domofon14Model.работы">
+              <MappingFragment StoreEntitySet="работы">
+                <ScalarProperty Name="работа" ColumnName="работа" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="порядок" ColumnName="порядок" />
+                <ScalarProperty Name="стоимость" ColumnName="стоимость" />
+                <ScalarProperty Name="ст_материалов" ColumnName="ст_материалов" />
+                <ScalarProperty Name="прейскурант" ColumnName="прейскурант" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="услуги">
+            <EntityTypeMapping TypeName="domofon14Model.услуги">
+              <MappingFragment StoreEntitySet="услуги">
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="порядок" ColumnName="порядок" />
+                <ScalarProperty Name="вид_услуги" ColumnName="вид_услуги" />
+                <ScalarProperty Name="обозначение" ColumnName="обозначение" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="филиалы">
+            <EntityTypeMapping TypeName="domofon14Model.филиалы">
+              <MappingFragment StoreEntitySet="филиалы">
+                <ScalarProperty Name="филиал" ColumnName="филиал" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="адрес" ColumnName="адрес" />
+                <ScalarProperty Name="порядок" ColumnName="порядок" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="фирмы">
+            <EntityTypeMapping TypeName="domofon14Model.фирмы">
+              <MappingFragment StoreEntitySet="фирмы">
+                <ScalarProperty Name="фирма" ColumnName="фирма" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="порядок" ColumnName="порядок" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="адрес" ColumnName="адрес" />
+                <ScalarProperty Name="факт_адрес" ColumnName="факт_адрес" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="р_счет" ColumnName="р_счет" />
+                <ScalarProperty Name="к_счет" ColumnName="к_счет" />
+                <ScalarProperty Name="банк" ColumnName="банк" />
+                <ScalarProperty Name="город" ColumnName="город" />
+                <ScalarProperty Name="бик" ColumnName="бик" />
+                <ScalarProperty Name="код" ColumnName="код" />
+                <ScalarProperty Name="инн" ColumnName="инн" />
+                <ScalarProperty Name="окпо" ColumnName="окпо" />
+                <ScalarProperty Name="оконх" ColumnName="оконх" />
+                <ScalarProperty Name="груз_пол" ColumnName="груз_пол" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="цены">
+            <EntityTypeMapping TypeName="domofon14Model.цены">
+              <MappingFragment StoreEntitySet="цены">
+                <ScalarProperty Name="год" ColumnName="год" />
+                <ScalarProperty Name="месяц" ColumnName="месяц" />
+                <ScalarProperty Name="стоимость" ColumnName="стоимость" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="шаблоны">
+            <EntityTypeMapping TypeName="domofon14Model.шаблоны">
+              <MappingFragment StoreEntitySet="шаблоны">
+                <ScalarProperty Name="шаблон" ColumnName="шаблон" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="путь" ColumnName="путь" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="услуги_клиента" TypeName="domofon14Model.услуги_клиента" StoreEntitySet="услуги_клиента">
+            <EndProperty Name="клиенты">
+              <ScalarProperty Name="клиент" ColumnName="клиент" />
+            </EndProperty>
+            <EndProperty Name="услуги">
+              <ScalarProperty Name="услуга" ColumnName="услуга" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="опл_работы">
+            <EntityTypeMapping TypeName="domofon14Model.опл_работы">
+              <MappingFragment StoreEntitySet="опл_работы">
+                <ScalarProperty Name="номер" ColumnName="номер" />
+                <ScalarProperty Name="задание" ColumnName="задание" />
+                <ScalarProperty Name="ст_материалов" ColumnName="ст_материалов" />
+                <ScalarProperty Name="мастер" ColumnName="мастер" />
+                <ScalarProperty Name="стоимость" ColumnName="стоимость" />
+                <ScalarProperty Name="работа" ColumnName="работа" />
+                <ScalarProperty Name="оплата" ColumnName="оплата" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="звонки">
+            <EntityTypeMapping TypeName="domofon14Model.звонки">
+              <MappingFragment StoreEntitySet="звонки">
+                <ScalarProperty Name="прим" ColumnName="прим" />
+                <ScalarProperty Name="дата" ColumnName="дата" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="звонок" ColumnName="звонок" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="простои">
+            <EntityTypeMapping TypeName="domofon14Model.простои">
+              <MappingFragment StoreEntitySet="простои">
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="дата_по" ColumnName="дата_по" />
+                <ScalarProperty Name="дата_с" ColumnName="дата_с" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="простой" ColumnName="простой" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="возврат">
+            <EntityTypeMapping TypeName="domofon14Model.возврат">
+              <MappingFragment StoreEntitySet="возврат">
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="сумма" ColumnName="сумма" />
+                <ScalarProperty Name="год" ColumnName="год" />
+                <ScalarProperty Name="месяц" ColumnName="месяц" />
+                <ScalarProperty Name="оплата" ColumnName="оплата" />
+                <ScalarProperty Name="код" ColumnName="код" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="сотрудники">
+            <EntityTypeMapping TypeName="domofon14Model.сотрудники">
+              <MappingFragment StoreEntitySet="сотрудники">
+                <ScalarProperty Name="дата_рож" ColumnName="дата_рож" />
+                <ScalarProperty Name="фото" ColumnName="фото" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="адрес" ColumnName="адрес" />
+                <ScalarProperty Name="прим" ColumnName="прим" />
+                <ScalarProperty Name="кассир" ColumnName="кассир" />
+                <ScalarProperty Name="должность" ColumnName="должность" />
+                <ScalarProperty Name="уволен" ColumnName="уволен" />
+                <ScalarProperty Name="принят" ColumnName="принят" />
+                <ScalarProperty Name="фио" ColumnName="фио" />
+                <ScalarProperty Name="порядок" ColumnName="порядок" />
+                <ScalarProperty Name="отчество" ColumnName="отчество" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+                <ScalarProperty Name="фамилия" ColumnName="фамилия" />
+                <ScalarProperty Name="сотрудник" ColumnName="сотрудник" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="улицы">
+            <EntityTypeMapping TypeName="domofon14Model.улицы">
+              <MappingFragment StoreEntitySet="улицы">
+                <ScalarProperty Name="поселок" ColumnName="поселок" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="улица" ColumnName="улица" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="дома">
+            <EntityTypeMapping TypeName="domofon14Model.дома">
+              <MappingFragment StoreEntitySet="дома">
+                <ScalarProperty Name="изменен" ColumnName="изменен" />
+                <ScalarProperty Name="корпус" ColumnName="корпус" />
+                <ScalarProperty Name="номер" ColumnName="номер" />
+                <ScalarProperty Name="улица" ColumnName="улица" />
+                <ScalarProperty Name="дом" ColumnName="дом" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="оплачено">
+            <EntityTypeMapping TypeName="domofon14Model.оплачено">
+              <MappingFragment StoreEntitySet="оплачено">
+                <ScalarProperty Name="длина_мес" ColumnName="длина_мес" />
+                <ScalarProperty Name="дней" ColumnName="дней" />
+                <ScalarProperty Name="цена" ColumnName="цена" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="сумма" ColumnName="сумма" />
+                <ScalarProperty Name="год" ColumnName="год" />
+                <ScalarProperty Name="месяц" ColumnName="месяц" />
+                <ScalarProperty Name="оплата" ColumnName="оплата" />
+                <ScalarProperty Name="код" ColumnName="код" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="льготы">
+            <EntityTypeMapping TypeName="domofon14Model.льготы">
+              <MappingFragment StoreEntitySet="льготы">
+                <ScalarProperty Name="процент" ColumnName="процент" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="дата_по" ColumnName="дата_по" />
+                <ScalarProperty Name="дата_с" ColumnName="дата_с" />
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="льгота" ColumnName="льгота" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="начало">
+            <EntityTypeMapping TypeName="domofon14Model.начало">
+              <MappingFragment StoreEntitySet="начало">
+                <ScalarProperty Name="дата" ColumnName="дата" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="виды_оплат">
+            <EntityTypeMapping TypeName="domofon14Model.виды_оплат">
+              <MappingFragment StoreEntitySet="виды_оплат">
+                <ScalarProperty Name="порядок" ColumnName="порядок" />
+                <ScalarProperty Name="наимен" ColumnName="наимен" />
+                <ScalarProperty Name="вид_оплаты" ColumnName="вид_оплаты" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="воз_работы">
+            <EntityTypeMapping TypeName="domofon14Model.воз_работы">
+              <MappingFragment StoreEntitySet="воз_работы">
+                <ScalarProperty Name="сумма" ColumnName="сумма" />
+                <ScalarProperty Name="работа" ColumnName="работа" />
+                <ScalarProperty Name="оплата" ColumnName="оплата" />
+                <ScalarProperty Name="код" ColumnName="код" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

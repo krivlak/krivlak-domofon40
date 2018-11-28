@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище domofon14Model1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="задание1монтажникам" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="дом" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="вид_услуги" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище domofon14Model1Container" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="domofon14Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="domofon14Entities1" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="задание1монтажникам" ReturnType="Collection(domofon14Model1.задание1монтажникам_Result)">
+            <Parameter Name="дом" Mode="In" Type="Guid" />
+            <Parameter Name="вид_услуги" Mode="In" Type="Guid" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="задание1монтажникам_Result">
+          <Property Type="Guid" Name="клиент" Nullable="false" />
+          <Property Type="Guid" Name="услуга" Nullable="false" />
+          <Property Type="Int32" Name="год" Nullable="false" />
+          <Property Type="Int32" Name="месяц" Nullable="false" />
+          <Property Type="Int32" Name="долг_мес" Nullable="false" />
+          <Property Type="Int32" Name="долг_руб" Nullable="false" />
+          <Property Type="DateTime" Name="договор_с" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="отключен" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="повтор" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="последний_звонок" Nullable="true" Precision="23" />
+          <Property Type="String" Name="фио" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="подъезд" Nullable="false" />
+          <Property Type="Int32" Name="квартира" Nullable="false" />
+          <Property Type="Int32" Name="квартира0" Nullable="false" />
+          <Property Type="Int32" Name="ввод" Nullable="false" />
+          <Property Type="String" Name="телефон" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="порядок_услуги" Nullable="false" />
+          <Property Type="String" Name="наимен_услуги" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="строка" Nullable="false" />
+          <Property Type="Boolean" Name="отключить" Nullable="false" />
+          <Property Type="Boolean" Name="подключить" Nullable="false" />
+          <Property Type="Boolean" Name="повторно" Nullable="false" />
+          <Property Type="Boolean" Name="наш" Nullable="false" />
+          <Property Type="Boolean" Name="должник" Nullable="false" />
+          <Property Type="String" Name="прим" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="прим0" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище domofon14Model1Container" CdmEntityContainer="domofon14Entities1" >
+          <FunctionImportMapping FunctionImportName="задание1монтажникам" FunctionName="Хранилище domofon14Model1.задание1монтажникам">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="domofon14Model1.задание1монтажникам_Result">
+                <ScalarProperty Name="клиент" ColumnName="клиент" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="год" ColumnName="год" />
+                <ScalarProperty Name="месяц" ColumnName="месяц" />
+                <ScalarProperty Name="долг_мес" ColumnName="долг_мес" />
+                <ScalarProperty Name="долг_руб" ColumnName="долг_руб" />
+                <ScalarProperty Name="договор_с" ColumnName="договор_с" />
+                <ScalarProperty Name="отключен" ColumnName="отключен" />
+                <ScalarProperty Name="повтор" ColumnName="повтор" />
+                <ScalarProperty Name="последний_звонок" ColumnName="последний_звонок" />
+                <ScalarProperty Name="фио" ColumnName="фио" />
+                <ScalarProperty Name="подъезд" ColumnName="подъезд" />
+                <ScalarProperty Name="квартира" ColumnName="квартира" />
+                <ScalarProperty Name="квартира0" ColumnName="квартира0" />
+                <ScalarProperty Name="ввод" ColumnName="ввод" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="порядок_услуги" ColumnName="порядок_услуги" />
+                <ScalarProperty Name="наимен_услуги" ColumnName="наимен_услуги" />
+                <ScalarProperty Name="строка" ColumnName="строка" />
+                <ScalarProperty Name="отключить" ColumnName="отключить" />
+                <ScalarProperty Name="подключить" ColumnName="подключить" />
+                <ScalarProperty Name="повторно" ColumnName="повторно" />
+                <ScalarProperty Name="наш" ColumnName="наш" />
+                <ScalarProperty Name="должник" ColumnName="должник" />
+                <ScalarProperty Name="прим" ColumnName="прим" />
+                <ScalarProperty Name="прим0" ColumnName="прим0" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

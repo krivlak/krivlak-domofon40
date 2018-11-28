@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3e4376899204ddcbb15f51330e63db4" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="domofon14Model.del_оплаты" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.del_оплачено" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.виды_услуг" Width="1.5" PointX="7.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.годы" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.клиенты" Width="1.5" PointX="7.5" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.месяцы" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.оплаты" Width="1.5" PointX="9.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.отключения" Width="1.5" PointX="9.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.повторы" Width="1.5" PointX="12.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.подключения" Width="1.5" PointX="12.75" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.поселки" Width="1.5" PointX="0.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.примечания" Width="1.5" PointX="15.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.раб_дней" Width="1.5" PointX="15.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.работы" Width="1.5" PointX="15.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.услуги" Width="1.5" PointX="9.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.филиалы" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.фирмы" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.цены" Width="1.5" PointX="12" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="domofon14Model.шаблоны" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="domofon14Model.FK_услуги_виды_услуг" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_оплаты_клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_отключения_клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_повторы_клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_подключения_клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_примечания_клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_раб_дней_клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_отключения_услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_повторы_услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_подключения_услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_примечания_услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_раб_дней_услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.FK_цены_услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="domofon14Model.услуги_клиента" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="domofon14Model.опл_работы" Width="1.5" PointX="18" PointY="17.125" />
+        <AssociationConnector Association="domofon14Model.FK_опл_работы_оплаты" />
+        <AssociationConnector Association="domofon14Model.FK_опл_работы_работы" />
+        <EntityTypeShape EntityType="domofon14Model.звонки" Width="1.5" PointX="10.125" PointY="26.875" />
+        <AssociationConnector Association="domofon14Model.FK_звонки_клиенты" />
+        <EntityTypeShape EntityType="domofon14Model.простои" Width="1.5" PointX="15" PointY="17.5" />
+        <AssociationConnector Association="domofon14Model.FK_простои_клиенты" />
+        <AssociationConnector Association="domofon14Model.FK_простои_услуги" />
+        <EntityTypeShape EntityType="domofon14Model.возврат" Width="1.5" PointX="18" PointY="21" />
+        <EntityTypeShape EntityType="domofon14Model.сотрудники" Width="1.5" PointX="4.5" PointY="21.5" />
+        <AssociationConnector Association="domofon14Model.FK_возврат_оплаты" />
+        <AssociationConnector Association="domofon14Model.FK_возврат_услуги" />
+        <AssociationConnector Association="domofon14Model.FK_опл_работы_сотрудники" />
+        <AssociationConnector Association="domofon14Model.FK_оплаты_сотрудники" />
+        <AssociationConnector Association="domofon14Model.FK_отключения_сотрудники" />
+        <AssociationConnector Association="domofon14Model.FK_повторы_сотрудники" />
+        <AssociationConnector Association="domofon14Model.FK_подключения_сотрудники" />
+        <EntityTypeShape EntityType="domofon14Model.улицы" Width="1.5" PointX="3" PointY="27.125" />
+        <AssociationConnector Association="domofon14Model.FK_улицы_поселки" />
+        <EntityTypeShape EntityType="domofon14Model.дома" Width="1.5" PointX="5.25" PointY="27.875" />
+        <AssociationConnector Association="domofon14Model.FK_дома_улицы" />
+        <AssociationConnector Association="domofon14Model.FK_клиенты_дома" />
+        <EntityTypeShape EntityType="domofon14Model.оплачено" Width="1.5" PointX="12" PointY="13.875" />
+        <AssociationConnector Association="domofon14Model.FK_оплачено_оплаты" />
+        <AssociationConnector Association="domofon14Model.FK_оплачено_услуги" />
+        <EntityTypeShape EntityType="domofon14Model.льготы" Width="1.5" PointX="13" PointY="26.625" />
+        <AssociationConnector Association="domofon14Model.FK_льготы_клиенты" />
+        <AssociationConnector Association="domofon14Model.FK_льготы_услуги" />
+        <EntityTypeShape EntityType="domofon14Model.начало" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="domofon14Model.виды_оплат" Width="1.5" PointX="7.375" PointY="3.875" />
+        <AssociationConnector Association="domofon14Model.FK__оплаты__вид_опла__7FB5F314" />
+        <EntityTypeShape EntityType="domofon14Model.воз_работы" Width="1.5" PointX="21" PointY="14.75" />
+        <AssociationConnector Association="domofon14Model.FK_воз_работы_оплаты" />
+        <AssociationConnector Association="domofon14Model.FK_воз_работы_работы" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

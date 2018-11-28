@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsТабель" targetNamespace="http://tempuri.org/dsТабель.xsd" xmlns:mstns="http://tempuri.org/dsТабель.xsd" xmlns="http://tempuri.org/dsТабель.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsТабель" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsТабель" msprop:Generator_UserDSName="dsТабель">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="вертикаль" msprop:Generator_TableClassName="вертикальDataTable" msprop:Generator_TableVarName="tableвертикаль" msprop:Generator_RowChangedName="вертикальRowChanged" msprop:Generator_TablePropName="вертикаль" msprop:Generator_RowDeletingName="вертикальRowDeleting" msprop:Generator_RowChangingName="вертикальRowChanging" msprop:Generator_RowEvHandlerName="вертикальRowChangeEventHandler" msprop:Generator_RowDeletedName="вертикальRowDeleted" msprop:Generator_RowClassName="вертикальRow" msprop:Generator_UserTableName="вертикаль" msprop:Generator_RowEvArgName="вертикальRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="наимен_мес" msprop:Generator_ColumnVarNameInTable="columnнаимен_мес" msprop:Generator_ColumnPropNameInRow="наимен_мес" msprop:Generator_ColumnPropNameInTable="наимен_месColumn" msprop:Generator_UserColumnName="наимен_мес" type="xs:string" default="" />
+              <xs:element name="отключен" msprop:Generator_ColumnVarNameInTable="columnотключен" msprop:Generator_ColumnPropNameInRow="отключен" msprop:Generator_ColumnPropNameInTable="отключенColumn" msprop:Generator_UserColumnName="отключен" type="xs:boolean" default="true" minOccurs="0" />
+              <xs:element name="цена" msprop:Generator_ColumnVarNameInTable="columnцена" msprop:Generator_ColumnPropNameInRow="цена" msprop:Generator_ColumnPropNameInTable="ценаColumn" msprop:Generator_UserColumnName="цена" type="xs:decimal" default="0" />
+              <xs:element name="оплачено" msprop:Generator_ColumnVarNameInTable="columnоплачено" msprop:Generator_ColumnPropNameInRow="оплачено" msprop:Generator_ColumnPropNameInTable="оплаченоColumn" msprop:Generator_UserColumnName="оплачено" type="xs:decimal" default="0" />
+              <xs:element name="долг" msprop:Generator_ColumnVarNameInTable="columnдолг" msprop:Generator_ColumnPropNameInRow="долг" msprop:Generator_ColumnPropNameInTable="долгColumn" msprop:Generator_UserColumnName="долг" type="xs:decimal" default="0" />
+              <xs:element name="дата_сч" msprop:Generator_ColumnVarNameInTable="columnдата_сч" msprop:Generator_ColumnPropNameInRow="дата_сч" msprop:Generator_ColumnPropNameInTable="дата_счColumn" msprop:Generator_UserColumnName="дата_сч" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="номер_сч" msprop:Generator_ColumnVarNameInTable="columnномер_сч" msprop:Generator_ColumnPropNameInRow="номер_сч" msprop:Generator_ColumnPropNameInTable="номер_счColumn" msprop:Generator_UserColumnName="номер_сч" type="xs:string" default="" />
+              <xs:element name="прим" msprop:Generator_ColumnVarNameInTable="columnприм" msprop:Generator_ColumnPropNameInRow="прим" msprop:Generator_ColumnPropNameInTable="примColumn" msprop:Generator_UserColumnName="прим" type="xs:string" default="" />
+              <xs:element name="льгота" msprop:Generator_ColumnVarNameInTable="columnльгота" msprop:Generator_ColumnPropNameInRow="льгота" msprop:Generator_ColumnPropNameInTable="льготаColumn" msprop:Generator_UserColumnName="льгота" type="xs:int" default="0" />
+              <xs:element name="простой" msprop:Generator_ColumnVarNameInTable="columnпростой" msprop:Generator_ColumnPropNameInRow="простой" msprop:Generator_ColumnPropNameInTable="простойColumn" msprop:Generator_UserColumnName="простой" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="всего_дней" msprop:Generator_ColumnVarNameInTable="columnвсего_дней" msprop:Generator_ColumnPropNameInRow="всего_дней" msprop:Generator_ColumnPropNameInTable="всего_днейColumn" msprop:Generator_UserColumnName="всего_дней" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="раб_дней" msprop:Generator_ColumnVarNameInTable="columnраб_дней" msprop:Generator_ColumnPropNameInRow="раб_дней" msprop:Generator_ColumnPropNameInTable="раб_днейColumn" msprop:Generator_UserColumnName="раб_дней" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="полный" msprop:Generator_ColumnVarNameInTable="columnполный" msprop:Generator_ColumnPropNameInRow="полный" msprop:Generator_ColumnPropNameInTable="полныйColumn" msprop:Generator_UserColumnName="полный" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="должок" msprop:Generator_ColumnVarNameInTable="columnдолжок" msprop:Generator_ColumnPropNameInRow="должок" msprop:Generator_ColumnPropNameInTable="должокColumn" msprop:Generator_UserColumnName="должок" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="оплатить" msprop:Generator_ColumnVarNameInTable="columnоплатить" msprop:Generator_ColumnPropNameInRow="оплатить" msprop:Generator_ColumnPropNameInTable="оплатитьColumn" msprop:Generator_UserColumnName="оплатить" type="xs:decimal" default="0" minOccurs="0" />
+              <xs:element name="подк_дней" msprop:Generator_ColumnVarNameInTable="columnподк_дней" msprop:Generator_ColumnPropNameInRow="подк_дней" msprop:Generator_ColumnPropNameInTable="подк_днейColumn" msprop:Generator_UserColumnName="подк_дней" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="простой_дней" msprop:Generator_ColumnVarNameInTable="columnпростой_дней" msprop:Generator_ColumnPropNameInRow="простой_дней" msprop:Generator_ColumnPropNameInTable="простой_днейColumn" msprop:Generator_UserColumnName="простой_дней" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="наимен_услуги" msprop:Generator_ColumnVarNameInTable="columnнаимен_услуги" msprop:Generator_ColumnPropNameInRow="наимен_услуги" msprop:Generator_ColumnPropNameInTable="наимен_услугиColumn" msprop:Generator_UserColumnName="наимен_услуги" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="договор_с" msprop:Generator_ColumnVarNameInTable="columnдоговор_с" msprop:Generator_ColumnPropNameInRow="договор_с" msprop:Generator_ColumnPropNameInTable="договор_сColumn" msprop:Generator_UserColumnName="договор_с" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="сумма_долга" msprop:Generator_ColumnVarNameInTable="columnсумма_долга" msprop:Generator_ColumnPropNameInRow="сумма_долга" msprop:Generator_ColumnPropNameInTable="сумма_долгаColumn" msprop:Generator_UserColumnName="сумма_долга" type="xs:decimal" default="0" minOccurs="0" />
+              <xs:element name="учет" msprop:Generator_ColumnVarNameInTable="columnучет" msprop:Generator_ColumnPropNameInRow="учет" msprop:Generator_ColumnPropNameInTable="учетColumn" msprop:Generator_UserColumnName="учет" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="отк_дней" msprop:Generator_ColumnVarNameInTable="columnотк_дней" msprop:Generator_ColumnPropNameInRow="отк_дней" msprop:Generator_ColumnPropNameInTable="отк_днейColumn" msprop:Generator_UserColumnName="отк_дней" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="год" msprop:Generator_ColumnVarNameInTable="columnгод" msprop:Generator_ColumnPropNameInRow="год" msprop:Generator_ColumnPropNameInTable="годColumn" msprop:Generator_UserColumnName="год" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="месяц" msprop:Generator_ColumnVarNameInTable="columnмесяц" msprop:Generator_ColumnPropNameInRow="месяц" msprop:Generator_ColumnPropNameInTable="месяцColumn" msprop:Generator_UserColumnName="месяц" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="тариф" msprop:Generator_ColumnVarNameInTable="columnтариф" msprop:Generator_ColumnPropNameInRow="тариф" msprop:Generator_ColumnPropNameInTable="тарифColumn" msprop:Generator_UserColumnName="тариф" type="xs:decimal" default="0" minOccurs="0" />
+              <xs:element name="возврат" msprop:Generator_ColumnVarNameInTable="columnвозврат" msprop:Generator_ColumnPropNameInRow="возврат" msprop:Generator_ColumnPropNameInTable="возвратColumn" msprop:Generator_UserColumnName="возврат" type="xs:decimal" default="0" minOccurs="0" />
+              <xs:element name="оплатаВозв" msprop:Generator_ColumnVarNameInTable="columnоплатаВозв" msprop:Generator_ColumnPropNameInRow="оплатаВозв" msprop:Generator_ColumnPropNameInTable="оплатаВозвColumn" msprop:Generator_UserColumnName="оплатаВозв" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="оплата" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnоплата" msprop:Generator_ColumnPropNameInRow="оплата" msprop:Generator_ColumnPropNameInTable="оплатаColumn" msprop:Generator_UserColumnName="оплата" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="подробности" msprop:Generator_TableClassName="подробностиDataTable" msprop:Generator_TableVarName="tableподробности" msprop:Generator_RowChangedName="подробностиRowChanged" msprop:Generator_TablePropName="подробности" msprop:Generator_RowDeletingName="подробностиRowDeleting" msprop:Generator_RowChangingName="подробностиRowChanging" msprop:Generator_RowEvHandlerName="подробностиRowChangeEventHandler" msprop:Generator_RowDeletedName="подробностиRowDeleted" msprop:Generator_RowClassName="подробностиRow" msprop:Generator_UserTableName="подробности" msprop:Generator_RowEvArgName="подробностиRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="день" msprop:Generator_ColumnVarNameInTable="columnдень" msprop:Generator_ColumnPropNameInRow="день" msprop:Generator_ColumnPropNameInTable="деньColumn" msprop:Generator_UserColumnName="день" type="xs:int" default="0" />
+              <xs:element name="льгота" msprop:Generator_ColumnVarNameInTable="columnльгота" msprop:Generator_ColumnPropNameInRow="льгота" msprop:Generator_ColumnPropNameInTable="льготаColumn" msprop:Generator_UserColumnName="льгота" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="отключен" msprop:Generator_ColumnVarNameInTable="columnотключен" msprop:Generator_ColumnPropNameInRow="отключен" msprop:Generator_ColumnPropNameInTable="отключенColumn" msprop:Generator_UserColumnName="отключен" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="простой" msprop:Generator_ColumnVarNameInTable="columnпростой" msprop:Generator_ColumnPropNameInRow="простой" msprop:Generator_ColumnPropNameInTable="простойColumn" msprop:Generator_UserColumnName="простой" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="год" msprop:Generator_ColumnVarNameInTable="columnгод" msprop:Generator_ColumnPropNameInRow="год" msprop:Generator_ColumnPropNameInTable="годColumn" msprop:Generator_UserColumnName="год" type="xs:int" />
+              <xs:element name="месяц" msprop:Generator_ColumnVarNameInTable="columnмесяц" msprop:Generator_ColumnPropNameInRow="месяц" msprop:Generator_ColumnPropNameInTable="месяцColumn" msprop:Generator_UserColumnName="месяц" type="xs:int" />
+              <xs:element name="раб_день" msprop:Generator_ColumnVarNameInTable="columnраб_день" msprop:Generator_ColumnPropNameInRow="раб_день" msprop:Generator_ColumnPropNameInTable="раб_деньColumn" msprop:Generator_UserColumnName="раб_день" type="xs:boolean" default="true" minOccurs="0" />
+              <xs:element name="номер_дог" msprop:Generator_ColumnVarNameInTable="columnномер_дог" msprop:Generator_ColumnPropNameInRow="номер_дог" msprop:Generator_ColumnPropNameInTable="номер_догColumn" msprop:Generator_UserColumnName="номер_дог" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="договор" msprop:Generator_ColumnVarNameInTable="columnдоговор" msprop:Generator_ColumnPropNameInRow="договор" msprop:Generator_ColumnPropNameInTable="договорColumn" msprop:Generator_UserColumnName="договор" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="учет" msprop:Generator_ColumnVarNameInTable="columnучет" msprop:Generator_ColumnPropNameInRow="учет" msprop:Generator_ColumnPropNameInTable="учетColumn" msprop:Generator_UserColumnName="учет" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="дата" msprop:Generator_ColumnVarNameInTable="columnдата" msprop:Generator_ColumnPropNameInRow="дата" msprop:Generator_ColumnPropNameInTable="датаColumn" msprop:Generator_UserColumnName="дата" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="услуга_подключена" msprop:Generator_ColumnVarNameInTable="columnуслуга_подключена" msprop:Generator_ColumnPropNameInRow="услуга_подключена" msprop:Generator_ColumnPropNameInTable="услуга_подключенаColumn" msprop:Generator_UserColumnName="услуга_подключена" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="прим" msprop:Generator_ColumnVarNameInTable="columnприм" msprop:Generator_ColumnPropNameInRow="прим" msprop:Generator_ColumnPropNameInTable="примColumn" msprop:Generator_UserColumnName="прим" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="код_договора" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnкод_договора" msprop:Generator_ColumnPropNameInRow="код_договора" msprop:Generator_ColumnPropNameInTable="код_договораColumn" msprop:Generator_UserColumnName="код_договора" type="xs:string" minOccurs="0" />
+              <xs:element name="код_отключения" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnкод_отключения" msprop:Generator_ColumnPropNameInRow="код_отключения" msprop:Generator_ColumnPropNameInTable="код_отключенияColumn" msprop:Generator_UserColumnName="код_отключения" type="xs:string" minOccurs="0" />
+              <xs:element name="код_льготы" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnкод_льготы" msprop:Generator_ColumnPropNameInRow="код_льготы" msprop:Generator_ColumnPropNameInTable="код_льготыColumn" msprop:Generator_UserColumnName="код_льготы" type="xs:string" minOccurs="0" />
+              <xs:element name="код_простоя" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnкод_простоя" msprop:Generator_ColumnPropNameInRow="код_простоя" msprop:Generator_ColumnPropNameInTable="код_простояColumn" msprop:Generator_UserColumnName="код_простоя" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="вертикальKey1">
+      <xs:selector xpath=".//mstns:вертикаль" />
+      <xs:field xpath="mstns:год" />
+      <xs:field xpath="mstns:месяц" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:подробности" />
+      <xs:field xpath="mstns:день" />
+      <xs:field xpath="mstns:год" />
+      <xs:field xpath="mstns:месяц" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
