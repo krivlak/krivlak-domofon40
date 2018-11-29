@@ -102,7 +102,7 @@
             // подъездLabel1
             // 
             подъездLabel1.AutoSize = true;
-            подъездLabel1.Location = new System.Drawing.Point(865, 58);
+            подъездLabel1.Location = new System.Drawing.Point(865, 86);
             подъездLabel1.Name = "подъездLabel1";
             подъездLabel1.Size = new System.Drawing.Size(53, 13);
             подъездLabel1.TabIndex = 126;
@@ -111,7 +111,7 @@
             // отчествоLabel
             // 
             отчествоLabel.AutoSize = true;
-            отчествоLabel.Location = new System.Drawing.Point(864, 234);
+            отчествоLabel.Location = new System.Drawing.Point(864, 262);
             отчествоLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             отчествоLabel.Name = "отчествоLabel";
             отчествоLabel.Size = new System.Drawing.Size(55, 13);
@@ -121,7 +121,7 @@
             // имяLabel
             // 
             имяLabel.AutoSize = true;
-            имяLabel.Location = new System.Drawing.Point(891, 199);
+            имяLabel.Location = new System.Drawing.Point(891, 227);
             имяLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             имяLabel.Name = "имяLabel";
             имяLabel.Size = new System.Drawing.Size(30, 13);
@@ -131,7 +131,7 @@
             // подъездLabel
             // 
             подъездLabel.AutoSize = true;
-            подъездLabel.Location = new System.Drawing.Point(840, 114);
+            подъездLabel.Location = new System.Drawing.Point(840, 142);
             подъездLabel.Name = "подъездLabel";
             подъездLabel.Size = new System.Drawing.Size(74, 13);
             подъездLabel.TabIndex = 122;
@@ -140,7 +140,7 @@
             // квартираLabel
             // 
             квартираLabel.AutoSize = true;
-            квартираLabel.Location = new System.Drawing.Point(859, 89);
+            квартираLabel.Location = new System.Drawing.Point(859, 117);
             квартираLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             квартираLabel.Name = "квартираLabel";
             квартираLabel.Size = new System.Drawing.Size(57, 13);
@@ -150,7 +150,7 @@
             // примLabel
             // 
             примLabel.AutoSize = true;
-            примLabel.Location = new System.Drawing.Point(834, 319);
+            примLabel.Location = new System.Drawing.Point(834, 347);
             примLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             примLabel.Name = "примLabel";
             примLabel.Size = new System.Drawing.Size(36, 13);
@@ -160,7 +160,7 @@
             // фамилияLabel
             // 
             фамилияLabel.AutoSize = true;
-            фамилияLabel.Location = new System.Drawing.Point(864, 165);
+            фамилияLabel.Location = new System.Drawing.Point(864, 193);
             фамилияLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             фамилияLabel.Name = "фамилияLabel";
             фамилияLabel.Size = new System.Drawing.Size(56, 13);
@@ -237,7 +237,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(1018, 41);
+            this.button18.Location = new System.Drawing.Point(844, 37);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(146, 35);
             this.button18.TabIndex = 129;
@@ -247,21 +247,21 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(1180, 47);
+            this.numericUpDown4.Location = new System.Drawing.Point(1006, 43);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(54, 20);
             this.numericUpDown4.TabIndex = 128;
             // 
             // подъездNumericUpDown
             // 
-            this.подъездNumericUpDown.Location = new System.Drawing.Point(924, 58);
+            this.подъездNumericUpDown.Location = new System.Drawing.Point(924, 86);
             this.подъездNumericUpDown.Name = "подъездNumericUpDown";
             this.подъездNumericUpDown.Size = new System.Drawing.Size(60, 20);
             this.подъездNumericUpDown.TabIndex = 127;
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(927, 111);
+            this.numericUpDown3.Location = new System.Drawing.Point(927, 139);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10,
             0,
@@ -274,7 +274,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(889, 282);
+            this.textBox1.Location = new System.Drawing.Point(889, 310);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(280, 24);
@@ -283,7 +283,7 @@
             // квартираTextBox
             // 
             this.квартираTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.квартираTextBox.Location = new System.Drawing.Point(924, 83);
+            this.квартираTextBox.Location = new System.Drawing.Point(924, 111);
             this.квартираTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.квартираTextBox.Name = "квартираTextBox";
             this.квартираTextBox.Size = new System.Drawing.Size(127, 24);
@@ -293,7 +293,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(820, 289);
+            this.label3.Location = new System.Drawing.Point(820, 317);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 123;
@@ -302,7 +302,7 @@
             // примTextBox
             // 
             this.примTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.примTextBox.Location = new System.Drawing.Point(886, 319);
+            this.примTextBox.Location = new System.Drawing.Point(886, 347);
             this.примTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.примTextBox.MaxLength = 50;
             this.примTextBox.Name = "примTextBox";
@@ -312,7 +312,7 @@
             // фамилияTextBox
             // 
             this.фамилияTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.фамилияTextBox.Location = new System.Drawing.Point(924, 163);
+            this.фамилияTextBox.Location = new System.Drawing.Point(924, 191);
             this.фамилияTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.фамилияTextBox.MaxLength = 30;
             this.фамилияTextBox.Name = "фамилияTextBox";
@@ -322,7 +322,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(860, 140);
+            this.label2.Location = new System.Drawing.Point(860, 168);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
@@ -332,7 +332,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(944, 138);
+            this.textBox3.Location = new System.Drawing.Point(944, 166);
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -342,7 +342,7 @@
             // имяTextBox
             // 
             this.имяTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.имяTextBox.Location = new System.Drawing.Point(924, 198);
+            this.имяTextBox.Location = new System.Drawing.Point(924, 226);
             this.имяTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.имяTextBox.MaxLength = 30;
             this.имяTextBox.Name = "имяTextBox";
@@ -352,7 +352,7 @@
             // отчествоTextBox
             // 
             this.отчествоTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.отчествоTextBox.Location = new System.Drawing.Point(924, 232);
+            this.отчествоTextBox.Location = new System.Drawing.Point(924, 260);
             this.отчествоTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.отчествоTextBox.MaxLength = 30;
             this.отчествоTextBox.Name = "отчествоTextBox";
@@ -361,7 +361,7 @@
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(1000, 544);
+            this.button19.Location = new System.Drawing.Point(1000, 572);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(140, 23);
             this.button19.TabIndex = 145;
@@ -371,7 +371,7 @@
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(855, 544);
+            this.button20.Location = new System.Drawing.Point(855, 572);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(122, 23);
             this.button20.TabIndex = 144;
@@ -381,7 +381,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(855, 497);
+            this.button17.Location = new System.Drawing.Point(855, 525);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(143, 24);
             this.button17.TabIndex = 143;
@@ -391,7 +391,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(1058, 439);
+            this.button16.Location = new System.Drawing.Point(1058, 467);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(79, 23);
             this.button16.TabIndex = 142;
@@ -401,7 +401,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(1037, 486);
+            this.button15.Location = new System.Drawing.Point(1037, 514);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(100, 36);
             this.button15.TabIndex = 141;
@@ -411,7 +411,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(1111, 599);
+            this.numericUpDown2.Location = new System.Drawing.Point(1111, 627);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             400,
             0,
@@ -423,7 +423,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(1013, 599);
+            this.numericUpDown1.Location = new System.Drawing.Point(1013, 627);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             400,
             0,
@@ -435,7 +435,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(850, 599);
+            this.button5.Location = new System.Drawing.Point(850, 627);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(133, 23);
             this.button5.TabIndex = 138;
@@ -446,7 +446,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1069, 601);
+            this.label4.Location = new System.Drawing.Point(1069, 629);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 13);
             this.label4.TabIndex = 137;
@@ -454,7 +454,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(1058, 397);
+            this.button10.Location = new System.Drawing.Point(1058, 425);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(75, 23);
             this.button10.TabIndex = 134;
@@ -464,7 +464,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(947, 397);
+            this.button4.Location = new System.Drawing.Point(947, 425);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 133;
@@ -474,7 +474,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(950, 439);
+            this.button8.Location = new System.Drawing.Point(950, 467);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(77, 23);
             this.button8.TabIndex = 131;
@@ -484,7 +484,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(844, 439);
+            this.button7.Location = new System.Drawing.Point(844, 467);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 130;
@@ -543,7 +543,7 @@
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.Blue;
-            this.button3.Location = new System.Drawing.Point(724, -1);
+            this.button3.Location = new System.Drawing.Point(724, 1);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(72, 29);
@@ -566,7 +566,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(843, 397);
+            this.button14.Location = new System.Drawing.Point(843, 425);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(89, 23);
             this.button14.TabIndex = 87;
@@ -576,7 +576,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(1180, 397);
+            this.button9.Location = new System.Drawing.Point(1180, 425);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 149;
@@ -586,7 +586,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(1180, 439);
+            this.button6.Location = new System.Drawing.Point(1180, 467);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 150;

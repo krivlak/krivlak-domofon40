@@ -47,9 +47,9 @@ namespace domofon40
             //      textBox2.DataBindings.Add("Text", bindingSource1, "звонок");
             примColumn.DefaultCellStyle.NullValue = "null";
             примColumn.DefaultCellStyle.DataSourceNullValue = "";
-           //квартираColumn.DefaultCellStyle.NullValue = 0;
-           // вводColumn.DefaultCellStyle.NullValue = 0;
-           //подъездColumn.DefaultCellStyle.NullValue = 0;
+            квартираColumn.DefaultCellStyle.NullValue = "0";
+            вводColumn.DefaultCellStyle.NullValue = "0";
+            подъездColumn.DefaultCellStyle.NullValue = "0";
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += список_квартир_FormClosing;
             dataGridView1.EditingControlShowing += dataGridView1_EditingControlShowing;

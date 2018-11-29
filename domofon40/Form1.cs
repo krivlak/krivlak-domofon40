@@ -64,47 +64,6 @@ namespace domofon40
             Cursor = Cursors.Default;
         }
 
-        private void смс1ДомToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Cursor = Cursors.WaitCursor;
-            //клДом.выбран = false;
-            //выбор_дома ВыборДома = new выбор_дома();
-            //ВыборДома.ShowDialog();
-            //if (клДом.выбран)
-            //{
-            //    Cursor = Cursors.WaitCursor;
-            //    смс1дом графикМонтажникам = new смс1дом();
-            //    графикМонтажникам.Text = " Долги в доме № "
-            //                             + клДом.номер.ToString() + клДом.корпус
-            //                             + " по улице " + клДом.deRow.улицы.наимен;
-
-            //    графикМонтажникам.ShowDialog();
-
-            //}
-            //Cursor = Cursors.Default;
-
-        }
-
-
-
-        private void списокСообщенийToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            список_звонков формаЗвонки = new список_звонков();
-            формаЗвонки.ShowDialog();
-            Cursor = Cursors.Default;
-        }
-
-        //private void списокРазрешенийToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    Cursor = Cursors.WaitCursor;
-        //    ввод_разрешений формаЗвонки = new ввод_разрешений();
-        //    формаЗвонки.ShowDialog();
-        //    Cursor = Cursors.Default;
-        //}
-
-
-
 
 
         private void улицыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -206,7 +165,7 @@ namespace domofon40
             клДом.выбран = false;
             выбор_дома ВыборДома = new выбор_дома();
             ВыборДома.ShowDialog();
-            if (клДом.выбран)
+            if (клДом.выбран || ВыборДома.DialogResult== DialogResult.OK)
             {
                 Cursor = Cursors.WaitCursor;
                 список_квартир графикМонтажникам = new список_квартир();

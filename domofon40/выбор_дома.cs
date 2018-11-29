@@ -25,12 +25,14 @@ namespace domofon40
             {
                 TreeNode node = this.treeView1.Nodes.Add( gg.наимен);
                 node.Tag = gg.поселок;
+                node.ForeColor = Color.Green;
 
                 foreach (var mm in de.улицы.Where(n=>n.поселок==gg.поселок)
                     .OrderBy(n=>n.наимен))
                 {
                     TreeNode node1 = node.Nodes.Add(mm.наимен);
                     node1.Tag = mm;
+                    node1.ForeColor = Color.Blue;
                     foreach (var dd in mm.дома
                         .OrderBy(n=>n.номер)
                         .ThenBy(n=>n.корпус))

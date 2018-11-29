@@ -47,59 +47,57 @@
             // адресLabel
             // 
             адресLabel.AutoSize = true;
-            адресLabel.Location = new System.Drawing.Point(120, 103);
+            адресLabel.Location = new System.Drawing.Point(40, 113);
             адресLabel.Name = "адресLabel";
-            адресLabel.Size = new System.Drawing.Size(51, 17);
+            адресLabel.Size = new System.Drawing.Size(59, 18);
             адресLabel.TabIndex = 1;
             адресLabel.Text = "адрес:";
             // 
             // наименLabel
             // 
             наименLabel.AutoSize = true;
-            наименLabel.Location = new System.Drawing.Point(110, 63);
+            наименLabel.Location = new System.Drawing.Point(27, 68);
             наименLabel.Name = "наименLabel";
-            наименLabel.Size = new System.Drawing.Size(61, 17);
+            наименLabel.Size = new System.Drawing.Size(70, 18);
             наименLabel.TabIndex = 3;
             наименLabel.Text = "наимен:";
             // 
             // телефонLabel
             // 
             телефонLabel.AutoSize = true;
-            телефонLabel.Location = new System.Drawing.Point(101, 149);
+            телефонLabel.Location = new System.Drawing.Point(17, 165);
             телефонLabel.Name = "телефонLabel";
-            телефонLabel.Size = new System.Drawing.Size(70, 17);
+            телефонLabel.Size = new System.Drawing.Size(82, 18);
             телефонLabel.TabIndex = 7;
             телефонLabel.Text = "телефон:";
             // 
             // адресTextBox
             // 
-            //this.адресTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.филиалыBindingSource, "адрес", true));
-            this.адресTextBox.Location = new System.Drawing.Point(196, 100);
+            this.адресTextBox.Location = new System.Drawing.Point(135, 109);
             this.адресTextBox.Name = "адресTextBox";
-            this.адресTextBox.Size = new System.Drawing.Size(438, 22);
+            this.адресTextBox.Size = new System.Drawing.Size(547, 24);
             this.адресTextBox.TabIndex = 2;
             // 
             // наименTextBox
             // 
-            //this.наименTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.филиалыBindingSource, "наимен", true));
-            this.наименTextBox.Location = new System.Drawing.Point(196, 60);
+            this.наименTextBox.Location = new System.Drawing.Point(135, 65);
             this.наименTextBox.Name = "наименTextBox";
-            this.наименTextBox.Size = new System.Drawing.Size(438, 22);
+            this.наименTextBox.Size = new System.Drawing.Size(547, 24);
             this.наименTextBox.TabIndex = 4;
             // 
             // телефонTextBox
             // 
-            //this.телефонTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.филиалыBindingSource, "телефон", true));
-            this.телефонTextBox.Location = new System.Drawing.Point(196, 146);
+            this.телефонTextBox.Location = new System.Drawing.Point(135, 162);
             this.телефонTextBox.Name = "телефонTextBox";
-            this.телефонTextBox.Size = new System.Drawing.Size(438, 22);
+            this.телефонTextBox.Size = new System.Drawing.Size(547, 24);
             this.телефонTextBox.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(389, 243);
+            this.button1.ForeColor = System.Drawing.Color.Blue;
+            this.button1.Location = new System.Drawing.Point(499, 241);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(93, 26);
             this.button1.TabIndex = 9;
             this.button1.Text = "Выход";
             this.button1.UseVisualStyleBackColor = true;
@@ -109,22 +107,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(10, 9);
+            this.label1.Location = new System.Drawing.Point(13, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 25);
+            this.label1.Size = new System.Drawing.Size(16, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "*";
             this.label1.Visible = false;
             // 
-            // филиалыBindingSource
-            // 
-//            this.филиалыBindingSource.DataSource = typeof(domofon40.филиалы);
-            // 
             // реквизиты_филиала
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(692, 335);
+            this.ClientSize = new System.Drawing.Size(755, 345);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(адресLabel);
@@ -133,8 +127,9 @@
             this.Controls.Add(this.наименTextBox);
             this.Controls.Add(телефонLabel);
             this.Controls.Add(this.телефонTextBox);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "реквизиты_филиала";
-            this.Text = "реквизиты_филиала";
+            this.Text = "реквизиты филиала";
             this.Load += new System.EventHandler(this.реквизиты_филиала_Load);
             ((System.ComponentModel.ISupportInitialize)(this.филиалыBindingSource)).EndInit();
             this.ResumeLayout(false);

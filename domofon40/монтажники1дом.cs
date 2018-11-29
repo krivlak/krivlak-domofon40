@@ -45,7 +45,7 @@ namespace domofon40
                 //    string sqlString = "монтажники1дом @дом='" + клДом.дом + "' ,@вид='" + клВид_услуги.вид_услуги + "'";
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine(" declare @дом  uniqueidentifier ='" + клДом.дом.ToString() + "';");
-           //     sb.AppendLine("declare @вид uniqueidentifier = '" + клВид_услуги.вид_услуги.ToString() + "' ; ");
+                sb.AppendLine("declare @вид uniqueidentifier = '" + клВид_услуги.вид_услуги.ToString() + "' ; ");
                 sb.AppendLine(запрос);
 
                 //string sqlString = запрос + " declare @дом='" + клДом.дом + "';  declare @вид='" + клВид_услуги.вид_услуги + "' ;";
