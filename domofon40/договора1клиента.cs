@@ -43,6 +43,7 @@ namespace domofon40
                 bindingSource1.ListChanged += bindingSource1_ListChanged;
                 FormClosing += договора1клиента_FormClosing;
                 dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
+                клСетка.задать_ширину(dataGridView1);
             }
             catch
             {
