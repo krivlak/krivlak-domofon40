@@ -33,12 +33,43 @@ namespace domofon40
                 MessageBox.Show("Ошибка загрузки " + ex.Message);
             }
         }
+        (int год,  int месяц)  начало_оплаты()
+        {
+            DateTime dt = de.начало.First().дата;
+
+            int g100m = 0;
+            if(de.подключения.Where(n=>n.услуги.вид_услуги==клВид_услуги.вид_услуги).Any(n=>n.клиент==клКлиент.клиент))
+            {
+                DateTime дата_дог = de.подключения.Where(n => n.услуги.вид_услуги == клВид_услуги.вид_услуги).Where(n => n.клиент == клКлиент.клиент).Min(n => n.дата_с);
+                g100m = дата_дог.Year * 100 + дата_дог.Month;
+            }
+            if(de.оплачено.Where(n=>n.оплаты.клиент==клКлиент.клиент).Any(n=>n.услуги.вид_услуги==клВид_услуги.вид_услуги))
+            {
+                int g100mm = de.оплачено.Where(n => n.оплаты.клиент == клКлиент.клиент).Where(n => n.услуги.вид_услуги == клВид_услуги.вид_услуги).Min(n => n.год * 100 + n.месяц);
+                if(g100mm<g100m)
+                {
+                    g100m = g100mm;
+                }
+            }
+            if(g100m>0)
+            {
+                int год = (int)g100m / 100;
+                int месяц = g100m - год * 100;
+                dt = new DateTime(год, месяц, 1);
+            }
+
+            return (dt.Year, dt.Month);
+        }
 
         private void заполнить_месяца()
         {
-           
+            var ggg = начало_оплаты();
+            int год = ggg.год;
+            int месяц = ggg.месяц;
+
+
             int i = -1;
-            foreach (var gg in de.годы.OrderBy(n => n.год))
+            foreach (годы gg in de.годы.Where(n=>n.год>=год) .Where(n=>n.год<=DateTime.Today.Year+1).OrderBy(n => n.год))
             {
                 foreach (var mm in de.месяцы.OrderBy(n => n.месяц))
                 {
