@@ -56,10 +56,9 @@
             this.dataGridView1.DataSource = this.bindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(544, 556);
+            this.dataGridView1.Size = new System.Drawing.Size(597, 511);
             this.dataGridView1.TabIndex = 0;
             // 
             // датаColumn
@@ -81,10 +80,9 @@
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.Color.Blue;
-            this.button2.Location = new System.Drawing.Point(581, 74);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(655, 122);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 26);
+            this.button2.Size = new System.Drawing.Size(128, 36);
             this.button2.TabIndex = 8;
             this.button2.Text = "Выход";
             this.button2.UseVisualStyleBackColor = true;
@@ -94,7 +92,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(576, 25);
+            this.label1.Location = new System.Drawing.Point(647, 55);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 25);
             this.label1.TabIndex = 24;
@@ -103,10 +102,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(581, 155);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(655, 235);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 26);
+            this.button1.Size = new System.Drawing.Size(128, 36);
             this.button1.TabIndex = 25;
             this.button1.Text = "новый звонок";
             this.button1.UseVisualStyleBackColor = true;
@@ -114,10 +112,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(581, 236);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(655, 347);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 26);
+            this.button3.Size = new System.Drawing.Size(128, 36);
             this.button3.TabIndex = 26;
             this.button3.Text = "Удалить";
             this.button3.UseVisualStyleBackColor = true;
@@ -125,15 +122,15 @@
             // 
             // звонки1клиенту
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 556);
+            this.ClientSize = new System.Drawing.Size(898, 511);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "звонки1клиенту";
             this.Text = "звонки1клиенту";
             this.Load += new System.EventHandler(this.звонки1клиенту_Load);

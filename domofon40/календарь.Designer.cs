@@ -68,7 +68,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(0, 5);
+            this.monthCalendar1.Location = new System.Drawing.Point(3, 6);
             this.monthCalendar1.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 12;

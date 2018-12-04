@@ -32,14 +32,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.номерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.датаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.адресColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фиоColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.суммаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.менеджерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.видColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -51,13 +58,6 @@
             this.договорColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.номерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.датаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.адресColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.фиоColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.суммаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.менеджерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.видColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -69,7 +69,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -105,6 +105,65 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1282, 276);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // номерColumn
+            // 
+            this.номерColumn.DataPropertyName = "номер";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "0;#;#";
+            this.номерColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.номерColumn.HeaderText = "номер";
+            this.номерColumn.Name = "номерColumn";
+            this.номерColumn.ReadOnly = true;
+            // 
+            // датаColumn
+            // 
+            this.датаColumn.DataPropertyName = "дата";
+            this.датаColumn.HeaderText = "дата";
+            this.датаColumn.Name = "датаColumn";
+            this.датаColumn.ReadOnly = true;
+            // 
+            // адресColumn
+            // 
+            this.адресColumn.DataPropertyName = "адрес";
+            this.адресColumn.HeaderText = "адрес";
+            this.адресColumn.Name = "адресColumn";
+            this.адресColumn.ReadOnly = true;
+            this.адресColumn.Width = 350;
+            // 
+            // фиоColumn
+            // 
+            this.фиоColumn.DataPropertyName = "фио";
+            this.фиоColumn.HeaderText = "ФИО";
+            this.фиоColumn.Name = "фиоColumn";
+            this.фиоColumn.ReadOnly = true;
+            this.фиоColumn.Width = 150;
+            // 
+            // суммаColumn
+            // 
+            this.суммаColumn.DataPropertyName = "оплатить";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "0;#;#";
+            this.суммаColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.суммаColumn.HeaderText = "сумма";
+            this.суммаColumn.Name = "суммаColumn";
+            this.суммаColumn.ReadOnly = true;
+            // 
+            // менеджерColumn
+            // 
+            this.менеджерColumn.DataPropertyName = "менеджер";
+            this.менеджерColumn.HeaderText = "менеджер";
+            this.менеджерColumn.Name = "менеджерColumn";
+            this.менеджерColumn.ReadOnly = true;
+            this.менеджерColumn.Width = 150;
+            // 
+            // видColumn
+            // 
+            this.видColumn.DataPropertyName = "наимен_вида";
+            this.видColumn.HeaderText = "вид оплаты";
+            this.видColumn.Name = "видColumn";
+            this.видColumn.ReadOnly = true;
+            this.видColumn.Width = 150;
             // 
             // panel1
             // 
@@ -222,65 +281,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(76, 20);
             this.textBox1.TabIndex = 1;
-            // 
-            // номерColumn
-            // 
-            this.номерColumn.DataPropertyName = "номер";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "0;#;#";
-            this.номерColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.номерColumn.HeaderText = "номер";
-            this.номерColumn.Name = "номерColumn";
-            this.номерColumn.ReadOnly = true;
-            // 
-            // датаColumn
-            // 
-            this.датаColumn.DataPropertyName = "дата";
-            this.датаColumn.HeaderText = "дата";
-            this.датаColumn.Name = "датаColumn";
-            this.датаColumn.ReadOnly = true;
-            // 
-            // адресColumn
-            // 
-            this.адресColumn.DataPropertyName = "адрес";
-            this.адресColumn.HeaderText = "адрес";
-            this.адресColumn.Name = "адресColumn";
-            this.адресColumn.ReadOnly = true;
-            this.адресColumn.Width = 350;
-            // 
-            // фиоColumn
-            // 
-            this.фиоColumn.DataPropertyName = "фио";
-            this.фиоColumn.HeaderText = "ФИО";
-            this.фиоColumn.Name = "фиоColumn";
-            this.фиоColumn.ReadOnly = true;
-            this.фиоColumn.Width = 150;
-            // 
-            // суммаColumn
-            // 
-            this.суммаColumn.DataPropertyName = "оплатить";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "0;#;#";
-            this.суммаColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.суммаColumn.HeaderText = "сумма";
-            this.суммаColumn.Name = "суммаColumn";
-            this.суммаColumn.ReadOnly = true;
-            // 
-            // менеджерColumn
-            // 
-            this.менеджерColumn.DataPropertyName = "менеджер";
-            this.менеджерColumn.HeaderText = "менеджер";
-            this.менеджерColumn.Name = "менеджерColumn";
-            this.менеджерColumn.ReadOnly = true;
-            this.менеджерColumn.Width = 150;
-            // 
-            // видColumn
-            // 
-            this.видColumn.DataPropertyName = "наимен_вида";
-            this.видColumn.HeaderText = "вид оплаты";
-            this.видColumn.Name = "видColumn";
-            this.видColumn.ReadOnly = true;
-            this.видColumn.Width = 150;
             // 
             // оплаты22клиента
             // 

@@ -28,6 +28,7 @@ namespace domofon40
             tempList = tempList0.OrderBy(n => n.дата_с).ToList();
             bindingSource1.DataSource = tempList;
             bindingSource1.MoveLast();
+            клСетка.задать_ширину(dataGridView1);
             dataGridView1.Focus();
 
           //  заполнить_предупреждение();

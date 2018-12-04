@@ -26,6 +26,8 @@ namespace domofon40
                 .Load();
             bindingSource1.DataSource = de.звонки.Local.ToBindingList();
             bindingSource1.Sort = "дата";
+            bindingSource1.MoveLast();
+
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += звонки1клиенту_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;

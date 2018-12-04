@@ -35,6 +35,7 @@ namespace domofon40
                 bindingSource1.DataSource = отключенияЛист;
                 bindingSource1.Sort = "дата_с";
                 bindingSource1.MoveLast();
+                клСетка.задать_ширину(dataGridView1);
             }
             catch
             {
@@ -86,11 +87,13 @@ namespace domofon40
                     ВыборМастера.ShowDialog();
                     if (клМастер.выбран)
                     {
+                        сотрудники рабочий = de.сотрудники.Single(n => n.сотрудник == клМастер.мастер);
                         tRow.мастер = клМастер.мастер;
-                        if (de.Entry(tRow).State == EntityState.Unchanged)
-                        {
-                            de.Entry(tRow).State = EntityState.Modified;
-                        }
+                        tRow.сотрудники = рабочий;
+                        //if (de.Entry(tRow).State == EntityState.Unchanged)
+                        //{
+                        //    de.Entry(tRow).State = EntityState.Modified;
+                        //}
                        
                      //   de.отключения.Include("сотрудники");
                         dataGridView1.Refresh();

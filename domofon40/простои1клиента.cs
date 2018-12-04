@@ -36,7 +36,7 @@ namespace domofon40
             {
                 MessageBox.Show("Сбой загрузки");
             }
-
+            клСетка.задать_ширину(dataGridView1);
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += простои1клиента_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;

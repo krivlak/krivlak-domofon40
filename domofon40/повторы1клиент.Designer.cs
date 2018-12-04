@@ -36,20 +36,21 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.услугиColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.датаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.мастерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(919, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(18, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 26);
             this.label1.TabIndex = 13;
@@ -70,20 +71,19 @@
             this.мастерColumn,
             this.примColumn});
             this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 60);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(884, 480);
+            this.dataGridView1.Size = new System.Drawing.Size(1190, 304);
             this.dataGridView1.TabIndex = 9;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(949, 200);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.ForeColor = System.Drawing.Color.Blue;
+            this.button3.Location = new System.Drawing.Point(810, 12);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(56, 22);
+            this.button3.Size = new System.Drawing.Size(93, 30);
             this.button3.TabIndex = 12;
             this.button3.Text = "Выход";
             this.button3.UseVisualStyleBackColor = true;
@@ -91,10 +91,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(949, 147);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(123, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 21);
+            this.button2.Size = new System.Drawing.Size(93, 29);
             this.button2.TabIndex = 11;
             this.button2.Text = "удалить";
             this.button2.UseVisualStyleBackColor = true;
@@ -102,14 +101,26 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(949, 93);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(328, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 26);
+            this.button1.Size = new System.Drawing.Size(93, 36);
             this.button1.TabIndex = 10;
             this.button1.Text = "новый";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1190, 60);
+            this.panel1.TabIndex = 14;
             // 
             // услугиColumn
             // 
@@ -117,7 +128,7 @@
             this.услугиColumn.HeaderText = "услуга";
             this.услугиColumn.Name = "услугиColumn";
             this.услугиColumn.ReadOnly = true;
-            this.услугиColumn.Width = 200;
+            this.услугиColumn.Width = 250;
             // 
             // датаColumn
             // 
@@ -144,22 +155,21 @@
             // 
             // повторы1клиент
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 480);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1190, 364);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "повторы1клиент";
             this.Text = "альтернатива Add";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.повторы1клиент_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -175,5 +185,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn датаColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn мастерColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn примColumn;
+        private System.Windows.Forms.Panel panel1;
     }
 }

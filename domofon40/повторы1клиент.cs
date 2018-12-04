@@ -20,22 +20,25 @@ namespace domofon40
         BindingList<повторы> повторыБинд = new BindingList<повторы>();
         private void повторы1клиент_Load(object sender, EventArgs e)
         {
-            de.сотрудники.Load();
-            de.услуги.Load();
-            de.повторы
-                .Where(n => n.клиент == клКлиент.клиент)
-                .OrderBy(n => n.дата_с)
-                .Load();
-     
             try
             {
+                de.сотрудники.Load();
+                de.услуги.Load();
+                de.повторы
+                    .Where(n => n.клиент == клКлиент.клиент)
+                    .OrderBy(n => n.дата_с)
+                    .Load();
+
+
                 повторыБинд = de.повторы.Local.ToBindingList();
                 bindingSource1.DataSource = повторыБинд;
                 bindingSource1.Sort = "дата_с";
+                клСетка.задать_ширину(dataGridView1);
+                bindingSource1.MoveLast();
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Сбой загрузки");
+                MessageBox.Show($"Сбой загрузки {ex.Message}");
             }
 
             bindingSource1.ListChanged += bindingSource1_ListChanged;
@@ -91,11 +94,13 @@ namespace domofon40
                     ВыборМастера.ShowDialog();
                     if (клМастер.выбран)
                     {
+                        сотрудники рабочий = de.сотрудники.Single(n => n.сотрудник == клМастер.мастер);
                         tRow.мастер = клМастер.мастер;
-                        if (de.Entry(tRow).State == EntityState.Unchanged)
-                        {
-                            de.Entry(tRow).State = EntityState.Modified;
-                        }
+                        tRow.сотрудники = рабочий;
+                        //if (de.Entry(tRow).State == EntityState.Unchanged)
+                        //{
+                        //    de.Entry(tRow).State = EntityState.Modified;
+                        //}
                         dataGridView1.Refresh();
                         label1.Visible = true;
                     }
