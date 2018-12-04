@@ -15,6 +15,7 @@ namespace domofon40
         public льготы1клиент()
         {
             InitializeComponent();
+            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
         }
 
 

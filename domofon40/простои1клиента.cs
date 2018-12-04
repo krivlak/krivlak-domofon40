@@ -14,6 +14,7 @@ namespace domofon40
         public простои1клиента()
         {
             InitializeComponent();
+            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
     //    List<простои> простоиЛист = new List<простои>();
@@ -41,6 +42,23 @@ namespace domofon40
             FormClosing += простои1клиента_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
+         //   dataGridView1.CellValidating += DataGridView1_CellValidating;
+        }
+
+        private void DataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex] == примColumn)
+            {
+                if (e.FormattedValue == null)
+                {
+
+                    //if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
+                    //{
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
+                    //}
+                }
+            }
+            
         }
 
         void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -49,7 +67,7 @@ namespace domofon40
             {
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";  // работает
                 }
 
             }
