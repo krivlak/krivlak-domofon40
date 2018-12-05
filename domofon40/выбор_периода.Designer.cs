@@ -63,7 +63,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(262, 48);
+            this.label2.Location = new System.Drawing.Point(324, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 18);
             this.label2.TabIndex = 15;
@@ -82,9 +82,9 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(245, 88);
+            this.dateTimePicker2.Location = new System.Drawing.Point(287, 88);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(177, 24);
+            this.dateTimePicker2.Size = new System.Drawing.Size(186, 24);
             this.dateTimePicker2.TabIndex = 13;
             // 
             // dateTimePicker1
@@ -92,7 +92,7 @@
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker1.Location = new System.Drawing.Point(36, 88);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(178, 24);
+            this.dateTimePicker1.Size = new System.Drawing.Size(188, 24);
             this.dateTimePicker1.TabIndex = 12;
             // 
             // выбор_периода

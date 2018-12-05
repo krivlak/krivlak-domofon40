@@ -435,5 +435,21 @@ namespace domofon40
                 Cursor = Cursors.Default;
             }
         }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                listTemp.FindAll(n => n.должник).ForEach(n => n.отключить = true);
+                checkBox2.Text = "Снять отметки";
+            }
+            else
+            {
+                listTemp.FindAll(n => n.должник).ForEach(n => n.отключить = false);
+                checkBox2.Text = "Отметить всех";
+            }
+            dataGridView1.Refresh();
+            dataGridView1.Focus();
+        }
     }
 }

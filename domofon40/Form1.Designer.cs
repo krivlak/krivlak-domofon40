@@ -97,7 +97,6 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьКвартирыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.пробаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -471,8 +470,7 @@
             this.резервToolStripMenuItem,
             this.востановитьБазуДанныхToolStripMenuItem,
             this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.пробаToolStripMenuItem});
+            this.toolStripMenuItem5});
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
             this.помощьToolStripMenuItem.Size = new System.Drawing.Size(83, 22);
             this.помощьToolStripMenuItem.Text = "Помощь";
@@ -669,13 +667,6 @@
             this.удалитьКвартирыToolStripMenuItem.Visible = false;
             this.удалитьКвартирыToolStripMenuItem.Click += new System.EventHandler(this.удалитьКвартирыToolStripMenuItem_Click);
             // 
-            // пробаToolStripMenuItem
-            // 
-            this.пробаToolStripMenuItem.Name = "пробаToolStripMenuItem";
-            this.пробаToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.пробаToolStripMenuItem.Text = "проба";
-            this.пробаToolStripMenuItem.Click += new System.EventHandler(this.пробаToolStripMenuItem_Click_2);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -770,7 +761,6 @@
         private System.Windows.Forms.ToolStripMenuItem выборРеестраToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem пробаToolStripMenuItem;
     }
 }
 

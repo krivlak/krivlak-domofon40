@@ -33,12 +33,12 @@
             System.Windows.Forms.Label телефонLabel;
             System.Windows.Forms.Label отчествоLabel;
             System.Windows.Forms.Label имяLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -65,6 +65,7 @@
             this.отклColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.подклColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             прим0Label = new System.Windows.Forms.Label();
             телефонLabel = new System.Windows.Forms.Label();
             отчествоLabel = new System.Windows.Forms.Label();
@@ -112,6 +113,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(прим0Label);
@@ -224,8 +226,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeight = 50;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -277,9 +279,9 @@
             // годColumn
             // 
             this.годColumn.DataPropertyName = "год";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "0;#;#";
-            this.годColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "0;#;#";
+            this.годColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.годColumn.HeaderText = "год";
             this.годColumn.Name = "годColumn";
             this.годColumn.ReadOnly = true;
@@ -288,9 +290,9 @@
             // месяцColumn
             // 
             this.месяцColumn.DataPropertyName = "месяц";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "0;#;#";
-            this.месяцColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "0;#;#";
+            this.месяцColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.месяцColumn.HeaderText = "месяц";
             this.месяцColumn.Name = "месяцColumn";
             this.месяцColumn.ReadOnly = true;
@@ -299,9 +301,9 @@
             // долг_месColumn
             // 
             this.долг_месColumn.DataPropertyName = "долг_мес";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "0;-0;#";
-            this.долг_месColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "0;-0;#";
+            this.долг_месColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.долг_месColumn.HeaderText = "долг мес";
             this.долг_месColumn.Name = "долг_месColumn";
             this.долг_месColumn.ReadOnly = true;
@@ -318,10 +320,10 @@
             // отключитьColumn
             // 
             this.отключитьColumn.DataPropertyName = "отключить";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.NullValue = false;
-            this.отключитьColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle11.NullValue = false;
+            this.отключитьColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.отключитьColumn.HeaderText = "отключить";
             this.отключитьColumn.Name = "отключитьColumn";
             this.отключитьColumn.Width = 40;
@@ -368,11 +370,23 @@
             // примColumn
             // 
             this.примColumn.DataPropertyName = "прим";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.примColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.примColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.примColumn.HeaderText = "примечание";
             this.примColumn.Name = "примColumn";
             this.примColumn.Width = 150;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(465, 8);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(90, 23);
+            this.checkBox2.TabIndex = 19;
+            this.checkBox2.Text = "отметить всех";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // все_услуги
             // 
@@ -421,5 +435,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn отклColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn подклColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn примColumn;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
