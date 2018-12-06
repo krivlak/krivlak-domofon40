@@ -14,6 +14,7 @@ namespace domofon40
         public выбор_месяца()
         {
             InitializeComponent();
+            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
         private void выбор_месяца_Load(object sender, EventArgs e)

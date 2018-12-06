@@ -41,11 +41,20 @@ namespace domofon40
                     {
                         newTemp.откл = uRow.отключения.Where(n => n.клиент == клКлиент.клиент).Max(n => n.дата_с);
                     }
+
                     if (uRow.повторы.Any(n => n.клиент == клКлиент.клиент))
                     {
                         newTemp.подк = uRow.повторы
                              .Where(n => n.клиент == клКлиент.клиент)
                             .Max(n => n.дата_с);
+
+                        if(newTemp.откл !=null)
+                        {
+                            if(newTemp.откл> newTemp.подк)
+                            {
+                                newTemp.подк = null;
+                            }
+                        }
                     }
                     if (uRow.подключения.Any(n => n.клиент == клКлиент.клиент))
                     {
@@ -56,6 +65,7 @@ namespace domofon40
                         newTemp.номер_пп = pRow.номер_пп;
                         newTemp.от = pRow.дата_с;
                     }
+
 
                     var query = de.оплачено
                         .Where(n => n.услуга == uRow.услуга)
@@ -74,14 +84,12 @@ namespace domofon40
                         newTemp.месяц = мМесяц;
 
                     }
-                    //if (uRow.звонки.Any(n => n.клиент == клКлиент.клиент))
-                    //{
-                    //    newTemp.последний_звонок = uRow.звонки.Where(n => n.клиент == клКлиент.клиент).Max(n => n.дата);
-                    //}
+                 
 
                     tempList.Add(newTemp);
                 }
                 bindingSource1.DataSource = tempList;
+                клСетка.задать_ширину(dataGridView1);
             }
             catch(Exception ex)
             {
@@ -92,6 +100,10 @@ namespace domofon40
             {
                 DateTime последний_звонок = kRow.звонки.Max(n => n.дата);
                 textBox1.Text = последний_звонок.ToShortDateString()+" "+ последний_звонок.ToShortTimeString();
+                if(последний_звонок.Date ==DateTime.Today)
+                {
+                    textBox1.ForeColor = Color.Green;
+                }
             }
 
    //         dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
@@ -105,13 +117,16 @@ namespace domofon40
             Cursor = Cursors.WaitCursor;
             if (dataGridView1.Columns[e.ColumnIndex] == подключенColumn)
             {
-                bool xy = (bool)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                Guid кодУслуги = (Guid)dataGridView1.Rows[e.RowIndex].Cells["услугаColumn"].Value;
-                услуги yRow = de.услуги.Single(n=>n.услуга==кодУслуги);
+                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                temp tRow = bindingSource1.Current as temp;
+
+                //bool xy = (bool)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                //Guid кодУслуги = (Guid)dataGridView1.Rows[e.RowIndex].Cells["услугаColumn"].Value;
+                услуги yRow = de.услуги.Single(n=>n.услуга==tRow.услуга);
                 клиенты kRow = de.клиенты.Single(n => n.клиент == клКлиент.клиент);
                 kRow.услуги.Remove(yRow);
                 de.SaveChanges();
-                if (xy)
+                if (tRow.подключена)
                 {
                     kRow.услуги.Add(yRow);
                     de.SaveChanges();
@@ -119,22 +134,29 @@ namespace domofon40
             }
             if (dataGridView1.Columns[e.ColumnIndex] == примColumn)
             {
-                Guid кодУслуги = (Guid)dataGridView1.Rows[e.RowIndex].Cells["услугаColumn"].Value;
+
+               
+                dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                temp tRow = bindingSource1.Current as temp;
+
+             //   Guid кодУслуги = (Guid)dataGridView1.Rows[e.RowIndex].Cells["услугаColumn"].Value;
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value==null)
                 {
                     dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
                 }
                 string текст = (string) dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                if (de.примечания.Where(n=>n.клиент==клКлиент.клиент).Any(n=>n.услуга==кодУслуги))
+
+
+                if (de.примечания.Where(n=>n.клиент==клКлиент.клиент).Any(n=>n.услуга==tRow.услуга))
                 {
-                    примечания pRow = de.примечания.Where(n => n.клиент == клКлиент.клиент).Single(n => n.услуга == кодУслуги);
+                    примечания pRow = de.примечания.Where(n => n.клиент == клКлиент.клиент).Single(n => n.услуга == tRow.услуга);
                     de.примечания.Remove(pRow);
                     de.SaveChanges();
                 }
                 if (текст.Trim() != String.Empty)
                 {
                     примечания newRow = new примечания();
-                    newRow.услуга = кодУслуги;
+                    newRow.услуга = tRow.услуга;
                     newRow.клиент = клКлиент.клиент;
                     newRow.прим = текст;
                     de.примечания.Add(newRow);
@@ -170,12 +192,12 @@ namespace domofon40
             public int долг { get; set; }
             public bool подключена { get; set; }
             public int номер_пп { get; set; }
-            public DateTime от { get; set; }
+            public DateTime ? от { get; set; }
             public string договор_с { get; set; }
             public string прим { get; set; }
 
-            public DateTime откл { get; set; }
-            public DateTime подк { get; set; }
+            public DateTime ? откл { get; set; }
+            public DateTime ? подк { get; set; }
 
     //        public DateTime последний_звонок { get; set; }
 
@@ -206,6 +228,7 @@ namespace domofon40
                 de.SaveChanges();
               //  tRow.последний_звонок = newSv.дата;
                 textBox1.Text = newSv.дата.ToShortDateString()+" "+ newSv.дата.ToShortTimeString();
+                textBox1.ForeColor = Color.Green;
        //         dataGridView1.Refresh();
             }
             catch(Exception ex)

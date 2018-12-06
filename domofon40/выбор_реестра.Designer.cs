@@ -69,7 +69,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 62);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1379, 430);
+            this.dataGridView1.Size = new System.Drawing.Size(1532, 430);
             this.dataGridView1.TabIndex = 0;
             // 
             // датаColumn
@@ -125,9 +125,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(780, 12);
+            this.button2.Location = new System.Drawing.Point(867, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(157, 38);
+            this.button2.Size = new System.Drawing.Size(174, 38);
             this.button2.TabIndex = 2;
             this.button2.Text = "Выход";
             this.button2.UseVisualStyleBackColor = true;
@@ -135,9 +135,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(56, 12);
+            this.button3.Location = new System.Drawing.Point(62, 12);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(157, 34);
+            this.button3.Size = new System.Drawing.Size(174, 34);
             this.button3.TabIndex = 3;
             this.button3.Text = "Реестр за день";
             this.button3.UseVisualStyleBackColor = true;
@@ -151,14 +151,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1379, 62);
+            this.panel1.Size = new System.Drawing.Size(1532, 62);
             this.panel1.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(346, 12);
+            this.button1.Location = new System.Drawing.Point(384, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 32);
+            this.button1.Size = new System.Drawing.Size(100, 32);
             this.button1.TabIndex = 4;
             this.button1.Text = "Word";
             this.button1.UseVisualStyleBackColor = true;
@@ -166,12 +166,12 @@
             // 
             // выбор_реестра
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1379, 492);
+            this.ClientSize = new System.Drawing.Size(1532, 492);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "выбор_реестра";
             this.Text = "выбор_реестра";

@@ -602,53 +602,191 @@ namespace domofon40
                 MessageBox.Show("Отметьте клиентов на отключение");
                 return;
             }
+
+
+            string curDir = System.IO.Directory.GetCurrentDirectory();
+
+            string шаблон = curDir + @"\монтажники1дом.docx";
+
+            if (!System.IO.File.Exists(шаблон.ToString()))
+            {
+                MessageBox.Show("Нет файла " + шаблон.ToString());
+                Cursor = Cursors.Default;
+                return;
+            }
+
+            Cursor = Cursors.WaitCursor;
+
+            var template = new System.IO.FileInfo(шаблон);
+            string tempFile = curDir + @"\temp\temp.docx";
             try
             {
 
-                Word.Application oWord = new Word.Application();
-
-                string curDir = System.IO.Directory.GetCurrentDirectory();
-
-                object шаблон = curDir + @"\монтажники1вид.dot";
-                if (!System.IO.File.Exists(шаблон.ToString()))
-                {
-                    MessageBox.Show("Нет файла " + шаблон.ToString());
-                    return;
-                }
-
-
-                Word.Document o = oWord.Documents.Add(Template: шаблон);
-                oWord.Application.Visible = true;
-                o.Tables[1].Cell(1, 2).Range.Text = DateTime.Today.ToLongDateString();
-                int j = 1;
-
-                foreach (temp kRow in listTemp
-                    .Where(n => n.отключить))
-                {
-                    j++;
-                    o.Tables[2].Cell(j, 1).Range.Text = kRow.наимен_услуги.Trim();
-                    o.Tables[2].Cell(j, 2).Range.Text = kRow.адрес.Trim();
-                    o.Tables[2].Cell(j, 3).Range.Text = kRow.фио;
-                    o.Tables[2].Cell(j, 4).Range.Text = kRow.долг_мес.ToString("0;#;#");
-                    o.Tables[2].Cell(j, 5).Range.Text = kRow.прим.Trim() + " " + kRow.прим0.Trim();
-                    //    o.Tables[4].Cell(j, 6).Range.Text = kRow.прим0;
-                    o.Tables[2].Cell(j, 6).Range.Text = kRow.телефон;
-
-                    o.Tables[2].Rows.Add();
-                }
-                o.Tables[2].Cell(j + 1, 2).Range.Text = "Всего квартир ";
-                o.Tables[2].Cell(j + 1, 4).Range.Text = (j - 1).ToString("0;#;#");
-
-
-
-                oWord.Application.Visible = true;
+                клTemp.закрытьWord();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Ошибка " + ex.Message);
+                MessageBox.Show("Сохраните файл Word...");
+
+            }
+
+            try
+            {
+                template.CopyTo(tempFile, true);
+            }
+            catch
+            {
+                MessageBox.Show("Закройте файл Word...");
+                return;
+            }
+
+            try
+            {
+                using (WordprocessingDocument package = WordprocessingDocument.Open(tempFile, true))
+                {
+                   
+                    //  int строкаРаб = 0;
+
+                    var tables = package.MainDocumentPart.Document.Body.Elements<Table>();
+                    Table table1 = tables.ElementAt(0);
+                    Table table2 = tables.ElementAt(1);
+
+
+                    клXML.ChangeTextInCell(table1, 0, 0, this.Text + " " + DateTime.Today.ToLongDateString());
+
+                    TableRow lastRow = table2.Elements<TableRow>().Last();
+
+                    var queryTemp = listTemp.ToArray();
+                    int j = 0;
+
+                    foreach (temp kRow in listTemp.Where(n=>n.отключить))
+                    {
+                        TableRow newRow1 = lastRow.Clone() as TableRow;
+
+
+                        table2.AppendChild<TableRow>(newRow1);
+
+
+                        j++;
+
+                        клXML.ChangeTextInCell(table2, j, 0, kRow.квартира.ToString("0;#;#"));
+                        клXML.ChangeTextInCell(table2, j, 1, kRow.ввод.ToString("0;#;#"));
+                        клXML.ChangeTextInCell(table2, j, 2, kRow.фио);
+                        клXML.ChangeTextInCell(table2, j, 3, kRow.телефон);
+                        клXML.ChangeTextInCell(table2, j, 4, kRow.наимен_услуги);
+
+                        клXML.ChangeTextInCell(table2, j, 5, kRow.долг_мес.ToString("0;#;#"));
+
+                        if (kRow.отключить)
+                        {
+                            клXML.ChangeTextInCell(table2, j, 6, "V");
+                        }
+                        else
+                        {
+                            клXML.ChangeTextInCell(table2, j, 6, "");
+                        }
+
+                    }
+
+
+                    j++;
+                    клXML.ChangeTextInCell(table2, j, 0, "");
+                    клXML.ChangeTextInCell(table2, j, 1, "");
+                    клXML.ChangeTextInCell(table2, j, 2, "");
+                    клXML.ChangeTextInCell(table2, j, 3, "");
+                    клXML.ChangeTextInCell(table2, j, 4, "");
+                    клXML.ChangeTextInCell(table2, j, 5, "");
+                    клXML.ChangeTextInCell(table2, j, 6, "");
+                    //   клXML.ChangeTextInCell(table2, j, 7, "");
+
+
+                }
+                //  }
+            }
+            catch
+            {
+                MessageBox.Show("Закройте файл Word...");
+                return;
             }
 
 
+
+            клTemp.закрытьWord();
+
+
+            клXML.просмотрWord(tempFile);
+
+            Cursor = Cursors.Default;
+
+
+            //if (listTemp.Count(n => n.отключить) == 0)
+            //{
+            //    MessageBox.Show("Отметьте клиентов на отключение");
+            //    return;
+            //}
+            //try
+            //{
+
+            //    Word.Application oWord = new Word.Application();
+
+            //    string curDir = System.IO.Directory.GetCurrentDirectory();
+
+            //    object шаблон = curDir + @"\монтажники1вид.dot";
+            //    if (!System.IO.File.Exists(шаблон.ToString()))
+            //    {
+            //        MessageBox.Show("Нет файла " + шаблон.ToString());
+            //        return;
+            //    }
+
+
+            //    Word.Document o = oWord.Documents.Add(Template: шаблон);
+            //    oWord.Application.Visible = true;
+            //    o.Tables[1].Cell(1, 2).Range.Text = DateTime.Today.ToLongDateString();
+            //    int j = 1;
+
+            //    foreach (temp kRow in listTemp
+            //        .Where(n => n.отключить))
+            //    {
+            //        j++;
+            //        o.Tables[2].Cell(j, 1).Range.Text = kRow.наимен_услуги.Trim();
+            //        o.Tables[2].Cell(j, 2).Range.Text = kRow.адрес.Trim();
+            //        o.Tables[2].Cell(j, 3).Range.Text = kRow.фио;
+            //        o.Tables[2].Cell(j, 4).Range.Text = kRow.долг_мес.ToString("0;#;#");
+            //        o.Tables[2].Cell(j, 5).Range.Text = kRow.прим.Trim() + " " + kRow.прим0.Trim();
+            //        //    o.Tables[4].Cell(j, 6).Range.Text = kRow.прим0;
+            //        o.Tables[2].Cell(j, 6).Range.Text = kRow.телефон;
+
+            //        o.Tables[2].Rows.Add();
+            //    }
+            //    o.Tables[2].Cell(j + 1, 2).Range.Text = "Всего квартир ";
+            //    o.Tables[2].Cell(j + 1, 4).Range.Text = (j - 1).ToString("0;#;#");
+
+
+
+            //    oWord.Application.Visible = true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Ошибка " + ex.Message);
+            //}
+
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                listTemp.FindAll(n => n.должник).ForEach(n => n.отключить = true);
+                checkBox2.Text = "Снять отметки";
+            }
+            else
+            {
+                listTemp.FindAll(n => n.должник).ForEach(n => n.отключить = false);
+                checkBox2.Text = "Отметить всех";
+            }
+            dataGridView1.Refresh();
+            dataGridView1.Focus();
         }
     }
 }
