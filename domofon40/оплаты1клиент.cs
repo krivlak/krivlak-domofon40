@@ -44,7 +44,7 @@ namespace domofon40
                 MessageBox.Show("Сбой загрузки");
             }
 
-
+            клСетка.задать_ширину(dataGridView1);
             if (bindingSource1.Count > 0)
             {
                 заполнить_оплатить();

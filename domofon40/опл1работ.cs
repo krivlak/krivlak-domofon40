@@ -31,6 +31,7 @@ namespace domofon40
             работыЛист = de.опл_работы.Local.ToBindingList();
             bindingSource1.DataSource = работыЛист;
             пересчет();
+            клСетка.задать_ширину(dataGridView1);
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += опл1работ_FormClosing;
             dataGridView1.EditingControlShowing += dataGridView1_EditingControlShowing;

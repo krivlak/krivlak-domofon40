@@ -20,6 +20,8 @@ insert into годы (год) values (2020);
 insert into годы (год) values (2021);
 insert into годы (год) values (2022);
 
+go
+
 print 'годы';
 go
 
