@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,6 +38,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,6 +55,11 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.телефонTextBox = new System.Windows.Forms.TextBox();
             this.подъездColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.квартираColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.вводColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +68,7 @@
             this.раб_днейColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.подк_днейColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.тарифColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.уплатилColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.оплатитьColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.действуетColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.договор_сColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,11 +77,6 @@
             this.льготаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сведенияColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.телефонTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -237,6 +239,7 @@
             this.раб_днейColumn,
             this.подк_днейColumn,
             this.тарифColumn,
+            this.уплатилColumn,
             this.оплатитьColumn,
             this.действуетColumn,
             this.договор_сColumn,
@@ -246,14 +249,14 @@
             this.примColumn,
             this.сведенияColumn});
             this.dataGridView1.DataSource = this.bindingSource1;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 124);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
@@ -261,6 +264,74 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1371, 660);
             this.dataGridView1.TabIndex = 14;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.телефонTextBox);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.прим0TextBox);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button8);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1371, 124);
+            this.panel1.TabIndex = 13;
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(1043, 23);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 43;
+            this.button3.Text = "Оплачено";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DisplayMember = "наимен";
+            this.comboBox1.Enabled = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(1021, 64);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(153, 21);
+            this.comboBox1.TabIndex = 42;
+            this.comboBox1.ValueMember = "вид_оплаты";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(693, 101);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "телефон";
+            // 
+            // телефонTextBox
+            // 
+            this.телефонTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.телефонTextBox.Enabled = false;
+            this.телефонTextBox.Location = new System.Drawing.Point(786, 97);
+            this.телефонTextBox.MaxLength = 50;
+            this.телефонTextBox.Name = "телефонTextBox";
+            this.телефонTextBox.Size = new System.Drawing.Size(378, 20);
+            this.телефонTextBox.TabIndex = 28;
             // 
             // подъездColumn
             // 
@@ -344,12 +415,23 @@
             this.тарифColumn.ReadOnly = true;
             this.тарифColumn.Width = 40;
             // 
+            // уплатилColumn
+            // 
+            this.уплатилColumn.DataPropertyName = "уплатил";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "0;#;#";
+            this.уплатилColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.уплатилColumn.HeaderText = "уплатил";
+            this.уплатилColumn.Name = "уплатилColumn";
+            this.уплатилColumn.ReadOnly = true;
+            this.уплатилColumn.Width = 60;
+            // 
             // оплатитьColumn
             // 
             this.оплатитьColumn.DataPropertyName = "оплатить";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "0;#;#";
-            this.оплатитьColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "0;#;#";
+            this.оплатитьColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.оплатитьColumn.HeaderText = "оплатить";
             this.оплатитьColumn.Name = "оплатитьColumn";
             this.оплатитьColumn.Width = 60;
@@ -408,74 +490,6 @@
             this.сведенияColumn.Visible = false;
             this.сведенияColumn.Width = 150;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.телефонTextBox);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.прим0TextBox);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1371, 124);
-            this.panel1.TabIndex = 13;
-            // 
-            // button3
-            // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(1043, 23);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 43;
-            this.button3.Text = "Оплачено";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "наимен";
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1021, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(153, 21);
-            this.comboBox1.TabIndex = 42;
-            this.comboBox1.ValueMember = "вид_оплаты";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(693, 101);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "телефон";
-            // 
-            // телефонTextBox
-            // 
-            this.телефонTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.телефонTextBox.Enabled = false;
-            this.телефонTextBox.Location = new System.Drawing.Point(786, 97);
-            this.телефонTextBox.MaxLength = 50;
-            this.телефонTextBox.Name = "телефонTextBox";
-            this.телефонTextBox.Size = new System.Drawing.Size(378, 20);
-            this.телефонTextBox.TabIndex = 28;
-            // 
             // упр_компания
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -516,6 +530,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox телефонTextBox;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn подъездColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn квартираColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn вводColumn;
@@ -524,6 +540,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn раб_днейColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn подк_днейColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn тарифColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn уплатилColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn оплатитьColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn действуетColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn договор_сColumn;
@@ -532,7 +549,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn льготаColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn примColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn сведенияColumn;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

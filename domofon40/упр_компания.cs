@@ -1107,6 +1107,7 @@ namespace domofon40
 
             public int дней0 { get; set; }
             public int всего_дней { get; set; }
+            public int уплатил { get; set; }
 
             public int оплатить
             {
@@ -1117,6 +1118,9 @@ namespace domofon40
                     if (всего_дней > 0)
                     {
                         сумма = (int)тариф * дней / всего_дней;
+                        сумма -= уплатил;
+                        if (сумма < 0)
+                            сумма = 0;
                     }
                     return сумма;
                 }
