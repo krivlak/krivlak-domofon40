@@ -97,6 +97,7 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьКвартирыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетЗаПериодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -529,7 +530,7 @@
             this.правкаToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(9, 120);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(663, 29);
+            this.menuStrip2.Size = new System.Drawing.Size(861, 29);
             this.menuStrip2.TabIndex = 2;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -554,7 +555,8 @@
             this.отчетыКассировToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.отчетЗаПериод1МенеджерToolStripMenuItem1,
             this.отчетЗаВыбранныеДниToolStripMenuItem1,
-            this.выборРеестраToolStripMenuItem});
+            this.выборРеестраToolStripMenuItem,
+            this.отчетЗаПериодToolStripMenuItem});
             this.отчетыКассировToolStripMenuItem.Name = "отчетыКассировToolStripMenuItem";
             this.отчетыКассировToolStripMenuItem.Size = new System.Drawing.Size(155, 25);
             this.отчетыКассировToolStripMenuItem.Text = "отчеты кассиров";
@@ -667,6 +669,13 @@
             this.удалитьКвартирыToolStripMenuItem.Visible = false;
             this.удалитьКвартирыToolStripMenuItem.Click += new System.EventHandler(this.удалитьКвартирыToolStripMenuItem_Click);
             // 
+            // отчетЗаПериодToolStripMenuItem
+            // 
+            this.отчетЗаПериодToolStripMenuItem.Name = "отчетЗаПериодToolStripMenuItem";
+            this.отчетЗаПериодToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
+            this.отчетЗаПериодToolStripMenuItem.Text = "Отчет за период";
+            this.отчетЗаПериодToolStripMenuItem.Click += new System.EventHandler(this.отчетЗаПериодToolStripMenuItem_Click_2);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -761,6 +770,7 @@
         private System.Windows.Forms.ToolStripMenuItem выборРеестраToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem отчетЗаПериодToolStripMenuItem;
     }
 }
 

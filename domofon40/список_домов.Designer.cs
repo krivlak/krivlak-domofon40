@@ -72,7 +72,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(517, 719);
+            this.dataGridView1.Size = new System.Drawing.Size(517, 593);
             this.dataGridView1.TabIndex = 0;
             // 
             // номерColumn
@@ -108,10 +108,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(648, 522);
+            this.button7.Location = new System.Drawing.Point(579, 420);
             this.button7.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(318, 32);
+            this.button7.Size = new System.Drawing.Size(372, 32);
             this.button7.TabIndex = 27;
             this.button7.Text = "Перевести дом на другую улицу";
             this.button7.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(883, 641);
+            this.numericUpDown2.Location = new System.Drawing.Point(868, 544);
             this.numericUpDown2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             300,
@@ -133,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(814, 643);
+            this.label2.Location = new System.Drawing.Point(799, 546);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 18);
@@ -142,7 +142,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(883, 589);
+            this.numericUpDown1.Location = new System.Drawing.Point(868, 487);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             300,
@@ -155,7 +155,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(648, 587);
+            this.button4.Location = new System.Drawing.Point(633, 485);
             this.button4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(198, 32);
@@ -178,7 +178,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(648, 266);
+            this.button2.Location = new System.Drawing.Point(633, 164);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(160, 37);
             this.button2.TabIndex = 18;
@@ -189,7 +189,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(648, 189);
+            this.button1.Location = new System.Drawing.Point(633, 87);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 37);
             this.button1.TabIndex = 17;
@@ -201,7 +201,7 @@
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.Blue;
-            this.button3.Location = new System.Drawing.Point(648, 385);
+            this.button3.Location = new System.Drawing.Point(633, 283);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(160, 43);
             this.button3.TabIndex = 19;
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 719);
+            this.ClientSize = new System.Drawing.Size(1025, 593);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label2);

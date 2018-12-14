@@ -239,6 +239,7 @@ namespace domofon40
                         NewRow.год = tRow.год;
                         NewRow.месяц = tRow.месяц;
                         NewRow.цена = tRow.цена;
+                        NewRow.платеж = Guid.NewGuid();
                         de.оплачено.Add(NewRow);
                         de.SaveChanges();
                         tRow.оплата = клОплата.оплата;

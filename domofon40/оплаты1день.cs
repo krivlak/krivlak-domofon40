@@ -475,6 +475,7 @@ namespace domofon40
                 {
                     bindingSource1.PositionChanged -= bindingSource1_PositionChanged;
                     bindingSource1.RemoveCurrent();
+                    bindingSource1.MoveLast();
                     try
                     {
                         de.SaveChanges();
@@ -555,7 +556,8 @@ namespace domofon40
 
                int строка = bindingSource1.Add(NewRow);
                bindingSource1.Position = строка;
-               de.SaveChanges();
+                dataGridView1.CurrentCell = dataGridView1.Rows[строка].Cells[0];
+                de.SaveChanges();
 
            }
            dataGridView1.Focus();

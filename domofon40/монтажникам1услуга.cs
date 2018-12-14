@@ -10,7 +10,7 @@ using Word = Microsoft.Office.Interop.Word;
 using System.IO;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-
+using System.Net;
 namespace domofon40
 {
     public partial class монтажникам1услуга : Form
@@ -571,6 +571,15 @@ namespace domofon40
             }
             dataGridView1.Refresh();
             dataGridView1.Focus();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string ссылка = "http://10.0.202.15/zabbix/sendsms.php?channel=2&phonenumber=906801588&text=tttt";
+            //WebClient client = new WebClient();
+            //client.OpenRead(ссылка);
+          System.Diagnostics.Process.Start(ссылка);
+         //   System.Diagnostics.Process.Start("http://программисту.рф");
         }
     }
 }

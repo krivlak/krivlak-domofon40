@@ -33,16 +33,20 @@
             System.Windows.Forms.Label телефонLabel;
             System.Windows.Forms.Label отчествоLabel;
             System.Windows.Forms.Label имяLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button5 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -55,6 +59,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.подъездColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.квартираColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.вводColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,8 +78,6 @@
             this.подклColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.сведенияColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             прим0Label = new System.Windows.Forms.Label();
             телефонLabel = new System.Windows.Forms.Label();
             отчествоLabel = new System.Windows.Forms.Label();
@@ -145,11 +148,25 @@
             this.panel1.Size = new System.Drawing.Size(1157, 70);
             this.panel1.TabIndex = 1;
             // 
+            // checkBox2
+            // 
+            this.checkBox2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox2.Location = new System.Drawing.Point(424, 6);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(104, 25);
+            this.checkBox2.TabIndex = 24;
+            this.checkBox2.Text = "отметить всех";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(270, 8);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(249, 5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(139, 23);
+            this.button5.Size = new System.Drawing.Size(157, 26);
             this.button5.TabIndex = 23;
             this.button5.Text = "Задание на отключение";
             this.button5.UseVisualStyleBackColor = true;
@@ -159,9 +176,10 @@
             // 
             this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(618, 6);
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(551, 6);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(70, 23);
+            this.checkBox1.Size = new System.Drawing.Size(76, 25);
             this.checkBox1.TabIndex = 22;
             this.checkBox1.Text = "Должники";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -169,9 +187,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(123, 7);
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Location = new System.Drawing.Point(120, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(110, 26);
+            this.button4.Size = new System.Drawing.Size(116, 26);
             this.button4.TabIndex = 21;
             this.button4.Text = "Word  должники";
             this.button4.UseVisualStyleBackColor = true;
@@ -179,10 +198,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(854, 5);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(794, 5);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 26);
+            this.button3.Size = new System.Drawing.Size(182, 26);
             this.button3.TabIndex = 20;
             this.button3.Text = "Записать звонок или смс";
             this.button3.UseVisualStyleBackColor = true;
@@ -222,10 +242,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(706, 4);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(647, 5);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 26);
+            this.button2.Size = new System.Drawing.Size(118, 26);
             this.button2.TabIndex = 11;
             this.button2.Text = "Подробности";
             this.button2.UseVisualStyleBackColor = true;
@@ -233,9 +254,10 @@
             // 
             // button8
             // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button8.Location = new System.Drawing.Point(12, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(85, 27);
+            this.button8.Size = new System.Drawing.Size(81, 26);
             this.button8.TabIndex = 10;
             this.button8.Text = "Word ";
             this.button8.UseVisualStyleBackColor = true;
@@ -257,8 +279,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeight = 80;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -292,9 +314,9 @@
             // подъездColumn
             // 
             this.подъездColumn.DataPropertyName = "подъезд";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.Format = "0;#;#";
-            this.подъездColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "0;#;#";
+            this.подъездColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.подъездColumn.HeaderText = "подъезд";
             this.подъездColumn.Name = "подъездColumn";
             this.подъездColumn.ReadOnly = true;
@@ -303,9 +325,10 @@
             // квартираColumn
             // 
             this.квартираColumn.DataPropertyName = "квартира";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.Format = "0;#;#";
-            this.квартираColumn.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.Format = "0;#;#";
+            this.квартираColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.квартираColumn.HeaderText = "квартира";
             this.квартираColumn.Name = "квартираColumn";
             this.квартираColumn.ReadOnly = true;
@@ -314,9 +337,9 @@
             // вводColumn
             // 
             this.вводColumn.DataPropertyName = "ввод";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle22.Format = "0;#;#";
-            this.вводColumn.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "0;#;#";
+            this.вводColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.вводColumn.HeaderText = "ввод";
             this.вводColumn.Name = "вводColumn";
             this.вводColumn.ReadOnly = true;
@@ -325,6 +348,8 @@
             // фиоColumn
             // 
             this.фиоColumn.DataPropertyName = "фио";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.фиоColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.фиоColumn.HeaderText = "фио";
             this.фиоColumn.Name = "фиоColumn";
             this.фиоColumn.ReadOnly = true;
@@ -333,6 +358,8 @@
             // услугаColumn
             // 
             this.услугаColumn.DataPropertyName = "наимен_услуги";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.услугаColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.услугаColumn.HeaderText = "услуга";
             this.услугаColumn.Name = "услугаColumn";
             this.услугаColumn.ReadOnly = true;
@@ -340,9 +367,9 @@
             // годColumn
             // 
             this.годColumn.DataPropertyName = "год";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle23.Format = "0;#;#";
-            this.годColumn.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "0;#;#";
+            this.годColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.годColumn.HeaderText = "год";
             this.годColumn.Name = "годColumn";
             this.годColumn.ReadOnly = true;
@@ -351,9 +378,9 @@
             // месяцColumn
             // 
             this.месяцColumn.DataPropertyName = "месяц";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle24.Format = "0;#;#";
-            this.месяцColumn.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "0;#;#";
+            this.месяцColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.месяцColumn.HeaderText = "месяц";
             this.месяцColumn.Name = "месяцColumn";
             this.месяцColumn.ReadOnly = true;
@@ -362,10 +389,10 @@
             // долг_месColumn
             // 
             this.долг_месColumn.DataPropertyName = "долг_мес";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle25.Format = "0;#;#";
-            this.долг_месColumn.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.Format = "0;#;#";
+            this.долг_месColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.долг_месColumn.HeaderText = "долг мес";
             this.долг_месColumn.Name = "долг_месColumn";
             this.долг_месColumn.ReadOnly = true;
@@ -374,10 +401,10 @@
             // должникColumn
             // 
             this.должникColumn.DataPropertyName = "должник";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle26.NullValue = false;
-            this.должникColumn.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.NullValue = false;
+            this.должникColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.должникColumn.HeaderText = "должник";
             this.должникColumn.Name = "должникColumn";
             this.должникColumn.ReadOnly = true;
@@ -386,12 +413,12 @@
             // отключитьColumn
             // 
             this.отключитьColumn.DataPropertyName = "отключить";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle27.NullValue = false;
-            this.отключитьColumn.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle11.NullValue = false;
+            this.отключитьColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.отключитьColumn.HeaderText = "отключить";
             this.отключитьColumn.Name = "отключитьColumn";
             this.отключитьColumn.Width = 40;
@@ -447,6 +474,8 @@
             // примColumn
             // 
             this.примColumn.DataPropertyName = "прим";
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.примColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.примColumn.HeaderText = "примечание";
             this.примColumn.MaxInputLength = 50;
             this.примColumn.Name = "примColumn";
@@ -460,18 +489,6 @@
             this.сведенияColumn.ReadOnly = true;
             this.сведенияColumn.Visible = false;
             this.сведенияColumn.Width = 200;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(461, 6);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(90, 23);
-            this.checkBox2.TabIndex = 24;
-            this.checkBox2.Text = "отметить всех";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // монтажники1дом
             // 
@@ -509,6 +526,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn подъездColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn квартираColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn вводColumn;
@@ -527,6 +545,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn подклColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn примColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn сведенияColumn;
-        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

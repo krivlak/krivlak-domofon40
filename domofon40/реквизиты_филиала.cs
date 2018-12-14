@@ -34,8 +34,16 @@ namespace domofon40
             }
             филиалыBindingSource.ListChanged += филиалыBindingSource_ListChanged;
             FormClosing += реквизиты_филиала_FormClosing;
+            наименTextBox.Validating += НаименTextBox_Validating;
         }
-
+        private void НаименTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (наименTextBox.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Наименование не может быть пустым");
+                e.Cancel = true;
+            }
+        }
         void реквизиты_филиала_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (label1.Visible)
@@ -44,9 +52,9 @@ namespace domofon40
                 {
                     de.SaveChanges();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Сбой записи");
+                    MessageBox.Show($"Сбой записи  {ex.Message}");
                 }
             }
         }

@@ -482,6 +482,12 @@
     <Compile Include="изменена_цена.Designer.cs">
       <DependentUpon>изменена_цена.cs</DependentUpon>
     </Compile>
+    <Compile Include="изменить_кассира.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="изменить_кассира.Designer.cs">
+      <DependentUpon>изменить_кассира.cs</DependentUpon>
+    </Compile>
     <Compile Include="история_тарифов.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1199,6 +1205,9 @@
     <EmbeddedResource Include="изменена_цена.resx">
       <DependentUpon>изменена_цена.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="изменить_кассира.resx">
+      <DependentUpon>изменить_кассира.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="история_тарифов.resx">
       <DependentUpon>история_тарифов.cs</DependentUpon>
     </EmbeddedResource>
@@ -1607,6 +1616,9 @@
     <None Include="отключено1период.dot">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="отчет1период.dot">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Платежи7дома.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1626,6 +1638,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="реестр17.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="реестр7.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="реестр_работ.docx">
@@ -1763,6 +1778,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="оплаты1клиента.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="подключен4услугам.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="сведения_клиента.sql">

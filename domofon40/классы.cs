@@ -149,6 +149,14 @@ namespace domofon40
         public static bool выбран = false;
 
     }
+    class клКассир
+    {
+        public static Guid сотрудник = Guid.Empty;
+        public static сотрудники deRow = null;
+        public static string фио = "";
+        public static bool выбран = false;
+
+    }
     class клСообщение
     {
         public static Guid клиент = Guid.Empty;
@@ -364,7 +372,9 @@ namespace domofon40
             клConfigRead oCfg = new клConfigRead();
             oCfg.read(sFile);
 
-            сервер = oCfg.get_string("сервер".ToUpper());
+            string сервер0 = oCfg.get_string("сервер".ToUpper());
+            сервер =сервер0.Replace(@"\\",@"\");
+         //   MessageBox.Show(сервер);  
             //            string КодПользователя = oCfg.get_string("пользователь".ToUpper());
             //          клПользователь.пользователь = КодПользователя;
             //  MessageBox.Show(клПользователь.пользователь);

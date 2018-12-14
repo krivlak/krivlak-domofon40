@@ -129,20 +129,18 @@ namespace domofon40
                 оплаты tRow = bindingSource1.Current as оплаты;
                 if (dataGridView1.Columns[e.ColumnIndex] == кассирColumn)
                 {
-                    клСотрудник.сотрудник = tRow.сотрудник;
-                    клСотрудник.выбран = false;
-                    выбор_кассира выборКассира = new выбор_кассира();
+                    клКассир.сотрудник = tRow.сотрудник;
+                    клКассир.выбран = false;
+                    изменить_кассира выборКассира = new изменить_кассира();
                     выборКассира.ShowDialog();
 
 
 
-                    if (клСотрудник.выбран)
+                    if (клКассир.выбран || выборКассира.DialogResult == DialogResult.OK)
                     {
-                        tRow.сотрудник = клСотрудник.сотрудник;
-                        if (de.Entry(tRow).State == EntityState.Unchanged)
-                        {
-                            de.Entry(tRow).State = EntityState.Modified;
-                        }
+                        tRow.сотрудник = клКассир.сотрудник;
+                        сотрудники oRow = de.сотрудники.Single(n => n.сотрудник == клКассир.сотрудник);
+                        tRow.сотрудники = oRow;
 
                         dataGridView1.Refresh();
                         label1.Visible = true;

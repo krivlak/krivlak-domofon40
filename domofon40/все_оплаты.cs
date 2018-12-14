@@ -19,20 +19,21 @@ namespace domofon40
         domofon40.domofon14Entities de = new domofon14Entities();
         List<temp> tempList = new List<temp>();
         List<temp2> temp2List = new List<temp2>();
-     
+
 
         private void все_оплаты_Load(object sender, EventArgs e)
         {
-            DataGridViewCellStyle intStyle = new DataGridViewCellStyle()
-            {
-                Alignment = DataGridViewContentAlignment.MiddleRight,
-                Format = "0;#;#"
-            };
-            номерColumn.DefaultCellStyle = intStyle;
-            суммаColumn.DefaultCellStyle = intStyle;
-
             try
             {
+                DataGridViewCellStyle intStyle = new DataGridViewCellStyle()
+                {
+                    Alignment = DataGridViewContentAlignment.MiddleRight,
+                    Format = "0;#;#"
+                };
+                номерColumn.DefaultCellStyle = intStyle;
+                суммаColumn.DefaultCellStyle = intStyle;
+
+
                 string curDir = System.IO.Directory.GetCurrentDirectory();
 
                 string шаблон = curDir + @"\все_оплаты.sql";
@@ -47,7 +48,7 @@ namespace domofon40
 
                 string запрос = sr.ReadToEnd();
                 StringBuilder sb = new StringBuilder();
-             //   sb.AppendLine("declare @сотрудник  uniqueidentifier ='" + клСотрудник.сотрудник.ToString() + "';");
+                //   sb.AppendLine("declare @сотрудник  uniqueidentifier ='" + клСотрудник.сотрудник.ToString() + "';");
                 sb.AppendLine(запрос);
 
                 string sqlString = sb.ToString();
@@ -61,16 +62,19 @@ namespace domofon40
                 //tempList = de.Database.SqlQuery<temp>(sqlString).ToList();
 
 
+
+
+
+                bindingSource1.DataSource = tempList;
+                клСетка.задать_ширину(dataGridView1);
+                bindingSource1.MoveLast();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($" Ошибка загрузки {ex.Message}");
             }
 
-
-            bindingSource1.DataSource = tempList;
-            клСетка.задать_ширину(dataGridView1);
-            bindingSource1.MoveLast();
             заполнить_услуги();
 
             bindingSource1.PositionChanged += bindingSource1_PositionChanged;
@@ -234,96 +238,98 @@ namespace domofon40
 
         private void заполнить_услуги()
         {
-            int мСумма = 0;
-            temp2List.Clear();
-
-            if (bindingSource1.Count > 0)
+            try
             {
-                temp uRow = bindingSource1.Current as temp;
+                int мСумма = 0;
+                temp2List.Clear();
 
-
-                List<temp2> query = de.оплачено
-                    .Where(n => n.оплата == uRow.оплата)
-                    .OrderBy(n => n.услуги.порядок)
-                   .GroupBy(n => n.услуги)
-                   .Select(n => new temp2
-                   {
-                       услуга = n.Key.услуга,
-                       наимен = n.Key.наимен,
-                       месяцев = n.Count(),
-                       сумма = n.Sum(p => p.сумма)
-                   }).ToList();
-                //     Console.WriteLine(query.Count());
-                List<temp2> query2 = de.опл_работы
-                     .Where(n => n.оплата == uRow.оплата)
-                     .OrderBy(n => n.работы.порядок)
-                     .Select(n => new temp2
-                     {
-                         услуга = n.работа,
-                         наимен = n.работы.наимен,
-                         месяцев = 0,
-                         сумма = (int)n.стоимость,
-                         договор = n.сотрудники.фио
-                     }).ToList();
-
-                List<temp2> query3 = de.возврат
-                   .Where(n => n.оплата == uRow.оплата)
-                   .OrderBy(n => n.услуги.порядок)
-                  .GroupBy(n => n.услуги)
-                  .Select(n => new temp2
-                  {
-                      услуга = n.Key.услуга,
-                      наимен = " Возврат " + n.Key.наимен,
-                      месяцев = n.Count(),
-                      сумма = n.Sum(p => -p.сумма)
-                  }).ToList();
-
-
-
-                Guid КодКлиента2 = uRow.клиент;
-
-
-          
-                foreach (temp2 newRow in query)
+                if (bindingSource1.Count > 0)
                 {
-                    temp2List.Add(newRow);
-                }
-                foreach (temp2 newRow in query2)
-                {
-                    temp2List.Add(newRow);
-                }
-                foreach (temp2 newRow in query3)
-                {
-                    temp2List.Add(newRow);
-                }
+                    temp uRow = bindingSource1.Current as temp;
+
+
+                    List<temp2> query = de.оплачено
+                        .Where(n => n.оплата == uRow.оплата)
+                        .OrderBy(n => n.услуги.порядок)
+                       .GroupBy(n => n.услуги)
+                       .Select(n => new temp2
+                       {
+                           услуга = n.Key.услуга,
+                           наимен = n.Key.наимен,
+                           месяцев = n.Count(),
+                           сумма = n.Sum(p => p.сумма)
+                       }).ToList();
+                    //     Console.WriteLine(query.Count());
+                    List<temp2> query2 = de.опл_работы
+                         .Where(n => n.оплата == uRow.оплата)
+                         .OrderBy(n => n.работы.порядок)
+                         .Select(n => new temp2
+                         {
+                             услуга = n.работа,
+                             наимен = n.работы.наимен,
+                             месяцев = 0,
+                             сумма = (int)n.стоимость,
+                             договор = n.сотрудники.фио
+                         }).ToList();
+
+                    List<temp2> query3 = de.возврат
+                       .Where(n => n.оплата == uRow.оплата)
+                       .OrderBy(n => n.услуги.порядок)
+                      .GroupBy(n => n.услуги)
+                      .Select(n => new temp2
+                      {
+                          услуга = n.Key.услуга,
+                          наимен = " Возврат " + n.Key.наимен,
+                          месяцев = n.Count(),
+                          сумма = n.Sum(p => -p.сумма)
+                      }).ToList();
 
 
 
-                if (temp2List.Any())
-                {
-                    мСумма = temp2List.Sum(n => n.сумма);
-                }
+                    Guid КодКлиента2 = uRow.клиент;
 
 
-                foreach (подключения pRow in de.подключения
-                    .Where(n => n.клиент == uRow.клиент)
-                    .OrderBy(n => n.дата_дог))
-                {
-                    if (temp2List.Any(n => n.услуга == pRow.услуга))
+
+                    foreach (temp2 newRow in query)
                     {
-                        temp2 sRow = temp2List.First(n => n.услуга == pRow.услуга);
-                        sRow.договор = pRow.номер_пп.ToString("0;#;#");
+                        temp2List.Add(newRow);
                     }
+                    foreach (temp2 newRow in query2)
+                    {
+                        temp2List.Add(newRow);
+                    }
+                    foreach (temp2 newRow in query3)
+                    {
+                        temp2List.Add(newRow);
+                    }
+
+
+
+                    if (temp2List.Any())
+                    {
+                        мСумма = temp2List.Sum(n => n.сумма);
+                    }
+
+
+                    foreach (подключения pRow in de.подключения
+                        .Where(n => n.клиент == uRow.клиент)
+                        .OrderBy(n => n.дата_дог))
+                    {
+                        if (temp2List.Any(n => n.услуга == pRow.услуга))
+                        {
+                            temp2 sRow = temp2List.First(n => n.услуга == pRow.услуга);
+                            sRow.договор = pRow.номер_пп.ToString("0;#;#");
+                        }
+                    }
+
+
+
+                    if (uRow.оплатить != мСумма)
+                    {
+                        uRow.оплатить = мСумма;
+                    }
+
                 }
-
-
-
-                if (uRow.оплатить != мСумма)
-                {
-                    uRow.оплатить = мСумма;
-                }
-
-            }
 
                 textBox1.Text = мСумма.ToString();
                 bindingSource2.DataSource = null;
@@ -332,6 +338,11 @@ namespace domofon40
                 dataGridView2.DataSource = bindingSource2;
                 bindingSource2.MoveLast();
                 dataGridView2.Refresh();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Ошибка {ex.Message}");
+            }
 
     
         }
@@ -379,6 +390,19 @@ namespace domofon40
             dataGridView1.Focus();
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (numericUpDown1.Value>0)
+            {
+                //int строка = bindingSource1.Find("номер", numericUpDown1.Value);
+                int строка = tempList.FindIndex(n => n.номер == numericUpDown1.Value);
+                if(строка >0)
+                {
+                    bindingSource1.Position = строка;
+                }
+            }
         }
     }
 }

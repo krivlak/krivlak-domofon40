@@ -33,6 +33,7 @@ namespace domofon40
         {
             клКалендарь.выбран = true;
             клКалендарь.дата = (DateTime)monthCalendar1.SelectionStart.Date;
+            клКалендарь.isNull = false;
             Close();
         }
 

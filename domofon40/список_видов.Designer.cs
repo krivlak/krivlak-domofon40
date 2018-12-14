@@ -30,25 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(список_видов));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button3 = new System.Windows.Forms.Button();
             this.вид_услугиDataGridView = new System.Windows.Forms.DataGridView();
-            this.наименColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.услугColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.вид_услугиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.наименColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.услугColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.вид_услугиDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.вид_услугиBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(546, 394);
+            this.button3.Location = new System.Drawing.Point(595, 397);
             this.button3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 32);
@@ -73,32 +73,14 @@
             this.вид_услугиDataGridView.Location = new System.Drawing.Point(0, 0);
             this.вид_услугиDataGridView.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.вид_услугиDataGridView.Name = "вид_услугиDataGridView";
-            this.вид_услугиDataGridView.Size = new System.Drawing.Size(412, 719);
+            this.вид_услугиDataGridView.Size = new System.Drawing.Size(524, 512);
             this.вид_услугиDataGridView.TabIndex = 24;
-            // 
-            // наименColumn
-            // 
-            this.наименColumn.DataPropertyName = "наимен";
-            this.наименColumn.HeaderText = "наимен";
-            this.наименColumn.Name = "наименColumn";
-            this.наименColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.наименColumn.Width = 200;
-            // 
-            // услугColumn
-            // 
-            this.услугColumn.DataPropertyName = "услуг";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.услугColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.услугColumn.HeaderText = "услуг";
-            this.услугColumn.Name = "услугColumn";
-            this.услугColumn.ReadOnly = true;
-            this.услугColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(490, 40);
+            this.label1.Location = new System.Drawing.Point(594, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 25);
@@ -109,7 +91,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(546, 325);
+            this.button2.Location = new System.Drawing.Point(595, 328);
             this.button2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 32);
@@ -121,7 +103,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(546, 254);
+            this.button1.Location = new System.Drawing.Point(595, 257);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 32);
@@ -133,7 +115,7 @@
             // button5
             // 
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(550, 157);
+            this.button5.Location = new System.Drawing.Point(599, 160);
             this.button5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(45, 29);
@@ -144,7 +126,7 @@
             // button4
             // 
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(546, 117);
+            this.button4.Location = new System.Drawing.Point(595, 120);
             this.button4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(47, 32);
@@ -152,11 +134,30 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // наименColumn
+            // 
+            this.наименColumn.DataPropertyName = "наимен";
+            this.наименColumn.HeaderText = "наимен";
+            this.наименColumn.MaxInputLength = 50;
+            this.наименColumn.Name = "наименColumn";
+            this.наименColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.наименColumn.Width = 300;
+            // 
+            // услугColumn
+            // 
+            this.услугColumn.DataPropertyName = "услуг";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.услугColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.услугColumn.HeaderText = "услуг";
+            this.услугColumn.Name = "услугColumn";
+            this.услугColumn.ReadOnly = true;
+            this.услугColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // список_видов
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 719);
+            this.ClientSize = new System.Drawing.Size(757, 512);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.вид_услугиDataGridView);
             this.Controls.Add(this.label1);

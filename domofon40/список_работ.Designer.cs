@@ -29,13 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(список_работ));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.прейскурантColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.наименColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.стоимостьColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ст_материаловColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.выполненоColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -43,11 +48,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.прейскурантColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.наименColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.стоимостьColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ст_материаловColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.выполненоColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -57,8 +57,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -72,8 +72,55 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 73);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1223, 653);
+            this.dataGridView1.Size = new System.Drawing.Size(1223, 415);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // прейскурантColumn
+            // 
+            this.прейскурантColumn.DataPropertyName = "прейскурант";
+            this.прейскурантColumn.HeaderText = "№ по прейскуранту";
+            this.прейскурантColumn.MaxInputLength = 50;
+            this.прейскурантColumn.Name = "прейскурантColumn";
+            this.прейскурантColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // наименColumn
+            // 
+            this.наименColumn.DataPropertyName = "наимен";
+            this.наименColumn.HeaderText = "наименование";
+            this.наименColumn.MaxInputLength = 50;
+            this.наименColumn.Name = "наименColumn";
+            this.наименColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.наименColumn.Width = 550;
+            // 
+            // стоимостьColumn
+            // 
+            this.стоимостьColumn.DataPropertyName = "стоимость";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "0;#;#";
+            this.стоимостьColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.стоимостьColumn.HeaderText = "стоимость";
+            this.стоимостьColumn.Name = "стоимостьColumn";
+            this.стоимостьColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ст_материаловColumn
+            // 
+            this.ст_материаловColumn.DataPropertyName = "ст_материалов";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "0;#;#";
+            this.ст_материаловColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ст_материаловColumn.HeaderText = "стоимость материалов";
+            this.ст_материаловColumn.Name = "ст_материаловColumn";
+            this.ст_материаловColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // выполненоColumn
+            // 
+            this.выполненоColumn.DataPropertyName = "выполнено";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "0;#;#";
+            this.выполненоColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.выполненоColumn.HeaderText = "выполнено";
+            this.выполненоColumn.Name = "выполненоColumn";
+            this.выполненоColumn.ReadOnly = true;
             // 
             // button1
             // 
@@ -161,58 +208,11 @@
             this.panel1.Size = new System.Drawing.Size(1223, 73);
             this.panel1.TabIndex = 33;
             // 
-            // прейскурантColumn
-            // 
-            this.прейскурантColumn.DataPropertyName = "прейскурант";
-            this.прейскурантColumn.HeaderText = "№ по прейскуранту";
-            this.прейскурантColumn.MaxInputLength = 50;
-            this.прейскурантColumn.Name = "прейскурантColumn";
-            this.прейскурантColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // наименColumn
-            // 
-            this.наименColumn.DataPropertyName = "наимен";
-            this.наименColumn.HeaderText = "наименование";
-            this.наименColumn.MaxInputLength = 50;
-            this.наименColumn.Name = "наименColumn";
-            this.наименColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.наименColumn.Width = 550;
-            // 
-            // стоимостьColumn
-            // 
-            this.стоимостьColumn.DataPropertyName = "стоимость";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "0;#;#";
-            this.стоимостьColumn.DefaultCellStyle = dataGridViewCellStyle10;
-            this.стоимостьColumn.HeaderText = "стоимость";
-            this.стоимостьColumn.Name = "стоимостьColumn";
-            this.стоимостьColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ст_материаловColumn
-            // 
-            this.ст_материаловColumn.DataPropertyName = "ст_материалов";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "0;#;#";
-            this.ст_материаловColumn.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ст_материаловColumn.HeaderText = "стоимость материалов";
-            this.ст_материаловColumn.Name = "ст_материаловColumn";
-            this.ст_материаловColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // выполненоColumn
-            // 
-            this.выполненоColumn.DataPropertyName = "выполнено";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "0;#;#";
-            this.выполненоColumn.DefaultCellStyle = dataGridViewCellStyle12;
-            this.выполненоColumn.HeaderText = "выполнено";
-            this.выполненоColumn.Name = "выполненоColumn";
-            this.выполненоColumn.ReadOnly = true;
-            // 
             // список_работ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1223, 726);
+            this.ClientSize = new System.Drawing.Size(1223, 488);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

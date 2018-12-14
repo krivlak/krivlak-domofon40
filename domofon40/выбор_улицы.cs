@@ -14,11 +14,13 @@ namespace domofon40
         public выбор_улицы()
         {
             InitializeComponent();
+            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
         }
 
         private void выбор_улицы_Load(object sender, EventArgs e)
         {
             domofon14Entities de = new domofon14Entities();
+           
 
             foreach (var gg in de.поселки.OrderBy(n => n.порядок))
             {

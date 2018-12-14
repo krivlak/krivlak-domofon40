@@ -53,11 +53,11 @@ namespace domofon40
         public virtual DbSet<сотрудники> сотрудники { get; set; }
         public virtual DbSet<улицы> улицы { get; set; }
         public virtual DbSet<дома> дома { get; set; }
-        public virtual DbSet<оплачено> оплачено { get; set; }
         public virtual DbSet<льготы> льготы { get; set; }
         public virtual DbSet<начало> начало { get; set; }
         public virtual DbSet<виды_оплат> виды_оплат { get; set; }
         public virtual DbSet<воз_работы> воз_работы { get; set; }
+        public virtual DbSet<оплачено> оплачено { get; set; }
     
         public virtual ObjectResult<ввод_тарифов_Result> ввод_тарифов(Nullable<System.Guid> услуга)
         {

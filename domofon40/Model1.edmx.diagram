@@ -60,9 +60,6 @@
         <EntityTypeShape EntityType="domofon14Model.дома" Width="1.5" PointX="5.25" PointY="27.875" />
         <AssociationConnector Association="domofon14Model.FK_дома_улицы" />
         <AssociationConnector Association="domofon14Model.FK_клиенты_дома" />
-        <EntityTypeShape EntityType="domofon14Model.оплачено" Width="1.5" PointX="12" PointY="13.875" />
-        <AssociationConnector Association="domofon14Model.FK_оплачено_оплаты" />
-        <AssociationConnector Association="domofon14Model.FK_оплачено_услуги" />
         <EntityTypeShape EntityType="domofon14Model.льготы" Width="1.5" PointX="13" PointY="26.625" />
         <AssociationConnector Association="domofon14Model.FK_льготы_клиенты" />
         <AssociationConnector Association="domofon14Model.FK_льготы_услуги" />
@@ -72,6 +69,9 @@
         <EntityTypeShape EntityType="domofon14Model.воз_работы" Width="1.5" PointX="21" PointY="14.75" />
         <AssociationConnector Association="domofon14Model.FK_воз_работы_оплаты" />
         <AssociationConnector Association="domofon14Model.FK_воз_работы_работы" />
+        <EntityTypeShape EntityType="domofon14Model.оплачено" Width="1.5" PointX="12" PointY="14" />
+        <AssociationConnector Association="domofon14Model.FK_оплачено_оплаты" />
+        <AssociationConnector Association="domofon14Model.FK_оплачено_услуги" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

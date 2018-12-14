@@ -30,7 +30,7 @@ namespace domofon40
      
              bindingSource1.DataSource = de.работы.Local.ToBindingList();
             bindingSource1.Sort = "порядок";
-
+            клСетка.задать_ширину(dataGridView1);
             наименColumn.DefaultCellStyle.NullValue = "null";
             наименColumn.DefaultCellStyle.DataSourceNullValue = "";
             прейскурантColumn.DefaultCellStyle.NullValue = "null";

@@ -229,6 +229,7 @@ namespace domofon40
             if (bindingSource1.Count > 0)
             {
                 bindingSource1.RemoveCurrent();
+                bindingSource1.MoveLast();
 
             }
             dataGridView1.Focus();

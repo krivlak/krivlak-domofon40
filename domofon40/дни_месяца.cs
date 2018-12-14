@@ -14,7 +14,7 @@ namespace domofon40
         public дни_месяца()
         {
             InitializeComponent();
-            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
+         //   this.Height = Screen.PrimaryScreen.WorkingArea.Height;
         }
 
         private void дни_месяца_Load(object sender, EventArgs e)

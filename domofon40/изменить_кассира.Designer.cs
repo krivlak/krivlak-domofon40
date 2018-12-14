@@ -1,6 +1,6 @@
 ﻿namespace domofon40
 {
-    partial class выбор_кассира
+    partial class изменить_кассира
     {
         /// <summary>
         /// Required designer variable.
@@ -36,10 +36,11 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(459, 214);
+            this.button2.Location = new System.Drawing.Point(569, 318);
+            this.button2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 29);
-            this.button2.TabIndex = 7;
+            this.button2.Size = new System.Drawing.Size(155, 40);
+            this.button2.TabIndex = 10;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -47,10 +48,11 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(459, 126);
+            this.button1.Location = new System.Drawing.Point(569, 196);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 30);
-            this.button1.TabIndex = 6;
+            this.button1.Size = new System.Drawing.Size(155, 42);
+            this.button1.TabIndex = 9;
             this.button1.Text = "Выбор";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -59,25 +61,25 @@
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(413, 500);
-            this.treeView1.TabIndex = 5;
+            this.treeView1.Size = new System.Drawing.Size(492, 623);
+            this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
-            // выбор_кассира
+            // изменить_кассира
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 500);
+            this.ClientSize = new System.Drawing.Size(823, 623);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.treeView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.Name = "выбор_кассира";
-            this.Text = "выборерите кассира";
-            this.Load += new System.EventHandler(this.выбор_кассира_Load);
+            this.Name = "изменить_кассира";
+            this.Text = "изменить_кассира";
+            this.Load += new System.EventHandler(this.изменить_кассира_Load);
             this.ResumeLayout(false);
 
         }

@@ -83,8 +83,9 @@ namespace domofon40
             NewRow.вид_услуги = Guid.NewGuid();
             NewRow.порядок = maxPor + 1;
             NewRow.наимен = "Новый вид";
-            вид_услугиBindingSource.Add(NewRow);
-
+            int строка = вид_услугиBindingSource.Add(NewRow);
+            вид_услугиBindingSource.Position = строка;
+            вид_услугиDataGridView.Focus();
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -19,41 +19,43 @@ namespace domofon40
 
         private void выбор_улицы_Load(object sender, EventArgs e)
         {
-         
-            domofon40.domofon14Entities de = new domofon40.domofon14Entities();
-            foreach (var gg in de.поселки.OrderBy(n=>n.порядок))
+            try
             {
-                TreeNode node = this.treeView1.Nodes.Add( gg.наимен);
-                node.Tag = gg.поселок;
-                node.ForeColor = Color.Green;
-
-                foreach (var mm in de.улицы.Where(n=>n.поселок==gg.поселок)
-                    .OrderBy(n=>n.наимен))
+                domofon40.domofon14Entities de = new domofon40.domofon14Entities();
+                foreach (var gg in de.поселки.OrderBy(n => n.порядок))
                 {
-                    TreeNode node1 = node.Nodes.Add(mm.наимен);
-                    node1.Tag = mm;
-                    node1.ForeColor = Color.Blue;
-                    foreach (var dd in mm.дома
-                        .OrderBy(n=>n.номер)
-                        .ThenBy(n=>n.корпус))
+
+                    TreeNode node = this.treeView1.Nodes.Add(gg.наимен);
+                    node.Tag = gg.поселок;
+                    node.ForeColor = Color.Green;
+
+                    foreach (var mm in de.улицы.Where(n => n.поселок == gg.поселок)
+                        .OrderBy(n => n.наимен))
                     {
-                        TreeNode node2 = node1.Nodes.Add(dd.номер.ToString().PadRight(2)+" "+dd.корпус);
-                            //+ " "+dd.изменен.ToShortDateString()
-                            //+ " "+dd.изменен.ToLongTimeString());
-                        node2.Tag = dd;
-                        //DateTime датаПечати = DateTime.Now.AddHours(1);
-                        //if (dd.изменен > датаПечати)
-                        //{
-                        //    node2.BackColor = Color.FromArgb(255, 200, 200);
-                        //}
-                        if (dd.дом == клДом.дом)
+                        TreeNode node1 = node.Nodes.Add(mm.наимен);
+                        node1.Tag = mm;
+                        node1.ForeColor = Color.Blue;
+                        foreach (var dd in mm.дома
+                            .OrderBy(n => n.номер)
+                            .ThenBy(n => n.корпус))
                         {
-                            treeView1.SelectedNode = node2;
+                            TreeNode node2 = node1.Nodes.Add(dd.номер.ToString().PadRight(2) + " " + dd.корпус);
+
+                            node2.Tag = dd;
+
+                            if (dd.дом == клДом.дом)
+                            {
+                                treeView1.SelectedNode = node2;
+                            }
+
                         }
-
                     }
-                }
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки {ex.Message}");
             }
         }
 

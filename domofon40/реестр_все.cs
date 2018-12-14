@@ -27,126 +27,134 @@ namespace domofon40
         decimal всего = 0;
         private void реестр_все_Load(object sender, EventArgs e)
         {
-            foreach (оплаты oRow in de.оплаты
-                  .Where(n => n.дата == клРеестр.дата)
-                  .OrderBy(n => n.номер))
+            try
             {
-
-                string текст = "";
-                int сумма = 0;
-                temp2List.Clear();
-              
-
-                foreach (оплачено оплRow in oRow.оплачено
-                       .Where(n => n.услуги.вид_услуги == клВид_услуги.вид_услуги))
+                foreach (оплаты oRow in de.оплаты
+                      .Where(n => n.дата == клРеестр.дата)
+                      .OrderBy(n => n.номер))
                 {
-                    if (оплRow.сумма > 0)
+
+                    string текст = "";
+                    int сумма = 0;
+                    temp2List.Clear();
+
+
+                    foreach (оплачено оплRow in oRow.оплачено
+                           .Where(n => n.услуги.вид_услуги == клВид_услуги.вид_услуги))
+                    {
+                        if (оплRow.сумма > 0)
+                        {
+
+                            сумма += оплRow.сумма;
+
+
+                            temp2 NewR = new temp2();
+                            NewR.год = оплRow.год;
+                            NewR.месяц = оплRow.месяц;
+                            temp2List.Add(NewR);
+
+                        }
+                    }
+
+                    if (сумма > 0)
                     {
 
-                        сумма += оплRow.сумма;
 
-                        
-                        temp2 NewR = new temp2();
-                        NewR.год = оплRow.год;
-                        NewR.месяц = оплRow.месяц;
-                        temp2List.Add(NewR);
+                        int кГод = 0;
+                        int кМесяц = -1;
+                        foreach (temp2 sRow in temp2List
+                            .OrderBy(n => n.год)
+                            .ThenBy(n => n.месяц))
+                        {
+                            if (sRow.год != кГод)
+                            {
+                                sRow.новый_год = true;
+                            }
+                            if (sRow.месяц != кМесяц + 1)
+                            {
+                                sRow.начало_периода = true;
+                            }
+                            кМесяц = sRow.месяц;
+                            кГод = sRow.год;
+                        }
+
+
+                        int нГод = 0;
+                        int нМесяц = -1;
+                        foreach (temp2 sRow in temp2List
+                             .OrderByDescending(n => n.год)
+                            .ThenByDescending(n => n.месяц))
+                        {
+                            if (sRow.год != DateTime.Today.Year)
+                            {
+                                sRow.новый_год = true;
+
+                            }
+                            if (нМесяц - 1 != sRow.месяц || нГод != sRow.год)
+                            {
+                                sRow.конец_периода = true;
+
+                            }
+                            нГод = sRow.год;
+                            нМесяц = sRow.месяц;
+                        }
+
+                        foreach (temp2 sRow in temp2List
+                            .OrderBy(n => n.год)
+                            .ThenBy(n => n.месяц))
+                        {
+                            if (sRow.начало_периода && !sRow.конец_периода)
+                            {
+                                if (sRow.новый_год)
+                                {
+                                    текст += " " + sRow.год.ToString().Trim();
+                                }
+
+                                текст += " " + sRow.месяц.ToString().Trim();
+                            }
+                            if (sRow.конец_периода && !sRow.начало_периода)
+                            {
+                                текст += "-" + sRow.месяц.ToString().Trim() + "; ";
+                            }
+
+                            if (sRow.конец_периода && sRow.начало_периода)
+                            {
+                                if (sRow.новый_год)
+                                {
+                                    текст += " " + sRow.год.ToString().Trim();
+                                }
+                                текст += " " + sRow.месяц.ToString().Trim() + "; ";
+                            }
+                        }
+
+
+
+                        //       dsТабель.реестрRow NewRow = dsТабель1.реестр.NewреестрRow();
+                        temp NewRow = new temp();
+                        NewRow.фио = oRow.клиенты.фио;
+                        NewRow.адрес = oRow.клиенты.дома.улицы.наимен.Trim()
+                            + " " + oRow.клиенты.дома.номер.ToString().Trim()
+                            + oRow.клиенты.дома.корпус.Trim()
+                            + " - " + oRow.клиенты.квартира.ToString().Trim();
+                        NewRow.сумма = сумма;
+                        NewRow.месяца = текст;
+                        NewRow.номер = oRow.номер;
+                        NewRow.менеджер = oRow.сотрудники.фио;
+                        tempList.Add(NewRow);
+
+                        всего += сумма;
+
 
                     }
                 }
-
-                if (сумма > 0)
-                {
-
-
-                    int кГод = 0;
-                    int кМесяц = -1;
-                    foreach (temp2 sRow in temp2List
-                        .OrderBy(n => n.год)
-                        .ThenBy(n => n.месяц))
-                    {
-                        if (sRow.год != кГод)
-                        {
-                            sRow.новый_год = true;
-                        }
-                        if (sRow.месяц != кМесяц + 1)
-                        {
-                            sRow.начало_периода = true;
-                        }
-                        кМесяц = sRow.месяц;
-                        кГод = sRow.год;
-                    }
-
-
-                    int нГод = 0;
-                    int нМесяц = -1;
-                    foreach (temp2 sRow in temp2List
-                         .OrderByDescending(n => n.год)
-                        .ThenByDescending(n => n.месяц))
-                    {
-                        if (sRow.год != DateTime.Today.Year)
-                        {
-                            sRow.новый_год = true;
-
-                        }
-                        if (нМесяц - 1 != sRow.месяц || нГод != sRow.год)
-                        {
-                            sRow.конец_периода = true;
-
-                        }
-                        нГод = sRow.год;
-                        нМесяц = sRow.месяц;
-                    }
-
-                    foreach (temp2 sRow in temp2List
-                        .OrderBy(n => n.год)
-                        .ThenBy(n => n.месяц))
-                    {
-                        if (sRow.начало_периода && !sRow.конец_периода)
-                        {
-                            if (sRow.новый_год)
-                            {
-                                текст += " " + sRow.год.ToString().Trim();
-                            }
-
-                            текст += " " + sRow.месяц.ToString().Trim();
-                        }
-                        if (sRow.конец_периода && !sRow.начало_периода)
-                        {
-                            текст += "-" + sRow.месяц.ToString().Trim() + "; ";
-                        }
-
-                        if (sRow.конец_периода && sRow.начало_периода)
-                        {
-                            if (sRow.новый_год)
-                            {
-                                текст += " " + sRow.год.ToString().Trim();
-                            }
-                            текст += " " + sRow.месяц.ToString().Trim() + "; ";
-                        }
-                    }
-
-
-
-                    //       dsТабель.реестрRow NewRow = dsТабель1.реестр.NewреестрRow();
-                    temp NewRow = new temp();
-                    NewRow.фио = oRow.клиенты.фио;
-                    NewRow.адрес = oRow.клиенты.дома.улицы.наимен.Trim()
-                        + " " + oRow.клиенты.дома.номер.ToString().Trim()
-                        + oRow.клиенты.дома.корпус.Trim()
-                        + " - " + oRow.клиенты.квартира.ToString().Trim();
-                    NewRow.сумма = сумма;
-                    NewRow.месяца = текст;
-                    NewRow.номер = oRow.номер;
-                    NewRow.менеджер = oRow.сотрудники.фио;
-                    tempList.Add(NewRow);
-
-                    всего += сумма;
-
-
-                }
+                bindingSource1.DataSource = tempList;
+                textBox1.Text = всего.ToString();
+                клСетка.задать_ширину(dataGridView1);
             }
-            bindingSource1.DataSource = tempList;
-            textBox1.Text = всего.ToString();
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки  {ex.Message} ");
+            }
         }
         class temp
         {

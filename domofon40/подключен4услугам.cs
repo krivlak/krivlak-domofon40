@@ -14,6 +14,7 @@ namespace domofon40
         public подключен4услугам()
         {
             InitializeComponent();
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
         BindingList<temp> tempList = new BindingList<temp>();
@@ -253,16 +254,9 @@ namespace domofon40
 
                 формаОплатить.Text = "Оплаты за " + tRow.наимен.Trim() + " " + клКлиент.фио;
 
-                //            клОплата.изменено = false;
+               
                 формаОплатить.ShowDialog();
-                //if (клОплата.выбран)
-                //{
-                //    if (tRow.раб_дней != формаОплатить.рабТек)
-                //    {
-                //        tRow.раб_дней = формаОплатить.рабТек;
-                //    }
-                //    dataGridView1.Refresh();
-                //}
+                
                 Cursor = Cursors.Default;
                
             }

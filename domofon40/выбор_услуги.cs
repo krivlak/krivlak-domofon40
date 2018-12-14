@@ -18,19 +18,27 @@ namespace domofon40
 
         private void выбор_услуги_Load(object sender, EventArgs e)
         {
-            domofon40.domofon14Entities de = new domofon14Entities();
-
-            foreach (var gg in de.услуги.
-                OrderBy(n => n.виды_услуг.порядок)
-                .ThenBy(n=>n.порядок))
+            try
             {
-                TreeNode node = this.treeView1.Nodes.Add( gg.наимен);
-                node.Tag = gg;
-                if (gg.услуга == клУслуга.услуга)
-                {
-                    treeView1.SelectedNode = node;
-                }
 
+                domofon40.domofon14Entities de = new domofon14Entities();
+
+                foreach (var gg in de.услуги.
+                    OrderBy(n => n.виды_услуг.порядок)
+                    .ThenBy(n => n.порядок))
+                {
+                    TreeNode node = this.treeView1.Nodes.Add(gg.наимен);
+                    node.Tag = gg;
+                    if (gg.услуга == клУслуга.услуга)
+                    {
+                        treeView1.SelectedNode = node;
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки {ex.Message}");
             }
         }
 

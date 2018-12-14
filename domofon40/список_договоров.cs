@@ -350,22 +350,22 @@ namespace domofon40
             if (bindingSource1.Count > 0 && de.подключения.Local.Any(n => n.в_задание))
             {
                 подключения tRow = bindingSource1.Current as подключения;
-                клМастер.мастер = tRow.мастер;
-                клМастер.выбран = false;
-                выбор_бригады выборМастера = new выбор_бригады();
-                выборМастера.Text = "Выберите мастера";
-                выборМастера.ShowDialog();
-                if (клМастер.выбран || выборМастера.DialogResult == DialogResult.OK)
-                {
+                //клМастер.мастер = tRow.мастер;
+                //клМастер.выбран = false;
+                //выбор_бригады выборМастера = new выбор_бригады();
+                //выборМастера.Text = "Выберите мастера";
+                //выборМастера.ShowDialog();
+                //if (клМастер.выбран || выборМастера.DialogResult == DialogResult.OK)
+                //{
 
 
-                    foreach (подключения uRow in de.подключения.Local
-                    .Where(n => n.в_задание))
-                    {
-                        uRow.мастер = клМастер.мастер;
-                        uRow.сотрудники = de.сотрудники.Local.Single(n => n.сотрудник == клМастер.мастер);
-                    }
-                    dataGridView1.Refresh();
+                //    foreach (подключения uRow in de.подключения.Local
+                //    .Where(n => n.в_задание))
+                //    {
+                //        uRow.мастер = клМастер.мастер;
+                //        uRow.сотрудники = de.сотрудники.Local.Single(n => n.сотрудник == клМастер.мастер);
+                //    }
+                //    dataGridView1.Refresh();
 
                     Cursor = Cursors.WaitCursor;
 
@@ -415,10 +415,11 @@ namespace domofon40
                             Table table1 = tables.ElementAt(0);
                             Table table2 = tables.ElementAt(1);
 
-                            //string фио = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).фио;
-                            //string должность = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).должность;
+                        //string фио = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).фио;
+                        //string должность = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).должность;
 
-                            string текст = "Задание на подключение согласно договора мастеру   " + клМастер.deRow.должность.Trim() + "    " + клМастер.deRow.фио;
+                        string текст = "Задание на подключение согласно договора";
+                           // + клМастер.deRow.должность.Trim() + "    " + клМастер.deRow.фио;
                             клXML.ChangeTextInCell(table1, 0, 0, текст + "    " + DateTime.Today.ToLongDateString());
 
                             TableRow lastRow = table2.Elements<TableRow>().Last();
@@ -491,7 +492,7 @@ namespace domofon40
                     клXML.просмотрWord(tempFile);
 
                     Cursor = Cursors.Default;
-                }
+                
             }
             else
             {

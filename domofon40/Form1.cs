@@ -111,26 +111,29 @@ namespace domofon40
 
         private void работыToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             список_работ списокРабот = new список_работ();
             списокРабот.ShowDialog();
+            Cursor = Cursors.Default;
         }
 
         private void стоимостьОбслуживанияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Cursor = Cursors.WaitCursor;
 
             клУслуга.выбран = false;
             выбор_услуги выборУслуги = new выбор_услуги();
             выборУслуги.ShowDialog();
             if (клУслуга.выбран || выборУслуги.DialogResult== DialogResult.OK)
             {
+                Cursor = Cursors.WaitCursor;
                 //  ввод2тарифов формаЦены = new ввод2тарифов();
                 история_тарифов формаЦены = new история_тарифов();
                 формаЦены.Text = "Стоимомость за месяц " + клУслуга.наимен;
                 формаЦены.ShowDialog();
             }
 
-
+            Cursor = Cursors.Default;
 
         }
 
@@ -1589,11 +1592,11 @@ namespace domofon40
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (клСервер.проверкаСоединения() == false)
-            {
-                MessageBox.Show("Нет соединения с сервером..");
-                Close();
-            }
+            //if (клСервер.проверкаСоединения() == false)
+            //{
+            //    MessageBox.Show("Нет соединения с сервером..");
+            //    Close();
+            //}
 
             оплатаToolStripMenuItem.Select();
         }
@@ -1991,6 +1994,22 @@ namespace domofon40
         {
             проба_соединения пробаФорма = new проба_соединения();
             пробаФорма.ShowDialog();
+        }
+
+        private void отчетЗаПериодToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+            клПериод.выбран = false;
+
+            выбор_периода ВыборПериода = new выбор_периода();
+            ВыборПериода.ShowDialog();
+            if (клПериод.выбран)
+            {
+                Cursor = Cursors.WaitCursor;
+                отчет1период формаОтчет = new отчет1период();
+                формаОтчет.Text = "Отчет с " + клПериод.дата_с.ToLongDateString() + " по " + клПериод.дата_по.ToLongDateString();
+                формаОтчет.ShowDialog();
+                Cursor = Cursors.Default;
+            }
         }
     }
 }

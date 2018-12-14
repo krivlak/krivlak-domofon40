@@ -115,7 +115,7 @@ namespace domofon40
                 NewRow.обозначение = "новая";
                 int строка = bindingSource1.Add(NewRow);
                 bindingSource1.Position = строка;
-
+            dataGridView1.Focus();
             //}
 
         }

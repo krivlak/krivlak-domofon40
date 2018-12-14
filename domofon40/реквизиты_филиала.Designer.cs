@@ -74,6 +74,7 @@
             // адресTextBox
             // 
             this.адресTextBox.Location = new System.Drawing.Point(135, 109);
+            this.адресTextBox.MaxLength = 50;
             this.адресTextBox.Name = "адресTextBox";
             this.адресTextBox.Size = new System.Drawing.Size(547, 24);
             this.адресTextBox.TabIndex = 2;
@@ -81,6 +82,7 @@
             // наименTextBox
             // 
             this.наименTextBox.Location = new System.Drawing.Point(135, 65);
+            this.наименTextBox.MaxLength = 50;
             this.наименTextBox.Name = "наименTextBox";
             this.наименTextBox.Size = new System.Drawing.Size(547, 24);
             this.наименTextBox.TabIndex = 4;
@@ -88,6 +90,7 @@
             // телефонTextBox
             // 
             this.телефонTextBox.Location = new System.Drawing.Point(135, 162);
+            this.телефонTextBox.MaxLength = 50;
             this.телефонTextBox.Name = "телефонTextBox";
             this.телефонTextBox.Size = new System.Drawing.Size(547, 24);
             this.телефонTextBox.TabIndex = 8;

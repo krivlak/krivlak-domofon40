@@ -267,20 +267,7 @@ namespace domofon40
                 label1.Visible = true;
             }
 
-         //       foreach (DataGridViewCell uCell in dataGridView1.SelectedCells)
-         //   {
-         //       int позиция = uCell.RowIndex;
-         //       //if (dataGridView1.Columns[uCell.ColumnIndex] == подъездColumn)
-         //       //{
-         //       bindingSource1.Position = позиция;
-         //        //   dataGridView1.CurrentCell = uCell;
-         //       клиенты uRow = bindingSource1.Current as клиенты;
-
-         ////           DataSet.клиентRow uRow = (клиентBindingSource.Current as DataRowView).Row as DataSet.клиентRow;
-         //           uRow.подъезд = (int)numericUpDown4.Value;
-         //       label1.Visible = true;
-         //     //  }
-         //   }
+         
             this.Refresh();
         }
 
@@ -495,7 +482,7 @@ namespace domofon40
                 клКлиент.deRow = uRow;
                 клКлиент.клиент = uRow.клиент;
                 все_события удаленныеОплаты = new все_события();
-                удаленныеОплаты.Text = "Все события " + uRow.фио;
+                удаленныеОплаты.Text = $"Все события {uRow.адрес}  { uRow.фио} ";
                 удаленныеОплаты.ShowDialog();
 
                 Cursor = Cursors.Default;

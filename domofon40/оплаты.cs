@@ -18,8 +18,8 @@ namespace domofon40
         {
             this.опл_работы = new HashSet<опл_работы>();
             this.возврат = new HashSet<возврат>();
-            this.оплачено = new HashSet<оплачено>();
             this.воз_работы = new HashSet<воз_работы>();
+            this.оплачено = new HashSet<оплачено>();
         }
     
         public System.Guid оплата { get; set; }
@@ -33,8 +33,8 @@ namespace domofon40
         public virtual ICollection<опл_работы> опл_работы { get; set; }
         public virtual ICollection<возврат> возврат { get; set; }
         public virtual сотрудники сотрудники { get; set; }
-        public virtual ICollection<оплачено> оплачено { get; set; }
         public virtual виды_оплат виды_оплат { get; set; }
         public virtual ICollection<воз_работы> воз_работы { get; set; }
+        public virtual ICollection<оплачено> оплачено { get; set; }
     }
 }

@@ -284,7 +284,6 @@ GO
 ---------------
 
 CREATE TABLE [dbo].[оплачено](
-	[код] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED ,
 	оплата  uniqueidentifier NOT NULL DEFAULT NEWID ( ),
 	[месяц] [int] NOT NULL,
 	[год] [int] NOT NULL,
@@ -292,7 +291,8 @@ CREATE TABLE [dbo].[оплачено](
 	услуга  uniqueidentifier NOT NULL DEFAULT NEWID ( ),
 	[дней] [int] NOT NULL default 0,
 	[длина_мес] [int] NOT NULL default 0,
-	[цена] [int] NOT NULL default 0
+	[цена] [int] NOT NULL default 0,
+	платеж  uniqueidentifier NOT NULL DEFAULT NEWID ( ) PRIMARY KEY CLUSTERED
 	);
 print 'оплачено';
 GO

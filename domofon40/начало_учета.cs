@@ -17,7 +17,7 @@ namespace domofon40
             InitializeComponent();
         }
         domofon40.domofon14Entities de = new domofon14Entities();
-   
+        DateTime? минОплата = null;
         private void начало_учета_Load(object sender, EventArgs e)
         {
             try
@@ -32,12 +32,28 @@ namespace domofon40
                 Binding bd = new Binding("Text", bindingSource1, "дата");
                 начало1DateTimePicker.DataBindings.Add(bd);
                 bindingSource1.MoveFirst();
+
+                if (de.оплачено.Any())
+                {
+                    int g100m = de.оплачено.Min(n => n.год * 100 + n.месяц);
+                    int год = (int)g100m / 100;
+                    int месяц = g100m - год * 100;
+
+                    минОплата = new DateTime(год, месяц, 1);
+                    label1.Text = минОплата.Value.ToShortDateString();
+                }
+                else
+                {
+                    label1.Text = "";
+                }
+
+
             }
-            catch( Exception ex)
+            catch ( Exception ex)
             {
                 MessageBox.Show("Сбой загрузки "+ex.Message);
             }
-            начало1DateTimePicker.Validating += Начало1DateTimePicker_Validating;
+        //    начало1DateTimePicker.Validating += Начало1DateTimePicker_Validating;
         }
 
         private void Начало1DateTimePicker_Validating(object sender, CancelEventArgs e)
@@ -66,6 +82,12 @@ namespace domofon40
         {
             de.SaveChanges();
             Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            оплачено minOp = de.оплачено.OrderBy(n => n.год * 100 + n.месяц).First();
+            MessageBox.Show($" {minOp.оплаты.номер}  {minOp.год} {minOp.месяц} {minOp.сумма} {minOp.услуги.наимен}");
         }
     }
 }

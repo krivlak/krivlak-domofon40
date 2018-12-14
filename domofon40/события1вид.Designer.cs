@@ -35,12 +35,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.услугаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.событиеColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.дата_сColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.дата_поColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -107,7 +107,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1087, 527);
             this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // услугаColumn
             // 
@@ -155,6 +154,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "события1вид";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "события1вид";
             this.Load += new System.EventHandler(this.события1вид_Load);
             this.panel1.ResumeLayout(false);

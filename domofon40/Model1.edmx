@@ -154,9 +154,8 @@
         </EntityType>
         <EntityType Name="оплачено">
           <Key>
-            <PropertyRef Name="код" />
+            <PropertyRef Name="платеж" />
           </Key>
-          <Property Name="код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="оплата" Type="uniqueidentifier" Nullable="false" />
           <Property Name="месяц" Type="int" Nullable="false" />
           <Property Name="год" Type="int" Nullable="false" />
@@ -165,6 +164,7 @@
           <Property Name="дней" Type="int" Nullable="false" />
           <Property Name="длина_мес" Type="int" Nullable="false" />
           <Property Name="цена" Type="int" Nullable="false" />
+          <Property Name="платеж" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="отключения">
           <Key>
@@ -1088,10 +1088,10 @@
           <NavigationProperty Name="опл_работы" Relationship="domofon14Model.FK_опл_работы_оплаты" FromRole="оплаты" ToRole="опл_работы" />
           <NavigationProperty Name="возврат" Relationship="domofon14Model.FK_возврат_оплаты" FromRole="оплаты" ToRole="возврат" />
           <NavigationProperty Name="сотрудники" Relationship="domofon14Model.FK_оплаты_сотрудники" FromRole="оплаты" ToRole="сотрудники" />
-          <NavigationProperty Name="оплачено" Relationship="domofon14Model.FK_оплачено_оплаты" FromRole="оплаты" ToRole="оплачено" />
           <Property Name="вид_оплаты" Type="Guid" Nullable="false" />
           <NavigationProperty Name="виды_оплат" Relationship="domofon14Model.FK__оплаты__вид_опла__7FB5F314" FromRole="оплаты" ToRole="виды_оплат" />
           <NavigationProperty Name="воз_работы" Relationship="domofon14Model.FK_воз_работы_оплаты" FromRole="оплаты" ToRole="воз_работы" />
+          <NavigationProperty Name="оплачено" Relationship="domofon14Model.FK_оплачено_оплаты" FromRole="оплаты" ToRole="оплачено" />
         </EntityType>
         <EntityType Name="отключения">
           <Key>
@@ -1207,8 +1207,8 @@
           <NavigationProperty Name="клиенты" Relationship="Self.услуги_клиента" FromRole="услуги" ToRole="клиенты" />
           <NavigationProperty Name="простои" Relationship="domofon14Model.FK_простои_услуги" FromRole="услуги" ToRole="простои" />
           <NavigationProperty Name="возврат" Relationship="domofon14Model.FK_возврат_услуги" FromRole="услуги" ToRole="возврат" />
-          <NavigationProperty Name="оплачено" Relationship="domofon14Model.FK_оплачено_услуги" FromRole="услуги" ToRole="оплачено" />
           <NavigationProperty Name="льготы" Relationship="domofon14Model.FK_льготы_услуги" FromRole="услуги" ToRole="льготы" />
+          <NavigationProperty Name="оплачено" Relationship="domofon14Model.FK_оплачено_услуги" FromRole="услуги" ToRole="оплачено" />
         </EntityType>
         <EntityType Name="филиалы">
           <Key>
@@ -1579,15 +1579,6 @@
             <End Role="дома" EntitySet="дома" />
             <End Role="клиенты" EntitySet="клиенты" />
           </AssociationSet>
-          <EntitySet Name="оплачено" EntityType="domofon14Model.оплачено" />
-          <AssociationSet Name="FK_оплачено_оплаты" Association="domofon14Model.FK_оплачено_оплаты">
-            <End Role="оплаты" EntitySet="оплаты" />
-            <End Role="оплачено" EntitySet="оплачено" />
-          </AssociationSet>
-          <AssociationSet Name="FK_оплачено_услуги" Association="domofon14Model.FK_оплачено_услуги">
-            <End Role="услуги" EntitySet="услуги" />
-            <End Role="оплачено" EntitySet="оплачено" />
-          </AssociationSet>
           <EntitySet Name="льготы" EntityType="domofon14Model.льготы" />
           <AssociationSet Name="FK_льготы_клиенты" Association="domofon14Model.FK_льготы_клиенты">
             <End Role="клиенты" EntitySet="клиенты" />
@@ -1611,6 +1602,15 @@
           <AssociationSet Name="FK_воз_работы_работы" Association="domofon14Model.FK_воз_работы_работы">
             <End Role="работы" EntitySet="работы" />
             <End Role="воз_работы" EntitySet="воз_работы" />
+          </AssociationSet>
+          <EntitySet Name="оплачено" EntityType="domofon14Model.оплачено" />
+          <AssociationSet Name="FK_оплачено_оплаты" Association="domofon14Model.FK_оплачено_оплаты">
+            <End Role="оплаты" EntitySet="оплаты" />
+            <End Role="оплачено" EntitySet="оплачено" />
+          </AssociationSet>
+          <AssociationSet Name="FK_оплачено_услуги" Association="domofon14Model.FK_оплачено_услуги">
+            <End Role="услуги" EntitySet="услуги" />
+            <End Role="оплачено" EntitySet="оплачено" />
           </AssociationSet>
         </EntityContainer>
         <ComplexType Name="ввод_тарифов_Result">
@@ -1918,48 +1918,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="оплачено">
-          <Key>
-            <PropertyRef Name="код" />
-          </Key>
-          <Property Name="код" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="оплата" Type="Guid" Nullable="false" />
-          <Property Name="месяц" Type="Int32" Nullable="false" />
-          <Property Name="год" Type="Int32" Nullable="false" />
-          <Property Name="сумма" Type="Int32" Nullable="false" />
-          <Property Name="услуга" Type="Guid" Nullable="false" />
-          <Property Name="цена" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="оплаты" Relationship="domofon14Model.FK_оплачено_оплаты" FromRole="оплачено" ToRole="оплаты" />
-          <NavigationProperty Name="услуги" Relationship="domofon14Model.FK_оплачено_услуги" FromRole="оплачено" ToRole="услуги" />
-          <Property Name="дней" Type="Int32" Nullable="false" />
-          <Property Name="длина_мес" Type="Int32" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_оплачено_оплаты">
-          <End Type="domofon14Model.оплаты" Role="оплаты" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="domofon14Model.оплачено" Role="оплачено" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="оплаты">
-              <PropertyRef Name="оплата" />
-            </Principal>
-            <Dependent Role="оплачено">
-              <PropertyRef Name="оплата" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_оплачено_услуги">
-          <End Type="domofon14Model.услуги" Role="услуги" Multiplicity="1" />
-          <End Type="domofon14Model.оплачено" Role="оплачено" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="услуги">
-              <PropertyRef Name="услуга" />
-            </Principal>
-            <Dependent Role="оплачено">
-              <PropertyRef Name="услуга" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="льготы">
           <Key>
             <PropertyRef Name="льгота" />
@@ -2060,6 +2018,48 @@
             </Principal>
             <Dependent Role="воз_работы">
               <PropertyRef Name="работа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="оплачено">
+          <Key>
+            <PropertyRef Name="платеж" />
+          </Key>
+          <Property Name="оплата" Type="Guid" Nullable="false" />
+          <Property Name="месяц" Type="Int32" Nullable="false" />
+          <Property Name="год" Type="Int32" Nullable="false" />
+          <Property Name="сумма" Type="Int32" Nullable="false" />
+          <Property Name="услуга" Type="Guid" Nullable="false" />
+          <Property Name="дней" Type="Int32" Nullable="false" />
+          <Property Name="длина_мес" Type="Int32" Nullable="false" />
+          <Property Name="цена" Type="Int32" Nullable="false" />
+          <Property Name="платеж" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="оплаты" Relationship="domofon14Model.FK_оплачено_оплаты" FromRole="оплачено" ToRole="оплаты" />
+          <NavigationProperty Name="услуги" Relationship="domofon14Model.FK_оплачено_услуги" FromRole="оплачено" ToRole="услуги" />
+        </EntityType>
+        <Association Name="FK_оплачено_оплаты">
+          <End Type="domofon14Model.оплаты" Role="оплаты" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="domofon14Model.оплачено" Role="оплачено" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="оплаты">
+              <PropertyRef Name="оплата" />
+            </Principal>
+            <Dependent Role="оплачено">
+              <PropertyRef Name="оплата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_оплачено_услуги">
+          <End Type="domofon14Model.услуги" Role="услуги" Multiplicity="1" />
+          <End Type="domofon14Model.оплачено" Role="оплачено" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="услуги">
+              <PropertyRef Name="услуга" />
+            </Principal>
+            <Dependent Role="оплачено">
+              <PropertyRef Name="услуга" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2389,21 +2389,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="оплачено">
-            <EntityTypeMapping TypeName="domofon14Model.оплачено">
-              <MappingFragment StoreEntitySet="оплачено">
-                <ScalarProperty Name="длина_мес" ColumnName="длина_мес" />
-                <ScalarProperty Name="дней" ColumnName="дней" />
-                <ScalarProperty Name="цена" ColumnName="цена" />
-                <ScalarProperty Name="услуга" ColumnName="услуга" />
-                <ScalarProperty Name="сумма" ColumnName="сумма" />
-                <ScalarProperty Name="год" ColumnName="год" />
-                <ScalarProperty Name="месяц" ColumnName="месяц" />
-                <ScalarProperty Name="оплата" ColumnName="оплата" />
-                <ScalarProperty Name="код" ColumnName="код" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="льготы">
             <EntityTypeMapping TypeName="domofon14Model.льготы">
               <MappingFragment StoreEntitySet="льготы">
@@ -2439,6 +2424,21 @@
                 <ScalarProperty Name="работа" ColumnName="работа" />
                 <ScalarProperty Name="оплата" ColumnName="оплата" />
                 <ScalarProperty Name="код" ColumnName="код" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="оплачено">
+            <EntityTypeMapping TypeName="domofon14Model.оплачено">
+              <MappingFragment StoreEntitySet="оплачено">
+                <ScalarProperty Name="платеж" ColumnName="платеж" />
+                <ScalarProperty Name="цена" ColumnName="цена" />
+                <ScalarProperty Name="длина_мес" ColumnName="длина_мес" />
+                <ScalarProperty Name="дней" ColumnName="дней" />
+                <ScalarProperty Name="услуга" ColumnName="услуга" />
+                <ScalarProperty Name="сумма" ColumnName="сумма" />
+                <ScalarProperty Name="год" ColumnName="год" />
+                <ScalarProperty Name="месяц" ColumnName="месяц" />
+                <ScalarProperty Name="оплата" ColumnName="оплата" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

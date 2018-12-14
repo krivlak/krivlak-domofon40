@@ -14,24 +14,34 @@ namespace domofon40
         public события1вид()
         {
             InitializeComponent();
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Top = 0;
         }
 
-      //  DateTime начало;
+    
         domofon40.domofon14Entities de = new domofon14Entities();
-     //   List<temp> tempList0 = new List<temp>();
+ 
         List<temp> tempList = new List<temp>();
         private void события1вид_Load(object sender, EventArgs e)
         {
-            найти_начало();
-            заполнить_договор();
-            заполнить_простой();
-            заполнить_льготу();
-            заполнить_отключение();
-            заполнить_повтор();
-            tempList = tempList.OrderBy(n => n.дата_с).ToList();
-            bindingSource1.DataSource = tempList;
-            bindingSource1.MoveLast();
-            dataGridView1.Focus();
+            try
+            {
+                найти_начало();
+                заполнить_договор();
+                заполнить_простой();
+                заполнить_льготу();
+                заполнить_отключение();
+                заполнить_повтор();
+                tempList = tempList.OrderBy(n => n.дата_с).ToList();
+                bindingSource1.DataSource = tempList;
+                bindingSource1.MoveLast();
+                dataGridView1.Focus();
+                клСетка.задать_ширину(dataGridView1);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки  {ex.Message}");
+            }
         }
 
         class temp
@@ -61,10 +71,7 @@ namespace domofon40
                 NewRow.дата_с = uRow.дата_с;
                 NewRow.код = uRow.подключение;
                 NewRow.прим = uRow.прим;
-                //if (uRow.дата_по != null)
-                //{
-                //    NewRow.дата_по = uRow.дата_по.Value;
-                //}
+
                 tempList.Add(NewRow);
 
             }
@@ -119,13 +126,6 @@ namespace domofon40
         private void заполнить_льготу()
         {
 
-            //var delRows = dsДолги1.События
-            //   .Where(n => n.наимен == "Льгота");
-            //foreach (var dRow in delRows)
-            //{
-            //    dRow.Delete();
-            //}
-
             foreach (льготы uRow in de.льготы
                 .Where(n => n.услуги.вид_услуги == клВид_услуги.вид_услуги)
                 .Where(n => n.клиент == клКлиент.клиент))
@@ -146,31 +146,7 @@ namespace domofon40
             }
         }
 
-        //private void заполнить_предупреждение()
-        //{
-
-
-
-        //    foreach (предупреждения uRow in de.
-        //        .Where(n => n.клиент == клКлиент.клиент))
-        //    {
-        //        temp NewRow = new temp();
-        //        NewRow.услуга = uRow.услуга;
-        //        NewRow.клиент = uRow.клиент;
-        //        NewRow.наимен_услуги = uRow.услуга1.наимен;
-        //        NewRow.наимен = "Предупреждение";
-        //        NewRow.код = uRow.предупреждение1;
-        //        NewRow.дата_с = uRow.дата;
-        //        //if (uRow.дата_по != null)
-        //        //{
-        //        //    NewRow.дата_по = uRow.дата_по.Value;
-        //        //}
-        //        tempList.Add(NewRow);
-
-        //    }
-        //}
-
-        private void заполнить_отключение()
+         private void заполнить_отключение()
         {
 
             foreach (отключения uRow in de.отключения
@@ -192,11 +168,6 @@ namespace domofon40
                 tempList.Add(NewRow);
 
             }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -247,22 +218,7 @@ namespace domofon40
                     };
                     tempList.Add(newTemp);
                 }
-                //if (xy)
-                //{
-                //    if (начало != начало0 || uRow.клиенты.Any(n => n.клиент == клКлиент.клиент))
-                //    {
-
-                //        temp newTemp = new temp
-                //        {
-                //            дата_с = начало,
-                //            наимен_услуги = uRow.наимен,
-                //            прим = " ",
-                //            наимен = "начало оплаты "
-
-                //        };
-                //        tempList.Add(newTemp);
-                //    }
-                //}
+             
             }
 
 

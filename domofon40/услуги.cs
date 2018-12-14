@@ -25,8 +25,8 @@ namespace domofon40
             this.клиенты = new HashSet<клиенты>();
             this.простои = new HashSet<простои>();
             this.возврат = new HashSet<возврат>();
-            this.оплачено = new HashSet<оплачено>();
             this.льготы = new HashSet<льготы>();
+            this.оплачено = new HashSet<оплачено>();
         }
     
         public System.Guid услуга { get; set; }
@@ -45,7 +45,7 @@ namespace domofon40
         public virtual ICollection<клиенты> клиенты { get; set; }
         public virtual ICollection<простои> простои { get; set; }
         public virtual ICollection<возврат> возврат { get; set; }
-        public virtual ICollection<оплачено> оплачено { get; set; }
         public virtual ICollection<льготы> льготы { get; set; }
+        public virtual ICollection<оплачено> оплачено { get; set; }
     }
 }

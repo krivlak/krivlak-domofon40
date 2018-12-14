@@ -47,13 +47,16 @@ namespace domofon40
                       вид_услуги = n.Key.виды_услуг.вид_услуги,
                       наимен_вида_услуги = n.Key.виды_услуг.наимен,
                       сотрудник = n.Key.сотрудники.сотрудник,
+                       порядок = n.Key.сотрудники.порядок,
                       фио = n.Key.сотрудники.фио.Trim(),
                       вид_оплаты = n.Key.виды_оплат.вид_оплаты,
 
                       наимен_вида_оплаты = n.Key.виды_оплат.наимен,
                       сумма = n.Sum(p => p.сумма)
 
-                  }).OrderBy(n => n.дата).ToList();
+                  }).OrderBy(n => n.дата)
+                  .ThenBy(n=>n.порядок)
+                  .ToList();
 
             var query3 = tempList.GroupBy(n => n.дата)
                 .Select(n => new { дата = n.Key, сумма = n.Sum(p => p.сумма) });
@@ -76,6 +79,7 @@ namespace domofon40
             public Guid вид_услуги { get; set; }
             public Guid вид_оплаты { get; set; }
             public Guid сотрудник { get; set; }
+            public int порядок { get; set; }
             public string наимен_вида_услуги { get; set; }
             public string фио { get; set; }
             public string наимен_вида_оплаты { get; set; }

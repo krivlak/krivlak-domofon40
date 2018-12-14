@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,7 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.наименColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.подключенColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.годColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +52,7 @@
             this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.отклColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.повторноColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -68,7 +70,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1279, 89);
+            this.panel1.Size = new System.Drawing.Size(1319, 89);
             this.panel1.TabIndex = 0;
             // 
             // textBox1
@@ -103,7 +105,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.Blue;
-            this.button1.Location = new System.Drawing.Point(1061, 12);
+            this.button1.Location = new System.Drawing.Point(868, 48);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 33);
@@ -156,7 +158,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 89);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1279, 424);
+            this.dataGridView1.Size = new System.Drawing.Size(1319, 409);
             this.dataGridView1.TabIndex = 1;
             // 
             // наименColumn
@@ -170,15 +172,19 @@
             // подключенColumn
             // 
             this.подключенColumn.DataPropertyName = "подключена";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.NullValue = false;
+            this.подключенColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.подключенColumn.HeaderText = "подключен";
             this.подключенColumn.Name = "подключенColumn";
             // 
             // годColumn
             // 
             this.годColumn.DataPropertyName = "год";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "0;#;#";
-            this.годColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "0;#;#";
+            this.годColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.годColumn.HeaderText = "год";
             this.годColumn.Name = "годColumn";
             this.годColumn.ReadOnly = true;
@@ -187,9 +193,9 @@
             // месяуColumn
             // 
             this.месяуColumn.DataPropertyName = "месяц";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "0;#;#";
-            this.месяуColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "0;#;#";
+            this.месяуColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.месяуColumn.HeaderText = "месяц";
             this.месяуColumn.Name = "месяуColumn";
             this.месяуColumn.ReadOnly = true;
@@ -198,9 +204,9 @@
             // догColumn
             // 
             this.догColumn.DataPropertyName = "номер_пп";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "0;#;#";
-            this.догColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "0;#;#";
+            this.догColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.догColumn.HeaderText = "№ дог";
             this.догColumn.Name = "догColumn";
             this.догColumn.ReadOnly = true;
@@ -215,6 +221,8 @@
             // примColumn
             // 
             this.примColumn.DataPropertyName = "прим";
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.примColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.примColumn.HeaderText = "прим";
             this.примColumn.MaxInputLength = 50;
             this.примColumn.Name = "примColumn";
@@ -238,7 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1279, 513);
+            this.ClientSize = new System.Drawing.Size(1319, 498);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -246,7 +254,6 @@
             this.Name = "подключен4услугам";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "подключен4услугам";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.подключен4услугам_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

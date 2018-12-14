@@ -227,17 +227,17 @@ namespace domofon40
 
                 if (dataGridView1.Columns[e.ColumnIndex] == менеджерColumn)
                 {
-                    клСотрудник.сотрудник = tRow.сотрудник;
-                    клСотрудник.выбран = false;
-                    выбор_кассира выборКассира = new выбор_кассира();
+                   клКассир.сотрудник = tRow.сотрудник;
+                   клКассир.выбран = false;
+                    изменить_кассира выборКассира = new изменить_кассира();
                     выборКассира.ShowDialog();
 
 
 
-                    if (клСотрудник.выбран)
+                    if (клКассир.выбран || выборКассира.DialogResult== DialogResult.OK)
                     {
-                        tRow.сотрудник = клСотрудник.сотрудник;
-                        tRow.менеджер = клСотрудник.deRow.фио;
+                        tRow.сотрудник =клКассир.сотрудник;
+                        tRow.менеджер =клКассир.deRow.фио;
 
                         dataGridView1.Refresh();
                         //label1.Visible = true;
@@ -249,6 +249,7 @@ namespace domofon40
                         try
                         {
                             int строк = de.Database.ExecuteSqlCommand(sqlString, aPar);
+                            пересчет();
                             if (строк < 1)
                             {
                                 MessageBox.Show("Ошибка записи " + строк.ToString());
@@ -256,7 +257,7 @@ namespace domofon40
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Ошибка записи "+ex.Message);
                         }
 
                     }
@@ -354,7 +355,10 @@ namespace domofon40
             {
                 int сумма = 0;
                 temp tRow = bindingSource1.Current as temp;
-                сумма = tempList.Where(n => n.дата == tRow.дата).Sum(n => n.оплатить);
+                сумма = tempList
+                    .Where(n => n.дата == tRow.дата)
+                    .Where(n=>n.сотрудник== клСотрудник.сотрудник)
+                    .Sum(n => n.оплатить);
                 textBox2.Text = сумма.ToString();
             }
         }
@@ -587,6 +591,7 @@ namespace domofon40
                     {
                         de.Database.ExecuteSqlCommand("delete from оплаты where оплата=@p0", uRow.оплата);
                         bindingSource1.RemoveCurrent();
+                        bindingSource1.MoveLast();
                     }
                     catch (Exception ex)
                     {
@@ -1103,7 +1108,7 @@ namespace domofon40
 
                 int строка = bindingSource1.Add(NewRow);
                 bindingSource1.Position = строка;
-
+                dataGridView1.CurrentCell = dataGridView1.Rows[строка].Cells[0];
 
                 string sqlString = "insert into  оплаты (оплата, номер , дата, клиент, сотрудник, вид_оплаты ) "
                     + " values( @оплата, @номер, @дата, @клиент, @сотрудник, @вид_оплаты )";

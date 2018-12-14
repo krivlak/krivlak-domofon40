@@ -247,9 +247,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(711, 368);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.Blue;
+            this.button1.Location = new System.Drawing.Point(731, 366);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(83, 35);
             this.button1.TabIndex = 60;
             this.button1.Text = "Выход";
             this.button1.UseVisualStyleBackColor = true;

@@ -23,12 +23,20 @@ namespace domofon40
         BindingList<сотрудники> сотрудникиБинд = new BindingList<сотрудники>();
         private void список_сотрудников_Load(object sender, EventArgs e)
         {
-            de.сотрудники
+            try
+            {
+                de.сотрудники
                 .OrderBy(n => n.порядок)
                 .Load();
 
-            сотрудникиБинд = de.сотрудники.Local.ToBindingList();
-            bindingSource1.DataSource = сотрудникиБинд;
+                сотрудникиБинд = de.сотрудники.Local.ToBindingList();
+                bindingSource1.DataSource = сотрудникиБинд;
+                клСетка.задать_ширину(dataGridView1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($" Сбой загрузки {ex.Message}");
+            }
 
             фамилияColumn.DefaultCellStyle.NullValue = "null";
             ОтчествоColumn.DefaultCellStyle.NullValue = "null";
@@ -39,8 +47,8 @@ namespace domofon40
             ОтчествоColumn.DefaultCellStyle.DataSourceNullValue = "";
 
             bindingSource1.ListChanged += bindingSource1_ListChanged;
-        //    сотрудникиБинд.ListChanged += сотрудникиБинд_ListChanged;
-          
+            //    сотрудникиБинд.ListChanged += сотрудникиБинд_ListChanged;
+
             FormClosing += список_сотрудников_FormClosing;
             dataGridView1.CellValidating += dataGridView1_CellValidating;
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
@@ -169,6 +177,7 @@ namespace domofon40
             //    de.сотрудники.Add(NewRow);
             int строка = bindingSource1.Add(NewRow);
             bindingSource1.Position = строка;
+            dataGridView1.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)

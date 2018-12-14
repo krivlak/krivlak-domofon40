@@ -14,6 +14,8 @@ namespace domofon40
         public все_события()
         {
             InitializeComponent();
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Top = 0;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
         List<temp> tempList0 = new List<temp>();

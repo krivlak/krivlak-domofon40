@@ -37,12 +37,7 @@ namespace domofon40
             dt.PrimaryKey = массив;
 
 
-            DataColumn col2 = new DataColumn();
-            col2.Caption = "всего";
-            col2.ColumnName = "всегоColumn";
-            col2.DataType = typeof(Int32);
-            col2.DefaultValue = 0;
-            dt.Columns.Add(col2);
+          
 
             foreach (виды_услуг vRow in de.виды_услуг.OrderBy(n => n.порядок))
             {
@@ -54,6 +49,12 @@ namespace domofon40
                 dt.Columns.Add(col);
             }
 
+            DataColumn col2 = new DataColumn();
+            col2.Caption = "всего";
+            col2.ColumnName = "всегоColumn";
+            col2.DataType = typeof(Int32);
+            col2.DefaultValue = 0;
+            dt.Columns.Add(col2);
 
             try
             {
@@ -125,12 +126,9 @@ namespace domofon40
             dataGridView1.DataSource = dt;
             dataGridView1.Columns[0].HeaderText = "дата";
             dataGridView1.Columns[0].Name = "датаColumn";
-            dataGridView1.Columns[1].HeaderText = "всего";
-            dataGridView1.Columns[1].Tag = Guid.Empty;
-            dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns[1].DefaultCellStyle.Format = "0;#;0";
+            
 
-            int i = 1;
+            int i = 0;
             foreach (виды_услуг vRow in de.виды_услуг.OrderBy(n => n.порядок))
             {
                 i++;
@@ -139,6 +137,13 @@ namespace domofon40
                 dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dataGridView1.Columns[i].DefaultCellStyle.Format = "0;#;0";
             }
+            i++;
+            dataGridView1.Columns[i].HeaderText = "всего";
+            dataGridView1.Columns[i].Tag = Guid.Empty;
+            dataGridView1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns[i].DefaultCellStyle.Format = "0;#;0";
+
+
             textBox1.Text = всего.ToString();
 
         }
@@ -155,8 +160,8 @@ namespace domofon40
                 
                 int колонка = dataGridView1.CurrentCell.ColumnIndex;
                 int строка = dataGridView1.CurrentRow.Index;
-                
-                if (колонка>1)
+
+                if (колонка > 0 && колонка < dataGridView1.ColumnCount-1) 
                 {
                     DateTime дата = (DateTime)dataGridView1.CurrentRow.Cells["датаColumn"].Value;
                     клВид_услуги.вид_услуги =(Guid)  dataGridView1.Columns[колонка].Tag;
@@ -167,7 +172,7 @@ namespace domofon40
                     реестр_все формаРеестр = new реестр_все();
                     формаРеестр.Text = "Реестр за " + клРеестр.дата.ToLongDateString() + " по ";
                     формаРеестр.Text += " " + клВид_услуги.наимен.Trim();
-                    формаРеестр.Text += "Все менеджеры ";
+                    формаРеестр.Text += "  Все менеджеры ";
 
                     string наименФилиала = de.филиалы
                         .OrderBy(n => n.порядок)
@@ -193,7 +198,7 @@ namespace domofon40
 
             string curDir = System.IO.Directory.GetCurrentDirectory();
 
-            object шаблон = curDir + @"\отчет.dot";
+            object шаблон = curDir + @"\отчет1период.dot";
             if (!System.IO.File.Exists(шаблон.ToString()))
             {
                 MessageBox.Show("Нет файла " + шаблон.ToString());
@@ -218,11 +223,12 @@ namespace domofon40
             foreach (DataColumn col in dt.Columns)
             {
                 ii++;
-                if(ii>2)
+                if(ii>1)
                 {
                     o.Tables[3].Cell(1, ii).Range.Text = col.Caption;
                   //  maxCol = sRow.порядок + 1;
                 }
+               
             }
            
             //foreach (dsТабель.заголовкиRow sRow in dsТабель1.заголовки.OrderBy(n => n.порядок))
@@ -258,7 +264,6 @@ namespace domofon40
             {
                 j++;
                 o.Tables[3].Cell(j, 1).Range.Text = row.Field<DateTime>("датаColumn").ToShortDateString();
-                o.Tables[3].Cell(j, 2).Range.Text = row.Field<int>("всегоColumn").ToString();
 
                 int i=0;
                 foreach(DataColumn col in dt.Columns)
@@ -269,7 +274,11 @@ namespace domofon40
                         aSum[i - 1] += row.Field<int>(col.ColumnName);
                         o.Tables[3].Cell(j, i).Range.Text = row.Field<int>(col.ColumnName).ToString();
                     }
+                   
                 }
+                //i++;
+                //o.Tables[3].Cell(i, 2).Range.Text = row.Field<int>("всегоColumn").ToString();
+
                 o.Tables[3].Rows.Add();
             }
           
@@ -287,13 +296,13 @@ namespace domofon40
 
             j++;
             o.Tables[3].Cell(j, 1).Range.Text = "Всего ";
-            o.Tables[3].Cell(j, 2).Range.Text = всего.ToString();
+       //     o.Tables[3].Cell(j, 2).Range.Text = всего.ToString();
             o.Tables[3].Rows[j ].Range.Shading.BackgroundPatternColor = Word.WdColor.wdColorGray05;
             int t = 0;
             foreach(int ss in aSum)
             {
                 t++;
-                if(t>2)
+                if(t>1)
                 {
                     o.Tables[3].Cell(j, t).Range.Text = ss.ToString();
                 }

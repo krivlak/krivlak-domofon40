@@ -235,146 +235,147 @@ namespace domofon40
             if (bindingSource1.Count > 0 && de.отключения.Local.Any(n => n.в_задание))
             {
                 отключения tRow = bindingSource1.Current as отключения;
-                клМастер.мастер = tRow.мастер;
-                клМастер.выбран = false;
-                выбор_бригады выборМастера = new выбор_бригады();
-                выборМастера.Text = "Выберите мастера";
-                выборМастера.ShowDialog();
-                if (клМастер.выбран || выборМастера.DialogResult == DialogResult.OK)
+                //клМастер.мастер = tRow.мастер;
+                //клМастер.выбран = false;
+                //выбор_бригады выборМастера = new выбор_бригады();
+                //выборМастера.Text = "Выберите мастера";
+                //выборМастера.ShowDialog();
+                //if (клМастер.выбран || выборМастера.DialogResult == DialogResult.OK)
+                //{
+                //    сотрудники sRow = de.сотрудники.Local.Single(n => n.сотрудник == клМастер.мастер);
+                //    foreach (отключения uRow in de.отключения.Local
+                //    .Where(n => n.в_задание))
+                //    {
+                //        uRow.мастер = sRow.сотрудник;
+                //        uRow.сотрудники = sRow;
+                //    }
+                //    dataGridView1.Refresh();
+
+                //    Cursor = Cursors.WaitCursor;
+
+                string curDir = System.IO.Directory.GetCurrentDirectory();
+
+                string шаблон = curDir + @"\задание_отключить.docx";
+
+                if (!System.IO.File.Exists(шаблон.ToString()))
                 {
-                    сотрудники sRow = de.сотрудники.Local.Single(n => n.сотрудник == клМастер.мастер);
-                    foreach (отключения uRow in de.отключения.Local
-                    .Where(n => n.в_задание))
+                    MessageBox.Show("Нет файла " + шаблон.ToString());
+                    Cursor = Cursors.Default;
+                    return;
+                }
+
+                var template = new System.IO.FileInfo(шаблон);
+                string tempFile = curDir + @"\temp\temp.docx";
+                try
+                {
+
+                    клTemp.закрытьWord();
+                }
+                catch
+                {
+                    MessageBox.Show("Сохраните файл Word...");
+
+                }
+
+                try
+                {
+                    template.CopyTo(tempFile, true);
+                }
+                catch
+                {
+                    MessageBox.Show("Закройте файл Word...");
+                    return;
+                }
+
+                try
+                {
+                    using (WordprocessingDocument package = WordprocessingDocument.Open(tempFile, true))
                     {
-                        uRow.мастер = sRow.сотрудник;
-                        uRow.сотрудники = sRow;
-                    }
-                    dataGridView1.Refresh();
+                        //  int строкаРаб = 0;
 
-                    Cursor = Cursors.WaitCursor;
+                        var tables = package.MainDocumentPart.Document.Body.Elements<Table>();
+                        //Table table1 = tables.First();
+                        //Table table2 = tables.Last();
+                        Table table1 = tables.ElementAt(0);
+                        Table table2 = tables.ElementAt(1);
 
-                    string curDir = System.IO.Directory.GetCurrentDirectory();
+                        //string фио = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).фио;
+                        //string должность = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).должность;
 
-                    string шаблон = curDir + @"\задание_отключить.docx";
+                        string текст = "Задание на отключение";
+                        //+ sRow.должность.Trim() + " " + sRow.фио;
+                        клXML.ChangeTextInCell(table1, 0, 0, текст + "    " + DateTime.Today.ToLongDateString());
 
-                    if (!System.IO.File.Exists(шаблон.ToString()))
-                    {
-                        MessageBox.Show("Нет файла " + шаблон.ToString());
-                        Cursor = Cursors.Default;
-                        return;
-                    }
+                        TableRow lastRow = table2.Elements<TableRow>().Last();
 
-                    var template = new System.IO.FileInfo(шаблон);
-                    string tempFile = curDir + @"\temp\temp.docx";
-                    try
-                    {
+                        //var queryTemp = dsTemp.квартиры.ToArray();
+                        //if (checkBox2.Checked)
+                        //{
+                        //    queryTemp = queryTemp
+                        //        .Where(n => n.отключить || n.подключить || n.повторно).ToArray();
+                        //}
 
-                        клTemp.закрытьWord();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Сохраните файл Word...");
+                        int j = 0;
 
-                    }
-
-                    try
-                    {
-                        template.CopyTo(tempFile, true);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Закройте файл Word...");
-                        return;
-                    }
-
-                    try
-                    {
-                        using (WordprocessingDocument package = WordprocessingDocument.Open(tempFile, true))
+                        foreach (отключения kRow in de.отключения.Local
+                   .Where(n => n.в_задание))
                         {
-                            //  int строкаРаб = 0;
+                            j++;
+                            TableRow newRow1 = lastRow.Clone() as TableRow;
 
-                            var tables = package.MainDocumentPart.Document.Body.Elements<Table>();
-                            //Table table1 = tables.First();
-                            //Table table2 = tables.Last();
-                            Table table1 = tables.ElementAt(0);
-                            Table table2 = tables.ElementAt(1);
 
-                            //string фио = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).фио;
-                            //string должность = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).должность;
+                            table2.AppendChild<TableRow>(newRow1);
 
-                            string текст = "Задание на отключение мастеру    " + sRow.должность.Trim() + " " + sRow.фио;
-                            клXML.ChangeTextInCell(table1, 0, 0, текст + "    " + DateTime.Today.ToLongDateString());
 
-                            TableRow lastRow = table2.Elements<TableRow>().Last();
+                            клXML.ChangeTextInCell(table2, j, 0, kRow.адрес);
 
-                            //var queryTemp = dsTemp.квартиры.ToArray();
-                            //if (checkBox2.Checked)
-                            //{
-                            //    queryTemp = queryTemp
-                            //        .Where(n => n.отключить || n.подключить || n.повторно).ToArray();
-                            //}
+                            клXML.ChangeTextInCell(table2, j, 1, kRow.клиенты.фио);
+                            клXML.ChangeTextInCell(table2, j, 2, kRow.клиенты.телефон);
 
-                            int j = 0;
+                            клXML.ChangeTextInCell(table2, j, 3, kRow.услуги.обозначение);
 
-                            foreach (отключения kRow in de.отключения.Local
-                       .Where(n => n.в_задание))
+
+                            if (kRow.в_задание)
                             {
-                                j++;
-                                TableRow newRow1 = lastRow.Clone() as TableRow;
-
-
-                                table2.AppendChild<TableRow>(newRow1);
-
-
-                                клXML.ChangeTextInCell(table2, j, 0, kRow.адрес);
-
-                                клXML.ChangeTextInCell(table2, j, 1, kRow.клиенты.фио);
-                                клXML.ChangeTextInCell(table2, j, 2, kRow.клиенты.телефон);
-
-                                клXML.ChangeTextInCell(table2, j, 3, kRow.услуги.обозначение);
-
-
-                                if (kRow.в_задание)
-                                {
-                                    клXML.ChangeTextInCell(table2, j, 4, "V");
-                                }
-                                else
-                                {
-                                    клXML.ChangeTextInCell(table2, j, 4, "");
-                                }
-
-
-
+                                клXML.ChangeTextInCell(table2, j, 4, "V");
+                            }
+                            else
+                            {
+                                клXML.ChangeTextInCell(table2, j, 4, "");
                             }
 
 
-                            j++;
-                            клXML.ChangeTextInCell(table2, j, 0, "Всего");
-                            клXML.ChangeTextInCell(table2, j, 1, "квартир");
-                            клXML.ChangeTextInCell(table2, j, 2, (j - 1).ToString());
-                            клXML.ChangeTextInCell(table2, j, 3, "");
-                            клXML.ChangeTextInCell(table2, j, 4, "");
-                            //клXML.ChangeTextInCell(table2, j, 5, "");
-                            //клXML.ChangeTextInCell(table2, j, 6, "");
-                            //клXML.ChangeTextInCell(table2, j, 7, "");
-
 
                         }
+
+
+                        j++;
+                        клXML.ChangeTextInCell(table2, j, 0, "Всего");
+                        клXML.ChangeTextInCell(table2, j, 1, "квартир");
+                        клXML.ChangeTextInCell(table2, j, 2, (j - 1).ToString());
+                        клXML.ChangeTextInCell(table2, j, 3, "");
+                        клXML.ChangeTextInCell(table2, j, 4, "");
+                        //клXML.ChangeTextInCell(table2, j, 5, "");
+                        //клXML.ChangeTextInCell(table2, j, 6, "");
+                        //клXML.ChangeTextInCell(table2, j, 7, "");
+
+
                     }
-
-                    catch
-                    {
-                        MessageBox.Show("Закройте файл Word...");
-                        return;
-                    }
-
-
-
-                    клTemp.закрытьWord();
-
-
-                    клXML.просмотрWord(tempFile);
                 }
+
+                catch
+                {
+                    MessageBox.Show("Закройте файл Word...");
+                    return;
+                }
+
+
+
+                клTemp.закрытьWord();
+
+
+                клXML.просмотрWord(tempFile);
+                //}
                 Cursor = Cursors.Default;
             }
             else
