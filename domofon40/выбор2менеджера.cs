@@ -19,11 +19,7 @@ namespace domofon40
         domofon40.domofon14Entities de = new domofon14Entities();
         private void выбор2менеджера_Load(object sender, EventArgs e)
         {
-            //var query = de.оплаты
-            //  .Where(n => n.дата == клКалендарь.дата.Value)
-            //  .GroupBy(n => n.сотрудник)
-            //  .Select(n => new { сотрудник = n.Key, оплат = n.Count() })
-            //  .ToDictionary(n => n.сотрудник);
+           
 
             foreach (var mm in de.сотрудники
                  .Where(n => n.кассир)

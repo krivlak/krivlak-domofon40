@@ -28,9 +28,6 @@ namespace domofon40
             прим0TextBox.Validated += Прим0TextBox_Validated;
             телефонTextBox.Validated += ТелефонTextBox_Validated;
             dataGridView1.DataError += DataGridView1_DataError;
-            //     FormClosed += Выбор_квартиры_FormClosed;
-            //         this.Deactivate += Выбор_квартиры_Deactivate;
-            //       this.Activated += Выбор_квартиры_Activated;
             dataGridView1.CellValidated += DataGridView1_CellValidated;
         }
 
@@ -77,27 +74,10 @@ namespace domofon40
                     MessageBox.Show("Сбой записи прим " + ex.Message);
                 }
             }
-         //   Console.WriteLine("DataGridView1_CellValidated");
+        
         }
 
-        //private void Выбор_квартиры_Activated(object sender, EventArgs e)
-        //{
-        //    if(dataGridView1.Enabled)
-        //    {
-        //        temp.Moving += Temp_Moving;
-        //    }
-        //}
-
-        //private void Выбор_квартиры_Deactivate(object sender, EventArgs e)
-        //{
-        //    temp.Moving -= Temp_Moving;
-        //}
-
-        //private void Выбор_квартиры_FormClosed(object sender, FormClosedEventArgs e)
-        //{
-        //    temp.Moving -= Temp_Moving;
-
-        //}
+     
 
         private void DataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
@@ -120,7 +100,7 @@ namespace domofon40
         }
         void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-     //       temp.Moving -= Temp_Moving;
+            //       temp.Moving -= Temp_Moving;
             очистить();
             panel1.Enabled = false;
             dataGridView1.Enabled = false;
@@ -134,60 +114,9 @@ namespace domofon40
                 dataGridView1.Enabled = true;
             }
             dataGridView1.Refresh();
-      //      temp.Moving += Temp_Moving;
-            
         }
-
-        //private void Temp_Moving(temp obj)
-        //{
-        //    if (obj.поле == "прим")
-        //    {
-
-        //        try
-        //        {
-        //            de.Database.ExecuteSqlCommand("delete from примечания where услуга=@p0 and клиент = @p1 ", obj.услуга, клКлиент.клиент);
-
-
-        //            if (obj.прим != null)
-        //            {
-        //                if (obj.прим.Trim() != String.Empty)
-        //                {
-
-        //                    de.Database.ExecuteSqlCommand("insert into примечания (клиент,услуга,прим) values( @p0,@p1,@p2)", клКлиент.клиент, obj.услуга, obj.прим);
-        //                }
-
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show("Сбой записи прим " + ex.Message);
-        //        }
-        //    }
-
-        //    if (obj.поле == "наш")
-        //    {
-
-        //        try
-        //        {
-        //            de.Database.ExecuteSqlCommand("delete from услуги_клиента where услуга=@p0 and клиент = @p1 ", obj.услуга, клКлиент.клиент);
-
-
-
-        //            if (obj.наш)
-        //            {
-
-        //                de.Database.ExecuteSqlCommand("insert into услуги_клиента (клиент,услуга) values( @p0,@p1)", клКлиент.клиент, obj.услуга);
-        //            }
-
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show("Сбой записи наш " + ex.Message);
-        //        }
-        //    }
-
-        //}
+     
+    
         void сведения_клиента()
         {
             Cursor = Cursors.WaitCursor;
@@ -200,7 +129,7 @@ namespace domofon40
             телефонTextBox.Text = клКлиент.deRow.телефон.Trim();
 
             tempList.Clear();
-       //     string sqlString ="сведения_клиента @клиент='"+клКлиент.клиент.ToString()+"'";
+     
             try
             {
                 string curDir = System.IO.Directory.GetCurrentDirectory();
@@ -225,7 +154,7 @@ namespace domofon40
 
                 tempList = de.Database.SqlQuery<temp>(sqlString).ToList();
 
-                //tempList = de.Database.SqlQuery<temp>("сведения_клиента @клиент= @p0 ", клКлиент.клиент).ToList();
+              
             }
             catch(Exception ex)
             {
@@ -240,137 +169,15 @@ namespace domofon40
             Cursor = Cursors.Default;
         }
 
-       // private void заполнить_выбор()
-       // {
-       //     Cursor = Cursors.WaitCursor;
-       //     //dsТабель1.выбор.Clear();
-       //     tempList.Clear();
-
-       //     прим0TextBox.Text = клКлиент.deRow.прим;
-
-       //     foreach (услуги uRow in de.услуги.OrderBy(n => n.виды_услуг.порядок).ThenBy(n=>n.порядок))
-       //     {
-       //         //dsТабель.выборRow NewRow = dsТабель1.выбор.NewвыборRow();
-       //         temp NewRow = new temp();
-       //         NewRow.услуга = uRow.услуга;
-       //         NewRow.наимен = uRow.наимен;
-       //         if (uRow.клиенты.Any(n => n.клиент == клКлиент.клиент))
-       //         {
-       //             NewRow.наш = true;
-       //         }
-
-       //         if (uRow.примечания.Any(n => n.клиент == клКлиент.клиент))
-       //         {
-       //             NewRow.прим = uRow.примечания.Last(n => n.клиент == клКлиент.клиент).прим;
-       //         }
-
-       //         if (uRow.подключения.Any(n => n.клиент == клКлиент.клиент))
-       //         {
-       //             NewRow.договор_с = uRow.подключения
-       //                 .Where(n => n.клиент == клКлиент.клиент)
-       //                 .Max(n => n.дата_с);
-       //         }
-
-       //         if (uRow.отключения.Any(n => n.клиент == клКлиент.клиент))
-       //         {
-       //             NewRow.отключен = uRow.отключения
-       //                 .Where(n => n.клиент == клКлиент.клиент)
-       //                 .Max(n => n.дата_с);
-       //         }
-
-       //         if (uRow.повторы.Any(n => n.клиент == клКлиент.клиент))
-       //         {
-       //             NewRow.повторно = uRow.повторы
-       //                               .Where(n => n.клиент == клКлиент.клиент)
-       //                               .Max(n => n.дата_с);
-       //         }
-       //         if (uRow.льготы.Any(n => n.клиент == клКлиент.клиент))
-       //         {
-       //             NewRow.прим += " льгота с " + uRow.льготы
-       //                  .Where(n => n.клиент == клКлиент.клиент)
-       //                  .Max(n=>n.дата_с).ToShortDateString();
-       //         }
-
-       //         //int kk = db.услуги_клиента.Count(n => n.клиент == клКлиент.клиент && n.услуга == uRow.услуга1);
-       //         //if (kk > 0)
-       //         //    NewRow.подключена = true;
-
-       //         tempList.Add(NewRow);
-       //         //dsТабель1.выбор.Rows.Add(NewRow);
-       //     }
-       //     dicTemp = tempList.ToDictionary(n => n.услуга);
-
-
-       //     //DateTime начало = de.начало.First().начало1;
-
-       //     //var queryДни = de.раб_дней
-       //     //    .Where(n => n.клиент == клКлиент.клиент)
-       //     //    .Where(n => n.дней > 0)
-       //     //.Where(n => n.год < начало.Year || (n.год == начало.Year && n.месяц < начало.Month))
-       //     //    .GroupBy(n => n.услуга)
-       //     //    .Select(n => new
-       //     //    {
-       //     //        услуга = n.Key,
-       //     //        год100месяц = n.Min(g => g.год * 12 + g.месяц)
-       //     //    });
-
-       //     //foreach (var uRow in queryДни)
-       //     //{
-       //     //    int мГод = (int)(uRow.год100месяц - 2) / 12;
-       //     //    int мМесяц = ((uRow.год100месяц - 1) - мГод * 12);
-       //     //    dsТабель.выборRow tRow = dsТабель1.выбор.Single(n => n.услуга == uRow.услуга);
-       //     //    tRow.год = мГод;
-       //     //    tRow.месяц = мМесяц;
-       //     //}
-
-
-
-       //     var query = de.оплачено
-       //         .Where(n => n.оплаты.клиент == клКлиент.клиент)
-       //         .GroupBy(n => n.услуга)
-       //         .Select(n => new
-       //         {
-       //             услуга = n.Key,
-       //             год100месяц = n.Max(g => g.год * 100 + g.месяц)
-       //         });
-       //     foreach (var uRow in query)
-       //     {
-       //         int мГод = (int)uRow.год100месяц / 100;
-       //         int мМесяц = (uRow.год100месяц - мГод * 100);
-               
-       //         if (dicTemp.ContainsKey(uRow.услуга))
-       //         {
-       //           temp  tRow = dicTemp[uRow.услуга];
-       //           tRow.год = мГод;
-       //           tRow.месяц = мМесяц;
-       //         }
-       ////         dsТабель.выборRow tRow = dsТабель1.выбор.Single(n => n.услуга == uRow.услуга);
-               
-       //     }
-       //     if (de.звонки.Any(n=>n.клиент==клКлиент.клиент))
-       //     {
-       //         звонокTextBox.Text = de.звонки.Where(n => n.клиент == клКлиент.клиент).Max(n => n.дата).ToShortDateString();
-       //     }
-       //     прим0TextBox.Text = клКлиент.deRow.прим;
-
-       //     bindingSource1.DataSource = tempList;
-       //     dataGridView1.Refresh();
-       //     dataGridView1.Focus();
-
-       //     Cursor = Cursors.Default;
-
-       // }
-
+     
 
         
         private void заполнить()
         {
-          //  treeView1.Nodes.Clear();
-      //      DataClasses1DataContext db = new DataClasses1DataContext();
-            //int j = 0;
+       
             foreach (var gg in de.поселки.OrderBy(n => n.порядок))
             {
-                //j++;
+               
                 TreeNode node = this.treeView1.Nodes.Add( gg.наимен);
                 node.Tag = gg;
 
@@ -397,10 +204,7 @@ namespace domofon40
                               + kk.имя.Trim() + " "
                               + kk.отчество.Trim());
                                 node3.Tag = kk;
-                                //if (kk.клиент == клКлиент.клиент)
-                                //{
-                                //    treeView1.SelectedNode = node3;
-                                //}
+                              
 
                             }
                             else
@@ -411,10 +215,7 @@ namespace domofon40
                                     + kk.имя.Trim() + " "
                                     + kk.отчество.Trim());
                                 node3.Tag = kk;
-                                //if (kk.клиент== клКлиент.клиент)
-                                //{
-                                //    treeView1.SelectedNode = node3;
-                                //}
+                                
                             }
                         }
                     }
@@ -429,13 +230,8 @@ namespace domofon40
    
             treeView1.CollapseAll();
             очистить();
-        //    bindingSource1.DataSource = null;
-           
-            //treeView1.SelectedNode = treeView1.Nodes["1"];
-      //      tempList.Clear();
-
             treeView1.Select();
-         //   dataGridView1.Refresh();
+         
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -461,50 +257,7 @@ namespace domofon40
             public DateTime? повторно { get; set; }
             public string прим { get; set; }
 
-            //bool Наш;
-            //public bool наш
-            //{
-            //    get
-            //    {
-            //        return Наш;
-            //    }
-            //    set
-            //    {
-            //        Наш = value;
-            //        if (Moving != null)
-            //        {
-            //            поле = "наш";
-            //            Moving(this);
-            //        }
-            //    }
-            //}
-
-            //string Прим;
-            //public string прим
-            //{
-
-            //    get
-            //    {
-            //        return Прим;
-            //    }
-
-            //    set
-            //    {
-            //        Прим = value;
-            //        if (Moving != null)
-            //        {
-            //            поле = "прим";
-            //            Moving(this);
-            //        }
-
-
-            //    }
-
-            //}
-
-            //public string поле { get; set; }
-            //public static event Action<temp> Moving;
-
+          
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -522,15 +275,12 @@ namespace domofon40
 
         private void button4_Click(object sender, EventArgs e)
         {
-          
-
-            //оплаты uRow = bindingSource1.Current as оплаты;
-            //клКлиент.клиент = uRow.клиент;
+        
             клКлиент.выбран = false;
             сведения_о_клиенте сведенияКлиента = new сведения_о_клиенте();
             сведенияКлиента.Text = "сведения о " + клКлиент.deRow.адрес + " " + клКлиент.deRow.фио;
             сведенияКлиента.bindingSource1.DataSource = клКлиент.deRow;
-            //  bindingSource1.DataSource = de.клиенты.Local.ToBindingList();
+            
             сведенияКлиента.ShowDialog();
             
             сведения_клиента();
@@ -571,10 +321,7 @@ namespace domofon40
        
            
             treeView1.Focus();
-            //клиенты kRow = de.клиенты.Local.Single(n => n.клиент == клКлиент.клиент);
-            //de.Entry(kRow).Reload();
-            //    de.Entry(uRow).Reload();
-            //dataGridView1.Focus();
+            
 
         }
 
@@ -601,16 +348,10 @@ namespace domofon40
                            }
             Cursor = Cursors.Default;
 
-            //суммы1день суммыДень = new суммы1день();
-            //суммыДень.Text = $"Суммы за день  {DateTime.Today.ToLongDateString()}   менеджер { клСотрудник.фио} ";
-            //суммыДень.ShowDialog();
-            //treeView1.Focus();
+           
 
         }
 
-        private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
-        {
 
-        }
     }
 }

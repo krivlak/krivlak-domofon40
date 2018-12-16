@@ -27,93 +27,100 @@ namespace domofon40
         int текМесяц = DateTime.Today.Month;
         private void платежи_улицы_Load(object sender, EventArgs e)
         {
-            DataColumn квартираColumn = архив.Columns.Add("квартира");
-            квартираColumn.DataType = Type.GetType("System.Int32");
-
-            DataColumn NewColumn;
-            var queryДом = de.дома
-                .Where(n => n.улица == клУлица.улица)
-                .OrderBy(n => n.номер)
-                .ThenBy(n => n.корпус);
-
-            foreach (дома dRow in queryДом)
+            try
             {
+                DataColumn квартираColumn = архив.Columns.Add("квартира");
+                квартираColumn.DataType = Type.GetType("System.Int32");
 
-                NewColumn = new DataColumn(dRow.дом.ToString());
-                NewColumn.DataType = Type.GetType("System.String");
-                NewColumn.DefaultValue = "";
-                NewColumn.Caption = dRow.номер.ToString().Trim() + "\n" + dRow.корпус.Trim();
-                архив.Columns.Add(NewColumn);
-            }
+                DataColumn NewColumn;
+                var queryДом = de.дома
+                    .Where(n => n.улица == клУлица.улица)
+                    .OrderBy(n => n.номер)
+                    .ThenBy(n => n.корпус);
 
-            int maxКв = 0;
-            if (de.клиенты.Any(n => n.дома.улица == клУлица.улица))
-            {
-                maxКв = de.клиенты
-                    .Where(n => n.дома.улица == клУлица.улица)
-                    .Max(n => n.квартира);
-            }
-           
-
-            DataRow NewRow;
-            for (int j = 1; j <= maxКв; j++)
-            {
-                NewRow = архив.NewRow();
-                NewRow.SetField<int>(квартираColumn, j);
-                архив.Rows.Add(NewRow);
-            }
-
-
-            var queryMax = de.оплачено
-                .Where(n => n.услуга == клУслуга.услуга)
-                .Where(n => n.оплаты.клиенты.дома.улица == клУлица.улица)
-                .GroupBy(n => new { n.оплаты.клиенты.дом, n.оплаты.клиенты.квартира })
-                .Select(n => new
-                {
-                    n.Key.дом,
-                    n.Key.квартира,
-                    maxGM = n.Max(p => p.год * 100 + p.месяц)
-                });
-
-
-            int mМес = 0;
-            int mГод = 0;
-            foreach (var uRow in queryMax)
-            {
-                if (архив.Select("квартира='" + uRow.квартира.ToString().Trim() + "'").Count() > 0)
+                foreach (дома dRow in queryДом)
                 {
 
-                    mГод = (int)uRow.maxGM / 100;
-                    mМес = uRow.maxGM - mГод * 100;
-                    string gg = "";
-                    int долгМес = текГод * 12 + текМесяц - 1 - mГод * 12 - mМес;
-                    if (долгМес > 1)
-                    {
-                        gg = "*";
-                    }
-                    string mg = mМес.ToString().Trim() + "." + (mГод - 2000).ToString().Trim() + gg;
-                    var tRow = архив.Select("квартира='" + uRow.квартира.ToString().Trim() + "'")[0];
-                    tRow.SetField<string>(uRow.дом.ToString(), mg);
+                    NewColumn = new DataColumn(dRow.дом.ToString());
+                    NewColumn.DataType = Type.GetType("System.String");
+                    NewColumn.DefaultValue = "";
+                    NewColumn.Caption = dRow.номер.ToString().Trim() + "\n" + dRow.корпус.Trim();
+                    архив.Columns.Add(NewColumn);
                 }
 
+                int maxКв = 0;
+                if (de.клиенты.Any(n => n.дома.улица == клУлица.улица))
+                {
+                    maxКв = de.клиенты
+                        .Where(n => n.дома.улица == клУлица.улица)
+                        .Max(n => n.квартира);
+                }
+
+
+                DataRow NewRow;
+                for (int j = 1; j <= maxКв; j++)
+                {
+                    NewRow = архив.NewRow();
+                    NewRow.SetField<int>(квартираColumn, j);
+                    архив.Rows.Add(NewRow);
+                }
+
+
+                var queryMax = de.оплачено
+                    .Where(n => n.услуга == клУслуга.услуга)
+                    .Where(n => n.оплаты.клиенты.дома.улица == клУлица.улица)
+                    .GroupBy(n => new { n.оплаты.клиенты.дом, n.оплаты.клиенты.квартира })
+                    .Select(n => new
+                    {
+                        n.Key.дом,
+                        n.Key.квартира,
+                        maxGM = n.Max(p => p.год * 100 + p.месяц)
+                    });
+
+
+                int mМес = 0;
+                int mГод = 0;
+                foreach (var uRow in queryMax)
+                {
+                    if (архив.Select("квартира='" + uRow.квартира.ToString().Trim() + "'").Count() > 0)
+                    {
+
+                        mГод = (int)uRow.maxGM / 100;
+                        mМес = uRow.maxGM - mГод * 100;
+                        string gg = "";
+                        int долгМес = текГод * 12 + текМесяц - 1 - mГод * 12 - mМес;
+                        if (долгМес > 1)
+                        {
+                            gg = "*";
+                        }
+                        string mg = mМес.ToString().Trim() + "." + (mГод - 2000).ToString().Trim() + gg;
+                        var tRow = архив.Select("квартира='" + uRow.квартира.ToString().Trim() + "'")[0];
+                        tRow.SetField<string>(uRow.дом.ToString(), mg);
+                    }
+
+                }
+
+
+
+
+                dataGridView1.DataSource = архив;
+                //     int i = 1;
+                foreach (дома dRow in queryДом)
+                {
+                    DataGridViewColumn tCol1 = dataGridView1.Columns["квартира"];
+                    tCol1.Width = 50;
+                    tCol1.HeaderText = "кв.";
+                    DataGridViewColumn tCol = dataGridView1.Columns[dRow.дом.ToString()];
+                    tCol.HeaderText = dRow.номер.ToString().Trim()
+                        + "\n" + dRow.корпус.Trim();
+                    tCol.Width = 50;
+                    //    tCol.DefaultCellStyle.Format = "0.0000;#;#";
+                    tCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
             }
-
-
-
-
-            dataGridView1.DataSource = архив;
-            //     int i = 1;
-            foreach (дома dRow in queryДом)
+            catch(Exception ex)
             {
-                DataGridViewColumn tCol1 = dataGridView1.Columns["квартира"];
-                tCol1.Width = 50;
-                tCol1.HeaderText = "кв.";
-                DataGridViewColumn tCol = dataGridView1.Columns[dRow.дом.ToString()];
-                tCol.HeaderText = dRow.номер.ToString().Trim()
-                    + "\n" + dRow.корпус.Trim();
-                tCol.Width = 50;
-                //    tCol.DefaultCellStyle.Format = "0.0000;#;#";
-                tCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                MessageBox.Show($"Сбой загрузки {ex.Message}");
             }
 
     
@@ -175,113 +182,127 @@ namespace domofon40
                 return;
             }
 
-            var template = new System.IO.FileInfo(шаблон);
-            string tempFile = curDir + @"\temp\temp.docx";
-            клTemp.закрытьWord();
-            template.CopyTo(tempFile, true);
-
-
-            string наименФилиала = de.филиалы
-                .OrderBy(n => n.порядок)
-                .First().наимен;
-
-
-            using (WordprocessingDocument package = WordprocessingDocument.Open(tempFile, true))
+            try
             {
+                var template = new System.IO.FileInfo(шаблон);
+                string tempFile = curDir + @"\temp\temp.docx";
+                клTemp.закрытьWord();
+                template.CopyTo(tempFile, true);
 
 
-                var tables = package.MainDocumentPart.Document.Body.Elements<Table>();
-                Table table1 = tables.First();
-                Table table2 = tables.Last();
+                string наименФилиала = de.филиалы
+                    .OrderBy(n => n.порядок)
+                    .First().наимен;
 
 
-                клXML.ChangeTextInCell(table1, 0, 1, клУслуга.наимен);
-                клXML.ChangeTextInCell(table1, 1, 1, клУлица.наимен);
-                клXML.ChangeTextInCell(table1, 2, 1, наименФилиала);
-                клXML.ChangeTextInCell(table1, 2, 2, DateTime.Today.ToShortDateString());
-
-
-                TableRow firstRow = table2.Elements<TableRow>().First();
-                TableRow lastRow = table2.Elements<TableRow>().Last();
-
-                TableCell lastCell0 = firstRow.Elements<TableCell>().Last();
-                TableCell lastCell = lastRow.Elements<TableCell>().Last();
-
-                int домов = архив.Columns.Count - 1;
-                for (int k = 0; k < домов - 1; k++)
+                using (WordprocessingDocument package = WordprocessingDocument.Open(tempFile, true))
                 {
-                    TableCell newCell0 = lastCell0.Clone() as TableCell;
-                    firstRow.AppendChild<TableCell>(newCell0);
-
-                    TableCell newCell = lastCell.Clone() as TableCell;
-                    lastRow.AppendChild<TableCell>(newCell);
-                }
-
-                for (int k = 1; k <= домов; k++)
-                {
-                    клXML.ChangeTextInCell(table2, 0, k, архив.Columns[k].Caption);
-                }
-                lastRow = table2.Elements<TableRow>().Last();
-                int квартир = архив.Rows.Count;
-
-                for (int i = 1; i < квартир; i++)
-                {
-                    TableRow newRow = lastRow.Clone() as TableRow;
-                    table2.AppendChild(newRow);
-                }
 
 
+                    var tables = package.MainDocumentPart.Document.Body.Elements<Table>();
+                    Table table1 = tables.First();
+                    Table table2 = tables.Last();
 
-                int j = 0;
-                foreach (DataRow uRow in архив.Rows)
-                {
-                    j++;
-                    клXML.ChangeTextInCell(table2, j, 0, uRow.Field<int>("квартира").ToString());
 
-                    int r = 0;
-                    foreach (DataColumn nCol in архив.Columns)
+                    клXML.ChangeTextInCell(table1, 0, 1, клУслуга.наимен);
+                    клXML.ChangeTextInCell(table1, 1, 1, клУлица.наимен);
+                    клXML.ChangeTextInCell(table1, 2, 1, наименФилиала);
+                    клXML.ChangeTextInCell(table1, 2, 2, DateTime.Today.ToShortDateString());
+
+
+                    TableRow firstRow = table2.Elements<TableRow>().First();
+                    TableRow lastRow = table2.Elements<TableRow>().Last();
+
+                    TableCell lastCell0 = firstRow.Elements<TableCell>().Last();
+                    TableCell lastCell = lastRow.Elements<TableCell>().Last();
+
+                    int домов = архив.Columns.Count - 1;
+                    for (int k = 0; k < домов - 1; k++)
                     {
-                        r++;
-                        if (r > 1)
-                        {
-                            клXML.ChangeTextInCell(table2, j, r - 1, uRow.Field<string>(r - 1).ToString());
-                        }
+                        TableCell newCell0 = lastCell0.Clone() as TableCell;
+                        firstRow.AppendChild<TableCell>(newCell0);
 
+                        TableCell newCell = lastCell.Clone() as TableCell;
+                        lastRow.AppendChild<TableCell>(newCell);
                     }
+
+                    for (int k = 1; k <= домов; k++)
+                    {
+                        клXML.ChangeTextInCell(table2, 0, k, архив.Columns[k].Caption);
+                    }
+                    lastRow = table2.Elements<TableRow>().Last();
+                    int квартир = архив.Rows.Count;
+
+                    for (int i = 1; i < квартир; i++)
+                    {
+                        TableRow newRow = lastRow.Clone() as TableRow;
+                        table2.AppendChild(newRow);
+                    }
+
+
+
+                    int j = 0;
+                    foreach (DataRow uRow in архив.Rows)
+                    {
+                        j++;
+                        клXML.ChangeTextInCell(table2, j, 0, uRow.Field<int>("квартира").ToString());
+
+                        int r = 0;
+                        foreach (DataColumn nCol in архив.Columns)
+                        {
+                            r++;
+                            if (r > 1)
+                            {
+                                клXML.ChangeTextInCell(table2, j, r - 1, uRow.Field<string>(r - 1).ToString());
+                            }
+
+                        }
+                    }
+
+
                 }
 
-             
+                Cursor = Cursors.Default;
+                клXML.просмотрWord(tempFile);
             }
-
-            Cursor = Cursors.Default;
-            клXML.просмотрWord(tempFile);
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Ошибка {ex.Message}");
+            }
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int строк = архив.Rows.Count + 1;
-            int столбцов = архив.Columns.Count;
-            object[,] aRow = new object[строк, столбцов];
-
-            aRow[0, 0] = "дом\n кв.";
-            for (int i = 1; i < столбцов; i++)
+            try
             {
-                aRow[0, i] = архив.Columns[i].Caption.Trim();
-            }
+                int строк = архив.Rows.Count + 1;
+                int столбцов = архив.Columns.Count;
+                object[,] aRow = new object[строк, столбцов];
 
-            for (int j = 1; j < строк - 1; j++)
-            {
-
-                aRow[j, 0] = архив.Rows[j].Field<int>(0).ToString();
-
+                aRow[0, 0] = "дом\n кв.";
                 for (int i = 1; i < столбцов; i++)
                 {
-                    aRow[j, i] = архив.Rows[j].Field<string>(i);
+                    aRow[0, i] = архив.Columns[i].Caption.Trim();
                 }
-            }
 
-            массив_excel(aRow, строк, столбцов);
+                for (int j = 1; j < строк - 1; j++)
+                {
+
+                    aRow[j, 0] = архив.Rows[j].Field<int>(0).ToString();
+
+                    for (int i = 1; i < столбцов; i++)
+                    {
+                        aRow[j, i] = архив.Rows[j].Field<string>(i);
+                    }
+                }
+
+                массив_excel(aRow, строк, столбцов);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка {ex.Message}");
+            }
 
         }
 

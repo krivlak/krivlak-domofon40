@@ -21,7 +21,7 @@ namespace domofon40
         {
             try
             {
-
+                
                 foreach (сотрудники mm in de.сотрудники.OrderBy(n => n.порядок))
                 {
                     int всегоОплат = mm.оплаты.Count;

@@ -51,7 +51,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(384, 12);
+            this.button1.Location = new System.Drawing.Point(383, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 32);
             this.button1.TabIndex = 4;
@@ -135,7 +135,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(62, 12);
+            this.button3.Location = new System.Drawing.Point(61, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(174, 34);
             this.button3.TabIndex = 3;
@@ -145,9 +145,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(867, 12);
+            this.button2.ForeColor = System.Drawing.Color.Blue;
+            this.button2.Location = new System.Drawing.Point(787, 10);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 38);
+            this.button2.Size = new System.Drawing.Size(137, 38);
             this.button2.TabIndex = 2;
             this.button2.Text = "Выход";
             this.button2.UseVisualStyleBackColor = true;

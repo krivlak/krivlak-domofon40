@@ -21,54 +21,61 @@ namespace domofon40
         List<temp> tempList = new List<temp>();
         private void выбор1реестра_Load(object sender, EventArgs e)
         {
-            var query1 = de.оплачено.Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
-                .Where(n=>n.оплаты.сотрудник==клСотрудник.сотрудник)
-                 .GroupBy(n => new { n.оплаты.дата, n.услуги.виды_услуг, n.оплаты.сотрудники, n.оплаты.виды_оплат })
-                 .Select(n => new
-                 {
-                     n.Key,
-                     сумма = n.Sum(p => p.сумма)
-
-                 }).ToList();
-            var query2 = de.возврат.Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
-                             .Where(n => n.оплаты.сотрудник == клСотрудник.сотрудник)
-                             .GroupBy(n => new { n.оплаты.дата, n.услуги.виды_услуг, n.оплаты.сотрудники, n.оплаты.виды_оплат })
-                             .Select(n => new
-                             {
-                                 n.Key,
-                                 сумма = n.Sum(p => p.сумма)
-
-                             }).ToList();
-            query1.AddRange(query2);
-
-
-            tempList = query1.GroupBy(n => n.Key)
-                  .Select(n => new temp()
-                  {
-                      дата = n.Key.дата,
-                      вид_услуги = n.Key.виды_услуг.вид_услуги,
-                      наимен_вида_услуги = n.Key.виды_услуг.наимен,
-                      сотрудник = n.Key.сотрудники.сотрудник,
-                      фио = n.Key.сотрудники.фио.Trim(),
-                      вид_оплаты = n.Key.виды_оплат.вид_оплаты,
-
-                      наимен_вида_оплаты = n.Key.виды_оплат.наимен,
-                      сумма = n.Sum(p => p.сумма)
-
-                  }).OrderBy(n => n.дата).ToList();
-
-            var query3 = tempList.GroupBy(n => n.дата)
-                .Select(n => new { дата = n.Key, сумма = n.Sum(p => p.сумма) });
-            foreach (var rRow in query3)
+            try
             {
-                tempList.FindAll(n => n.дата == rRow.дата).ForEach(n => n.за_день = rRow.сумма);
+                var query1 = de.оплачено.Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
+                    .Where(n => n.оплаты.сотрудник == клСотрудник.сотрудник)
+                     .GroupBy(n => new { n.оплаты.дата, n.услуги.виды_услуг, n.оплаты.сотрудники, n.оплаты.виды_оплат })
+                     .Select(n => new
+                     {
+                         n.Key,
+                         сумма = n.Sum(p => p.сумма)
+
+                     }).ToList();
+                var query2 = de.возврат.Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
+                                 .Where(n => n.оплаты.сотрудник == клСотрудник.сотрудник)
+                                 .GroupBy(n => new { n.оплаты.дата, n.услуги.виды_услуг, n.оплаты.сотрудники, n.оплаты.виды_оплат })
+                                 .Select(n => new
+                                 {
+                                     n.Key,
+                                     сумма = n.Sum(p => p.сумма)
+
+                                 }).ToList();
+                query1.AddRange(query2);
+
+
+                tempList = query1.GroupBy(n => n.Key)
+                      .Select(n => new temp()
+                      {
+                          дата = n.Key.дата,
+                          вид_услуги = n.Key.виды_услуг.вид_услуги,
+                          наимен_вида_услуги = n.Key.виды_услуг.наимен,
+                          сотрудник = n.Key.сотрудники.сотрудник,
+                          фио = n.Key.сотрудники.фио.Trim(),
+                          вид_оплаты = n.Key.виды_оплат.вид_оплаты,
+
+                          наимен_вида_оплаты = n.Key.виды_оплат.наимен,
+                          сумма = n.Sum(p => p.сумма)
+
+                      }).OrderBy(n => n.дата).ToList();
+
+                var query3 = tempList.GroupBy(n => n.дата)
+                    .Select(n => new { дата = n.Key, сумма = n.Sum(p => p.сумма) });
+                foreach (var rRow in query3)
+                {
+                    tempList.FindAll(n => n.дата == rRow.дата).ForEach(n => n.за_день = rRow.сумма);
+                }
+
+
+                bindingSource1.DataSource = tempList.OrderBy(n => n.дата);
+                клСетка.задать_ширину(dataGridView1);
+                bindingSource1.MoveLast();
+                dataGridView1.Focus();
             }
-
-
-            bindingSource1.DataSource = tempList.OrderBy(n => n.дата);
-            клСетка.задать_ширину(dataGridView1);
-            bindingSource1.MoveLast();
-            dataGridView1.Focus();
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки {ex.Message}");
+            }
 
         }
 
@@ -93,29 +100,36 @@ namespace domofon40
         {
             if (bindingSource1.Count > 0)
             {
-                temp uRow = bindingSource1.Current as temp;
-                клРеестр.дата = uRow.дата.Date;
-                клСотрудник.сотрудник = uRow.сотрудник;
-                клСотрудник.фио = uRow.фио;
+                try
+                {
+                    temp uRow = bindingSource1.Current as temp;
+                    клРеестр.дата = uRow.дата.Date;
+                    клСотрудник.сотрудник = uRow.сотрудник;
+                    клСотрудник.фио = uRow.фио;
 
-                клРеестр.менеджер = uRow.сотрудник;
-                клРеестр.фио_менеджера = uRow.фио;
-                клРеестр.вид_оплаты = uRow.вид_оплаты;
-                клРеестр.наименВидаОплаты = uRow.наимен_вида_оплаты;
-                клВид_услуги.вид_услуги = uRow.вид_услуги;
-                клВид_услуги.наимен = uRow.наимен_вида_услуги;
-                реестр_услуг формаРеестр = new реестр_услуг();
-                формаРеестр.Text = "Реестр за " + клРеестр.дата.ToLongDateString() + "  ";
-                формаРеестр.Text += " " + клВид_услуги.наимен.Trim();
-                формаРеестр.Text += " " + клРеестр.наименВидаОплаты.Trim();
+                    клРеестр.менеджер = uRow.сотрудник;
+                    клРеестр.фио_менеджера = uRow.фио;
+                    клРеестр.вид_оплаты = uRow.вид_оплаты;
+                    клРеестр.наименВидаОплаты = uRow.наимен_вида_оплаты;
+                    клВид_услуги.вид_услуги = uRow.вид_услуги;
+                    клВид_услуги.наимен = uRow.наимен_вида_услуги;
+                    реестр_услуг формаРеестр = new реестр_услуг();
+                    формаРеестр.Text = "Реестр за " + клРеестр.дата.ToLongDateString() + "  ";
+                    формаРеестр.Text += " " + клВид_услуги.наимен.Trim();
+                    формаРеестр.Text += " " + клРеестр.наименВидаОплаты.Trim();
 
-                string наименФилиала = de.филиалы
-                    .OrderBy(n => n.порядок)
-                    .First().наимен;
-                формаРеестр.Text += " по филиалу " + наименФилиала;
-                формаРеестр.Text += " менеджер " + клСотрудник.фио;
+                    string наименФилиала = de.филиалы
+                        .OrderBy(n => n.порядок)
+                        .First().наимен;
+                    формаРеестр.Text += " по филиалу " + наименФилиала;
+                    формаРеестр.Text += " менеджер " + клСотрудник.фио;
 
-                формаРеестр.ShowDialog();
+                    формаРеестр.ShowDialog();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"Сбой загрузки {ex.Message}");
+                }
                 Cursor = Cursors.Default;
             }
 

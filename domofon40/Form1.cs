@@ -531,18 +531,11 @@ namespace domofon40
                 ВыборПериода.ShowDialog();
                 if (клПериод.выбран)
                 {
-                    //выбор_вида_оплат выборВида = new выбор_вида_оплат();
-                    //выборВида.ShowDialog();
-                    //if (выборВида.DialogResult == DialogResult.OK)
-                    //{
                         Cursor = Cursors.WaitCursor;
-                    //  реестр_работ формаАнализ = new реестр_работ();
                     работы1менеджер формаАнализ = new работы1менеджер();
-//                        формаАнализ.Text = $"Реестр оплаченых работ за { клПериод.дата_с.ToLongDateString()} { клПериод.дата_по.ToLongDateString()} менеджер  {клСотрудник.фио}  вид оплаты {клВид_оплаты.deRow.наимен}";
                     формаАнализ.Text = $"Реестр оплаченых работ за { клПериод.дата_с.ToLongDateString()} { клПериод.дата_по.ToLongDateString()} менеджер  {клСотрудник.фио}  ";
                     формаАнализ.ShowDialog();
                         Cursor = Cursors.Default;
-                    //}
                 }
             }
             Cursor = Cursors.Default;

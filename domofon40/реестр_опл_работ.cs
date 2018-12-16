@@ -126,28 +126,7 @@ namespace domofon40
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
         }
 
-        //void задать_ширину()
-        //{
-        //    int столбцов = dataGridView1.Columns.Count;
-        //    int[] aW = new int[столбцов];
-        //    int i = 0;
-        //    foreach (DataGridViewColumn tCol in dataGridView1.Columns)
-        //    {
-        //        aW[i] = tCol.Width;
-        //        i++;
-        //    }
-        //    double сумма = aW.Sum();
-        //    double ширина = Screen.PrimaryScreen.WorkingArea.Width - 60;
-        //    double поправка = ширина / сумма;
-        //    i = 0;
-        //    foreach (DataGridViewColumn tCol in dataGridView1.Columns)
-        //    {
-        //        double ss = aW[i] * поправка;
-        //        tCol.Width = (int)ss;
-        //        i++;
-        //    }
-        //    dataGridView1.Refresh();
-        //}
+       
         void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)

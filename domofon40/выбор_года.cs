@@ -14,12 +14,13 @@ namespace domofon40
         public выбор_года()
         {
             InitializeComponent();
+            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
         private void выбор_года_Load(object sender, EventArgs e)
         {
           
-            foreach (var gg in de.годы)
+            foreach (var gg in de.годы.OrderBy(n=>n.год))
             {
                 TreeNode node = this.treeView1.Nodes.Add(gg.год.ToString(), gg.год.ToString());
                 node.Tag = gg.год;

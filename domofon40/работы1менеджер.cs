@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System.Data.Entity;
 
 namespace domofon40
 {
@@ -27,14 +28,25 @@ namespace domofon40
             int зарплата = 0;
             try
             {
-                // как добавить возврат за работы ?
-                var query = de.опл_работы
-                            .Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
-                            .Where(n=>n.оплаты.сотрудник==клСотрудник.сотрудник)
-                            .OrderBy(n => n.оплаты.дата)
-                            .ThenBy(n => n.работы.порядок);
+                de.опл_работы
+                        .Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
+                        .Where(n => n.оплаты.сотрудник == клСотрудник.сотрудник)
+                        .OrderBy(n => n.оплаты.дата)
+                        .ThenBy(n => n.работы.порядок).Load();
+                de.воз_работы
+                          .Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
+                           .Where(n => n.оплаты.сотрудник == клСотрудник.сотрудник)
+                          .OrderBy(n => n.оплаты.дата)
+                          .ThenBy(n => n.работы.порядок).Load();
 
-                foreach (опл_работы uRow in query)
+                // как добавить возврат за работы ?
+                //var query = de.опл_работы
+                //            .Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
+                //            .Where(n=>n.оплаты.сотрудник==клСотрудник.сотрудник)
+                //            .OrderBy(n => n.оплаты.дата)
+                //            .ThenBy(n => n.работы.порядок);
+
+                foreach (опл_работы uRow in de.опл_работы.Local)
                 {
                     temp NewRow = new temp()
                     {
@@ -67,12 +79,12 @@ namespace domofon40
                     материалы += NewRow.материалы;
                     зарплата += NewRow.зарплата;
                 }
-                var query2 = de.воз_работы
-                           .Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
-                            .Where(n => n.оплаты.сотрудник == клСотрудник.сотрудник)
-                           .OrderBy(n => n.оплаты.дата)
-                           .ThenBy(n => n.работы.порядок);
-                foreach (воз_работы uRow in query2)
+                //var query2 = de.воз_работы
+                //           .Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
+                //            .Where(n => n.оплаты.сотрудник == клСотрудник.сотрудник)
+                //           .OrderBy(n => n.оплаты.дата)
+                //           .ThenBy(n => n.работы.порядок);
+                foreach (воз_работы uRow in de.воз_работы.Local)
                 {
                     temp NewRow = new temp()
                     {
