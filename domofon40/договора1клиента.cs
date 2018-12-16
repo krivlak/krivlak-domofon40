@@ -16,6 +16,8 @@ namespace domofon40
         public договора1клиента()
         {
             InitializeComponent();
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Top = 0;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
         //List<temp> tempList = new List<temp>();
@@ -45,9 +47,9 @@ namespace domofon40
                 dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
                 клСетка.задать_ширину(dataGridView1);
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Сбой загрузки..");
+                MessageBox.Show($"Сбой загрузки..{ex.Message}");
             }
         }
 

@@ -86,6 +86,7 @@
             this.отчетЗаПериод1МенеджерToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетЗаВыбранныеДниToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.выборРеестраToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетЗаПериодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.анализToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.статистикаНаДатуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отключеноПодключеноЗаПериодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +98,7 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьКвартирыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчетЗаПериодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -530,7 +531,7 @@
             this.правкаToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(9, 120);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(861, 29);
+            this.menuStrip2.Size = new System.Drawing.Size(663, 29);
             this.menuStrip2.TabIndex = 2;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -581,6 +582,13 @@
             this.выборРеестраToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
             this.выборРеестраToolStripMenuItem.Text = "выбор реестра";
             this.выборРеестраToolStripMenuItem.Click += new System.EventHandler(this.выборРеестраToolStripMenuItem_Click);
+            // 
+            // отчетЗаПериодToolStripMenuItem
+            // 
+            this.отчетЗаПериодToolStripMenuItem.Name = "отчетЗаПериодToolStripMenuItem";
+            this.отчетЗаПериодToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
+            this.отчетЗаПериодToolStripMenuItem.Text = "Отчет за период";
+            this.отчетЗаПериодToolStripMenuItem.Click += new System.EventHandler(this.отчетЗаПериодToolStripMenuItem_Click_2);
             // 
             // анализToolStripMenuItem
             // 
@@ -669,12 +677,15 @@
             this.удалитьКвартирыToolStripMenuItem.Visible = false;
             this.удалитьКвартирыToolStripMenuItem.Click += new System.EventHandler(this.удалитьКвартирыToolStripMenuItem_Click);
             // 
-            // отчетЗаПериодToolStripMenuItem
+            // button1
             // 
-            this.отчетЗаПериодToolStripMenuItem.Name = "отчетЗаПериодToolStripMenuItem";
-            this.отчетЗаПериодToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
-            this.отчетЗаПериодToolStripMenuItem.Text = "Отчет за период";
-            this.отчетЗаПериодToolStripMenuItem.Click += new System.EventHandler(this.отчетЗаПериодToolStripMenuItem_Click_2);
+            this.button1.Location = new System.Drawing.Point(818, 181);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "sms";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -682,6 +693,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::domofon40.Properties.Resources.дельфины;
             this.ClientSize = new System.Drawing.Size(1207, 406);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -771,6 +783,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem отчетЗаПериодToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
 

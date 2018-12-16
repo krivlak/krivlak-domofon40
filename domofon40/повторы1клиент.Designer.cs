@@ -32,15 +32,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.услугиColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.датаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.мастерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.услугиColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.датаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.мастерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -77,6 +77,37 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1190, 304);
             this.dataGridView1.TabIndex = 9;
+            // 
+            // услугиColumn
+            // 
+            this.услугиColumn.DataPropertyName = "услуги";
+            this.услугиColumn.HeaderText = "услуга";
+            this.услугиColumn.Name = "услугиColumn";
+            this.услугиColumn.ReadOnly = true;
+            this.услугиColumn.Width = 250;
+            // 
+            // датаColumn
+            // 
+            this.датаColumn.DataPropertyName = "дата_с";
+            this.датаColumn.HeaderText = "дата ";
+            this.датаColumn.Name = "датаColumn";
+            this.датаColumn.ReadOnly = true;
+            // 
+            // мастерColumn
+            // 
+            this.мастерColumn.DataPropertyName = "сотрудники";
+            this.мастерColumn.HeaderText = "мастер";
+            this.мастерColumn.Name = "мастерColumn";
+            this.мастерColumn.ReadOnly = true;
+            this.мастерColumn.Width = 200;
+            // 
+            // примColumn
+            // 
+            this.примColumn.DataPropertyName = "прим";
+            this.примColumn.HeaderText = "примечание";
+            this.примColumn.MaxInputLength = 50;
+            this.примColumn.Name = "примColumn";
+            this.примColumn.Width = 300;
             // 
             // button3
             // 
@@ -122,37 +153,6 @@
             this.panel1.Size = new System.Drawing.Size(1190, 60);
             this.panel1.TabIndex = 14;
             // 
-            // услугиColumn
-            // 
-            this.услугиColumn.DataPropertyName = "услуги";
-            this.услугиColumn.HeaderText = "услуга";
-            this.услугиColumn.Name = "услугиColumn";
-            this.услугиColumn.ReadOnly = true;
-            this.услугиColumn.Width = 250;
-            // 
-            // датаColumn
-            // 
-            this.датаColumn.DataPropertyName = "дата_с";
-            this.датаColumn.HeaderText = "дата ";
-            this.датаColumn.Name = "датаColumn";
-            this.датаColumn.ReadOnly = true;
-            // 
-            // мастерColumn
-            // 
-            this.мастерColumn.DataPropertyName = "сотрудники";
-            this.мастерColumn.HeaderText = "мастер";
-            this.мастерColumn.Name = "мастерColumn";
-            this.мастерColumn.ReadOnly = true;
-            this.мастерColumn.Width = 200;
-            // 
-            // примColumn
-            // 
-            this.примColumn.DataPropertyName = "прим";
-            this.примColumn.HeaderText = "примечание";
-            this.примColumn.MaxInputLength = 50;
-            this.примColumn.Name = "примColumn";
-            this.примColumn.Width = 300;
-            // 
             // повторы1клиент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -162,6 +162,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "повторы1клиент";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "альтернатива Add";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.повторы1клиент_Load);

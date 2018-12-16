@@ -17,47 +17,33 @@ namespace domofon40
             InitializeComponent();
         }
         domofon40.domofon14Entities de = new domofon14Entities();
-        BindingList<льготы> льготыЛист = new BindingList<льготы>();
+   //     BindingList<льготы> льготыЛист = new BindingList<льготы>();
         private void список_льгот_Load(object sender, EventArgs e)
         {
-            de.клиенты.Load();
-            de.услуги.Load();
-            de.льготы
-                   .OrderBy(n => n.дата_с)
-                   .Load();
-            льготыЛист = de.льготы.Local.ToBindingList();
-            bindingSource1.DataSource = льготыЛист;
-            bindingSource1.Sort = "дата_с";
-            bindingSource1.MoveLast();
+            try
+            {
+                de.клиенты.Load();
+                de.услуги.Load();
+                de.льготы
+                       .OrderBy(n => n.дата_с)
+                       .Load();
+             
+                bindingSource1.DataSource = de.льготы.Local.ToBindingList();
+                bindingSource1.Sort = "дата_с";
+                bindingSource1.MoveLast();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки {ex.Message} ");
+            }
 
-            // заполнить наш
-            //foreach(льготы uRow in льготыЛист)
-            //{
-            //    if (uRow.услуги.клиенты.Any(n => n.клиент == uRow.клиент))
-            //    {
-            //        uRow.наш = true;
-            //    }
-            //}
-
-            bindingSource1.ListChanged += bindingSource1_ListChanged;
+           bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += льготы1клиент_FormClosing;
-     //       dataGridView1.CellValidating += dataGridView1_CellValidating;
+   
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-         //   dataGridView1.EditingControlShowing += dataGridView1_EditingControlShowing;
+         
         }
-        //void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        //{
-
-        //    string CellName = dataGridView1.Columns[dataGridView1.CurrentCell.ColumnIndex].Name;
-        //    if (CellName == "процентColumn")
-        //    {
-        //        e.Control.KeyPress += new KeyPressEventHandler(Control_KeyPress);
-        //    }
-        //}
-        //void Control_KeyPress(object sender, KeyPressEventArgs pressE)
-        //{
-        //    клKey.int_KeyPress(sender, pressE);
-        //}
+       
 
         void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {

@@ -14,7 +14,8 @@ namespace domofon40
         public простои1клиента()
         {
             InitializeComponent();
-            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
+          //  this.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
     //    List<простои> простоиЛист = new List<простои>();
@@ -33,9 +34,9 @@ namespace domofon40
                 простоиЛист = de.простои.Local.ToBindingList();
                 bindingSource1.DataSource = простоиЛист;
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Сбой загрузки");
+                MessageBox.Show($"Сбой загрузки  {ex.Message}");
             }
             клСетка.задать_ширину(dataGridView1);
             bindingSource1.ListChanged += bindingSource1_ListChanged;

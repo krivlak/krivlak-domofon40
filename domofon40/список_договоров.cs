@@ -70,12 +70,7 @@ namespace domofon40
 
         }
 
-        //private void BindingSource1_PositionChanged(object sender, EventArgs e)
-        //{
-        //    подключения tRow = bindingSource1.Current as подключения;
-        //    comboBox1.SelectedItem = tRow.сотрудники;
-        //    comboBox1.Refresh();
-        //}
+   
    
 
         void последний_номер()

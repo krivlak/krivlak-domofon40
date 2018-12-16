@@ -16,20 +16,16 @@ namespace domofon40
             InitializeComponent();
         }
         domofon40.domofon14Entities de = new domofon14Entities();
-        BindingList<звонки> звонкиЛист = new BindingList<звонки>();
         private void все_звонки_Load(object sender, EventArgs e)
         {
-         //   de.сотрудники.Load();
             de.клиенты.Load();
-       //     de.услуги.Load();
             de.звонки
                 .OrderBy(n => n.дата)
                 .Load();
 
             try
             {
-                звонкиЛист = de.звонки.Local.ToBindingList();
-                bindingSource1.DataSource = звонкиЛист;
+                bindingSource1.DataSource = de.звонки.Local.ToBindingList();
                 bindingSource1.Sort = "дата";
                 bindingSource1.MoveLast();
                 клСетка.задать_ширину(dataGridView1);
@@ -42,7 +38,6 @@ namespace domofon40
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += звонки1клиента_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-            //    dataGridView1.CellValidating += dataGridView1_CellValidating;
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
         }
 
@@ -60,16 +55,7 @@ namespace domofon40
 
         }
 
-        //void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        //{
-        //    if (dataGridView1.Columns[e.ColumnIndex] == примColumn)
-        //    {
-        //        if (e.FormattedValue == null)
-        //        {
-        //            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
-        //        }
-        //    }
-        //}
+     
 
         void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {

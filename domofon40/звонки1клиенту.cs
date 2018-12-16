@@ -20,18 +20,26 @@ namespace domofon40
         domofon40.domofon14Entities de = new domofon14Entities();
         private void звонки1клиенту_Load(object sender, EventArgs e)
         {
-            de.звонки
-                .Where(n => n.клиент == клКлиент.клиент)
-                .OrderBy(n => n.дата)
-                .Load();
-            bindingSource1.DataSource = de.звонки.Local.ToBindingList();
-            bindingSource1.Sort = "дата";
-            bindingSource1.MoveLast();
+            try
+            {
+                de.звонки
+                    .Where(n => n.клиент == клКлиент.клиент)
+                    .OrderBy(n => n.дата)
+                    .Load();
+                bindingSource1.DataSource = de.звонки.Local.ToBindingList();
+                bindingSource1.Sort = "дата";
+                bindingSource1.MoveLast();
+                dataGridView1.Focus();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки {ex.Message}");
+            }
+
 
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += звонки1клиенту_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-            //    dataGridView1.CellValidating += dataGridView1_CellValidating;
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
         }
 
@@ -102,12 +110,6 @@ namespace domofon40
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //звонки newRow = new звонки();
-            //newRow.дата = DateTime.Now;
-            //newRow.звонок = Guid.NewGuid();
-            //newRow.клиент = клКлиент.клиент;
-            //newRow.прим = "";
-
             звонки NewRow = new звонки()
             {
                 дата = DateTime.Now,
@@ -129,6 +131,7 @@ namespace domofon40
                 bindingSource1.RemoveCurrent();
                 bindingSource1.MoveLast();
             }
+            dataGridView1.Focus();
         }
     }
 }

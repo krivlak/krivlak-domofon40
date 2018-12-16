@@ -20,33 +20,25 @@ namespace domofon40
             InitializeComponent();
         }
         domofon40.domofon14Entities de = new domofon14Entities();
-        BindingList<отключения> отключенияЛист = new BindingList<отключения>();
+    
         private void список_отключений_Load(object sender, EventArgs e)
         {
-            de.сотрудники.Load();
-            de.клиенты.Load();
-            de.услуги.Load();
-            de.отключения
-                .OrderBy(n => n.дата_с)
-                .Load();
 
             try
             {
-                отключенияЛист = de.отключения.Local.ToBindingList();
-                bindingSource1.DataSource = отключенияЛист;
+                de.сотрудники.Load();
+                de.клиенты.Load();
+                de.услуги.Load();
+                de.отключения.OrderBy(n => n.дата_с).Load();
+
+                bindingSource1.DataSource = de.отключения.Local.ToBindingList();
                 bindingSource1.Sort = "дата_с";
                 bindingSource1.MoveLast();
                 клСетка.задать_ширину(dataGridView1);
-                //comboBox1.DataSource = de.сотрудники.Local;
-                //if (bindingSource1.Count > 0)
-                //{
-                //    отключения tRow = bindingSource1.Current as отключения;
-                //    comboBox1.SelectedItem = tRow.сотрудники;
-                //}
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Сбой загрузки");
+                MessageBox.Show($"Сбой загрузки  {ex.Message}");
             }
             примColumn.DefaultCellStyle.NullValue = "null";
             примColumn.DefaultCellStyle.DataSourceNullValue = "";
@@ -54,17 +46,12 @@ namespace domofon40
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += отключения1клиента_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-            //    dataGridView1.CellValidating += dataGridView1_CellValidating;
+
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
-       //     bindingSource1.PositionChanged += BindingSource1_PositionChanged;
+  
         }
 
-        //private void BindingSource1_PositionChanged(object sender, EventArgs e)
-        //{
-        //    отключения tRow = bindingSource1.Current as отключения;
-        //    comboBox1.SelectedItem = tRow.сотрудники;
-        //    comboBox1.Refresh();
-        //}
+       
 
         void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -79,16 +66,7 @@ namespace domofon40
 
         }
 
-        ////void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        ////{
-        ////    if (dataGridView1.Columns[e.ColumnIndex] == примColumn)
-        ////    {
-        ////        if (e.FormattedValue == null)
-        ////        {
-        ////            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
-        ////        }
-        ////    }
-        ////}
+ 
 
         void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -235,23 +213,7 @@ namespace domofon40
             if (bindingSource1.Count > 0 && de.отключения.Local.Any(n => n.в_задание))
             {
                 отключения tRow = bindingSource1.Current as отключения;
-                //клМастер.мастер = tRow.мастер;
-                //клМастер.выбран = false;
-                //выбор_бригады выборМастера = new выбор_бригады();
-                //выборМастера.Text = "Выберите мастера";
-                //выборМастера.ShowDialog();
-                //if (клМастер.выбран || выборМастера.DialogResult == DialogResult.OK)
-                //{
-                //    сотрудники sRow = de.сотрудники.Local.Single(n => n.сотрудник == клМастер.мастер);
-                //    foreach (отключения uRow in de.отключения.Local
-                //    .Where(n => n.в_задание))
-                //    {
-                //        uRow.мастер = sRow.сотрудник;
-                //        uRow.сотрудники = sRow;
-                //    }
-                //    dataGridView1.Refresh();
-
-                //    Cursor = Cursors.WaitCursor;
+                
 
                 string curDir = System.IO.Directory.GetCurrentDirectory();
 

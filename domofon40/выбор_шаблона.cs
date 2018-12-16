@@ -19,9 +19,16 @@ namespace domofon40
         domofon40.domofon14Entities de = new domofon14Entities();
         private void выбор_шаблона_Load(object sender, EventArgs e)
         {
-            de.шаблоны.OrderBy(n => n.наимен).Load();
-            bindingSource1.DataSource = de.шаблоны.Local.ToBindingList();
-            dataGridView1.Focus();
+            try
+            {
+                de.шаблоны.OrderBy(n => n.наимен).Load();
+                bindingSource1.DataSource = de.шаблоны.Local.ToBindingList();
+                dataGridView1.Focus();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки  {ex.Message}");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -523,9 +523,7 @@ namespace domofon40
                 звонки1клиенту удаленныеОплаты = new звонки1клиенту();
                 удаленныеОплаты.Text = "Звонки и смс " + uRow.адрес + " " + uRow.фио;
                 удаленныеОплаты.ShowDialog();
-           //     обновить_звонок();
-       //         de.SaveChanges();
-          //      de.Entry(uRow).Reload();
+       
                 Cursor = Cursors.Default;
             }
             dataGridView1.Focus();

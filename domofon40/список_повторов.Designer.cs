@@ -91,7 +91,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1158, 528);
+            this.dataGridView1.Size = new System.Drawing.Size(1268, 528);
             this.dataGridView1.TabIndex = 7;
             // 
             // адресColumn
@@ -160,14 +160,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1158, 44);
+            this.panel1.Size = new System.Drawing.Size(1268, 44);
             this.panel1.TabIndex = 6;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(811, 8);
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(747, 8);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(108, 23);
+            this.button6.Size = new System.Drawing.Size(180, 30);
             this.button6.TabIndex = 93;
             this.button6.Text = "просмотр оплат";
             this.button6.UseVisualStyleBackColor = true;
@@ -175,9 +176,10 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(348, 11);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(348, 8);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(123, 23);
+            this.button5.Size = new System.Drawing.Size(188, 30);
             this.button5.TabIndex = 91;
             this.button5.Text = "Печать задания";
             this.button5.UseVisualStyleBackColor = true;
@@ -185,11 +187,11 @@
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.Color.Blue;
-            this.button4.Location = new System.Drawing.Point(975, 3);
+            this.button4.Location = new System.Drawing.Point(975, 8);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 33);
+            this.button4.Size = new System.Drawing.Size(83, 29);
             this.button4.TabIndex = 29;
             this.button4.Text = "Выход";
             this.button4.UseVisualStyleBackColor = true;
@@ -209,11 +211,11 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(201, 3);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(201, 8);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 35);
+            this.button1.Size = new System.Drawing.Size(90, 30);
             this.button1.TabIndex = 9;
             this.button1.Text = "новое";
             this.button1.UseVisualStyleBackColor = true;
@@ -221,11 +223,11 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(91, 9);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(91, 8);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 29);
+            this.button2.Size = new System.Drawing.Size(90, 30);
             this.button2.TabIndex = 10;
             this.button2.Text = "удалить";
             this.button2.UseVisualStyleBackColor = true;
@@ -235,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 572);
+            this.ClientSize = new System.Drawing.Size(1268, 572);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "список_повторов";

@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.услугиColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.датаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.мастерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.услугиColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.датаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.мастерColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.примColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -50,8 +50,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -66,6 +66,37 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1279, 463);
             this.dataGridView1.TabIndex = 4;
+            // 
+            // услугиColumn
+            // 
+            this.услугиColumn.DataPropertyName = "услуги";
+            this.услугиColumn.HeaderText = "услуга";
+            this.услугиColumn.Name = "услугиColumn";
+            this.услугиColumn.ReadOnly = true;
+            this.услугиColumn.Width = 250;
+            // 
+            // датаColumn
+            // 
+            this.датаColumn.DataPropertyName = "дата_с";
+            this.датаColumn.HeaderText = "дата ";
+            this.датаColumn.Name = "датаColumn";
+            this.датаColumn.ReadOnly = true;
+            // 
+            // мастерColumn
+            // 
+            this.мастерColumn.DataPropertyName = "сотрудники";
+            this.мастерColumn.HeaderText = "мастер";
+            this.мастерColumn.Name = "мастерColumn";
+            this.мастерColumn.ReadOnly = true;
+            this.мастерColumn.Width = 200;
+            // 
+            // примColumn
+            // 
+            this.примColumn.DataPropertyName = "прим";
+            this.примColumn.HeaderText = "примечание";
+            this.примColumn.MaxInputLength = 50;
+            this.примColumn.Name = "примColumn";
+            this.примColumn.Width = 300;
             // 
             // button3
             // 
@@ -121,37 +152,6 @@
             this.panel1.Size = new System.Drawing.Size(1279, 49);
             this.panel1.TabIndex = 9;
             // 
-            // услугиColumn
-            // 
-            this.услугиColumn.DataPropertyName = "услуги";
-            this.услугиColumn.HeaderText = "услуга";
-            this.услугиColumn.Name = "услугиColumn";
-            this.услугиColumn.ReadOnly = true;
-            this.услугиColumn.Width = 250;
-            // 
-            // датаColumn
-            // 
-            this.датаColumn.DataPropertyName = "дата_с";
-            this.датаColumn.HeaderText = "дата ";
-            this.датаColumn.Name = "датаColumn";
-            this.датаColumn.ReadOnly = true;
-            // 
-            // мастерColumn
-            // 
-            this.мастерColumn.DataPropertyName = "сотрудники";
-            this.мастерColumn.HeaderText = "мастер";
-            this.мастерColumn.Name = "мастерColumn";
-            this.мастерColumn.ReadOnly = true;
-            this.мастерColumn.Width = 200;
-            // 
-            // примColumn
-            // 
-            this.примColumn.DataPropertyName = "прим";
-            this.примColumn.HeaderText = "примечание";
-            this.примColumn.MaxInputLength = 50;
-            this.примColumn.Name = "примColumn";
-            this.примColumn.Width = 300;
-            // 
             // отключения1клиента
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -161,8 +161,8 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "отключения1клиента";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "отключения1клиента";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.отключения1клиента_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

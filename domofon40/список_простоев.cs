@@ -16,22 +16,23 @@ namespace domofon40
             InitializeComponent();
         }
         domofon40.domofon14Entities de = new domofon14Entities();
-        BindingList<простои> простоиЛист = new BindingList<простои>();
+
         private void список_простоев_Load(object sender, EventArgs e)
         {
-            de.сотрудники.Load();
-            de.клиенты.Load();
-            de.услуги.Load();
-            de.простои
-                .OrderBy(n => n.дата_с)
-                .ThenBy(n=>n.клиенты.квартира)
-                .ThenBy(n=>n.клиенты.ввод)
-                .Load();
-
             try
             {
-                простоиЛист = de.простои.Local.ToBindingList();
-                bindingSource1.DataSource = простоиЛист;
+                de.сотрудники.Load();
+                de.клиенты.Load();
+                de.услуги.Load();
+                de.простои
+                    .OrderBy(n => n.дата_с)
+                    .ThenBy(n => n.клиенты.квартира)
+                    .ThenBy(n => n.клиенты.ввод)
+                    .Load();
+
+
+
+                bindingSource1.DataSource = de.простои.Local.ToBindingList();
                 bindingSource1.Sort = "дата_с";
                 bindingSource1.MoveLast();
                 клСетка.задать_ширину(dataGridView1);
@@ -44,19 +45,12 @@ namespace domofon40
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += простои1клиента_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-        //    dataGridView1.DataError += dataGridView1_DataError;
-            //    dataGridView1.CellValidating += dataGridView1_CellValidating;
+  
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
 
         }
 
-        //void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        //{
-        //    if (dataGridView1.Columns[e.ColumnIndex]== наименColumn)
-        //    {
-        //        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
-        //    }
-        //}
+    
 
         void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -71,16 +65,7 @@ namespace domofon40
 
         }
 
-        //void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        //{
-        //    if (dataGridView1.Columns[e.ColumnIndex] == примColumn)
-        //    {
-        //        if (e.FormattedValue == null)
-        //        {
-        //            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
-        //        }
-        //    }
-        //}
+        
 
         void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -88,26 +73,7 @@ namespace domofon40
             {
                 dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 простои tRow = bindingSource1.Current as простои;
-                //if (dataGridView1.Columns[e.ColumnIndex] == мастерColumn)
-                //{
-                //    клМастер.мастер = tRow.мастер;
-                //    клМастер.выбран = false;
-                //    выбор_мастера ВыборМастера = new выбор_мастера();
-                //    ВыборМастера.ShowDialog();
-                //    if (клМастер.выбран)
-                //    {
-                //        tRow.мастер = клМастер.мастер;
-                //        if (de.Entry(tRow).State == EntityState.Unchanged)
-                //        {
-                //            de.Entry(tRow).State = EntityState.Modified;
-                //        }
-
-                //        //   de.простои.Include("сотрудники");
-                //        dataGridView1.Refresh();
-                //        label1.Visible = true;
-                //    }
-
-                //}
+             
                 if (dataGridView1.Columns[e.ColumnIndex] == услугиColumn)
                 {
                     клУслуга.услуга = tRow.услуга;
@@ -137,7 +103,7 @@ namespace domofon40
                     if (клКалендарь.выбран)
                     {
                         tRow.дата_с = клКалендарь.дата.Value;
-                        //       de.Entry(tRow).State = EntityState.Modified;
+                       
                         label1.Visible = true;
                         dataGridView1.Refresh();
                     }
@@ -162,7 +128,7 @@ namespace domofon40
                         {
                             tRow.дата_по = клКалендарь.дата.Value;
                         }
-                        //       de.Entry(tRow).State = EntityState.Modified;
+                      
                         label1.Visible = true;
                         dataGridView1.Refresh();
                     }
@@ -235,11 +201,7 @@ namespace domofon40
             dataGridView1.Focus();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
+     
         private void button4_Click(object sender, EventArgs e)
         {
             клУслуга.выбран = false;

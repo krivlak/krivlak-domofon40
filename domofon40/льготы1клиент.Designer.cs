@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.услугаColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.дата_сColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,9 +48,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Format = "d";
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Format = "d";
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -76,7 +76,7 @@
             // дата_сColumn
             // 
             this.дата_сColumn.DataPropertyName = "дата_с";
-            this.дата_сColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.дата_сColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.дата_сColumn.HeaderText = "дата_с";
             this.дата_сColumn.Name = "дата_сColumn";
             this.дата_сColumn.ReadOnly = true;
@@ -85,8 +85,8 @@
             // дата_поColumn
             // 
             this.дата_поColumn.DataPropertyName = "дата_по";
-            dataGridViewCellStyle2.Format = "d";
-            this.дата_поColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "d";
+            this.дата_поColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.дата_поColumn.HeaderText = "дата_по";
             this.дата_поColumn.Name = "дата_поColumn";
             this.дата_поColumn.ReadOnly = true;
@@ -135,7 +135,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 32);
             this.button1.TabIndex = 22;
-            this.button1.Text = "Новое";
+            this.button1.Text = "Новая";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

@@ -15,37 +15,42 @@ namespace domofon40
         public отключения1клиента()
         {
             InitializeComponent();
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Top = 0;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
   //      List<отключения> отключенияЛист = new List<отключения>();
         BindingList<отключения> отключенияЛист = new BindingList<отключения>();
-      
+
         private void отключения1клиента_Load(object sender, EventArgs e)
         {
-            de.сотрудники.Load();
-            de.услуги.Load();
-            de.отключения
-                .Where(n => n.клиент == клКлиент.клиент)
-                .OrderBy(n => n.дата_с)
-                .Load();
 
             try
             {
+                de.сотрудники.Load();
+                de.услуги.Load();
+                de.отключения
+                    .Where(n => n.клиент == клКлиент.клиент)
+                    .OrderBy(n => n.дата_с)
+                    .Load();
+
+
                 отключенияЛист = de.отключения.Local.ToBindingList();
                 bindingSource1.DataSource = отключенияЛист;
                 bindingSource1.Sort = "дата_с";
                 bindingSource1.MoveLast();
                 клСетка.задать_ширину(dataGridView1);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Сбой загрузки");
+                MessageBox.Show($"Сбой загрузки   {ex.Message}");
             }
+
 
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += отключения1клиента_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-        //    dataGridView1.CellValidating += dataGridView1_CellValidating;
+            //    dataGridView1.CellValidating += dataGridView1_CellValidating;
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
         }
 
@@ -62,16 +67,7 @@ namespace domofon40
             
         }
 
-        //void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        //{
-        //    if(dataGridView1.Columns[e.ColumnIndex]==примColumn)
-        //    {
-        //        if (e.FormattedValue == null)
-        //        {
-        //            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
-        //        }
-        //    }
-        //}
+       
 
         void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {

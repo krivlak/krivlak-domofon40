@@ -15,7 +15,7 @@ namespace domofon40
         public льготы1клиент()
         {
             InitializeComponent();
-            this.Height = Screen.PrimaryScreen.WorkingArea.Height;
+         //   this.Height = Screen.PrimaryScreen.WorkingArea.Height;
         }
 
 
@@ -23,20 +23,27 @@ namespace domofon40
         BindingList<льготы> льготыЛист = new BindingList<льготы>();
         private void льготы1клиент_Load(object sender, EventArgs e)
         {
-            de.услуги.Load();
-            de.льготы
-                .Where(n => n.клиент == клКлиент.клиент)
-                .OrderBy(n => n.дата_с)
-                .Load();
-            льготыЛист = de.льготы.Local.ToBindingList();
-            bindingSource1.DataSource = льготыЛист;
-            bindingSource1.Sort = "дата_с";
-            bindingSource1.MoveLast();
-            bindingSource1.ListChanged += bindingSource1_ListChanged;
-            FormClosing += льготы1клиент_FormClosing;
-       //     dataGridView1.CellValidating += dataGridView1_CellValidating;
-            dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-        //    dataGridView1.EditingControlShowing += dataGridView1_EditingControlShowing;
+            try
+            {
+                de.услуги.Load();
+                de.льготы
+                    .Where(n => n.клиент == клКлиент.клиент)
+                    .OrderBy(n => n.дата_с)
+                    .Load();
+                льготыЛист = de.льготы.Local.ToBindingList();
+                bindingSource1.DataSource = льготыЛист;
+                bindingSource1.Sort = "дата_с";
+                bindingSource1.MoveLast();
+                bindingSource1.ListChanged += bindingSource1_ListChanged;
+                FormClosing += льготы1клиент_FormClosing;
+                //     dataGridView1.CellValidating += dataGridView1_CellValidating;
+                dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
+                //    dataGridView1.EditingControlShowing += dataGridView1_EditingControlShowing;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки  {ex.Message}");
+            }
 
         }
 

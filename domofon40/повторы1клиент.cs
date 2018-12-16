@@ -15,6 +15,8 @@ namespace domofon40
         public повторы1клиент()
         {
             InitializeComponent();
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Top = 0;
         }
         domofon40.domofon14Entities de = new domofon14Entities();
         BindingList<повторы> повторыБинд = new BindingList<повторы>();
@@ -189,24 +191,10 @@ namespace domofon40
                     NewRow.подключение = Guid.NewGuid();
                     int строка = bindingSource1.Add(NewRow);
                     bindingSource1.Position = строка;
-                //    de.Entry(NewRow).State = EntityState.Added;
-
-                    //             de.повторы.Add(NewRow);
-
-            //        try
-            //        {
-            ////            de.SaveChanges();
-            //            int строка = bindingSource1.Add(NewRow);
-            //            bindingSource1.Position = строка;
-
-            //        }
-            //        catch
-            //        {
-            //            MessageBox.Show("Сбой записи");
-            //        }
-
+           
                 }
             }
+            dataGridView1.Focus();
 
         }
 
@@ -214,21 +202,9 @@ namespace domofon40
         {
             if (bindingSource1.Count > 0)
             {
-               // повторы tRow = bindingSource1.Current as повторы;
-                //de.Entry(tRow).State = EntityState.Deleted;
                bindingSource1.RemoveCurrent();
-
-            //    de.повторы.Remove(tRow);
-                //try
-                //{
-                //    de.SaveChanges();
-                //    bindingSource1.RemoveCurrent();
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Сбой записи");
-                //}
             }
+            dataGridView1.Focus();
         }
 
         private void button4_Click(object sender, EventArgs e)

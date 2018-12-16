@@ -19,55 +19,61 @@ namespace domofon40
         }
         domofon40.domofon14Entities de = new domofon14Entities();
         List<temp> tempList = new List<temp>();
-      
+
         private void выбор_реестра_Load(object sender, EventArgs e)
         {
-            var query1 = de.оплачено.Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
-                             .GroupBy(n => new { n.оплаты.дата, n.услуги.виды_услуг, n.оплаты.сотрудники, n.оплаты.виды_оплат })
-                             .Select(n => new 
-                             {
-                                n.Key,
-                                 сумма = n.Sum(p => p.сумма)
-
-                             }).ToList();
-            var query2 = de.возврат.Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
-                             .GroupBy(n => new { n.оплаты.дата, n.услуги.виды_услуг, n.оплаты.сотрудники, n.оплаты.виды_оплат })
-                             .Select(n => new
-                             {
-                                 n.Key,
-                                 сумма = n.Sum(p => p.сумма)
-
-                             }).ToList();
-            query1.AddRange(query2);
-
-           
-            tempList = query1.GroupBy(n =>n.Key )
-                  .Select(n => new temp()
-                  {
-                      дата = n.Key.дата,
-                      вид_услуги = n.Key.виды_услуг.вид_услуги,
-                      наимен_вида_услуги = n.Key.виды_услуг.наимен,
-                      сотрудник = n.Key.сотрудники.сотрудник,
-                      порядок = n .Key.сотрудники.порядок,
-                      фио = n.Key.сотрудники.фио.Trim() ,
-                      вид_оплаты = n.Key.виды_оплат.вид_оплаты,
-
-                      наимен_вида_оплаты = n.Key.виды_оплат.наимен,
-                      сумма = n.Sum(p => p.сумма)
-
-                  }).OrderBy(n => n.дата)
-                  .ThenBy(n=>n.порядок)
-                  .ToList();
-
-            var query3 = tempList.GroupBy(n => n.дата)
-                .Select(n => new { дата = n.Key, сумма = n.Sum(p => p.сумма) });
-            foreach (var rRow in query3)
+            try
             {
-                tempList.FindAll(n => n.дата == rRow.дата).ForEach(n => n.за_день = rRow.сумма);
+                var query1 = de.оплачено.Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
+                                 .GroupBy(n => new { n.оплаты.дата, n.услуги.виды_услуг, n.оплаты.сотрудники, n.оплаты.виды_оплат })
+                                 .Select(n => new
+                                 {
+                                     n.Key,
+                                     сумма = n.Sum(p => p.сумма)
+
+                                 }).ToList();
+                var query2 = de.возврат.Where(n => n.оплаты.дата >= клПериод.дата_с && n.оплаты.дата <= клПериод.дата_по)
+                                 .GroupBy(n => new { n.оплаты.дата, n.услуги.виды_услуг, n.оплаты.сотрудники, n.оплаты.виды_оплат })
+                                 .Select(n => new
+                                 {
+                                     n.Key,
+                                     сумма = n.Sum(p => p.сумма)
+
+                                 }).ToList();
+                query1.AddRange(query2);
+
+
+                tempList = query1.GroupBy(n => n.Key)
+                      .Select(n => new temp()
+                      {
+                          дата = n.Key.дата,
+                          вид_услуги = n.Key.виды_услуг.вид_услуги,
+                          наимен_вида_услуги = n.Key.виды_услуг.наимен,
+                          сотрудник = n.Key.сотрудники.сотрудник,
+                          порядок = n.Key.сотрудники.порядок,
+                          фио = n.Key.сотрудники.фио.Trim(),
+                          вид_оплаты = n.Key.виды_оплат.вид_оплаты,
+
+                          наимен_вида_оплаты = n.Key.виды_оплат.наимен,
+                          сумма = n.Sum(p => p.сумма)
+
+                      }).OrderBy(n => n.дата)
+                      .ThenBy(n => n.порядок)
+                      .ToList();
+
+                var query3 = tempList.GroupBy(n => n.дата)
+                    .Select(n => new { дата = n.Key, сумма = n.Sum(p => p.сумма) });
+                foreach (var rRow in query3)
+                {
+                    tempList.FindAll(n => n.дата == rRow.дата).ForEach(n => n.за_день = rRow.сумма);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сбой загрузки {ex.Message}");
             }
 
-
-                bindingSource1.DataSource = tempList;
+            bindingSource1.DataSource = tempList;
             клСетка.задать_ширину(dataGridView1);
             bindingSource1.MoveLast();
             dataGridView1.Focus();

@@ -20,7 +20,7 @@ namespace domofon40
             InitializeComponent();
         }
         domofon40.domofon14Entities de = new domofon14Entities();
-        BindingList<повторы> повторыЛист = new BindingList<повторы>();
+
         private void список_повторов_Load(object sender, EventArgs e)
         {
             de.сотрудники.Load();
@@ -32,17 +32,12 @@ namespace domofon40
 
             try
             {
-                повторыЛист = de.повторы.Local.ToBindingList();
-                bindingSource1.DataSource = повторыЛист;
+                
+                bindingSource1.DataSource = de.повторы.Local.ToBindingList();
                 bindingSource1.Sort = "дата_с";
                 bindingSource1.MoveLast();
                 клСетка.задать_ширину(dataGridView1);
-                //comboBox1.DataSource = de.сотрудники.Local;
-                //if (bindingSource1.Count > 0)
-                //{
-                //    повторы tRow = bindingSource1.Current as повторы;
-                //    comboBox1.SelectedItem = tRow.сотрудники;
-                //}
+                
             }
             catch
             {
@@ -54,18 +49,11 @@ namespace domofon40
             bindingSource1.ListChanged += bindingSource1_ListChanged;
             FormClosing += повторы1клиента_FormClosing;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-            //    dataGridView1.CellValidating += dataGridView1_CellValidating;
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
-        //    bindingSource1.PositionChanged += BindingSource1_PositionChanged;
 
         }
 
-        //private void BindingSource1_PositionChanged(object sender, EventArgs e)
-        //{
-        //    повторы tRow = bindingSource1.Current as повторы;
-        //    comboBox1.SelectedItem = tRow.сотрудники;
-        //    comboBox1.Refresh();
-        //}
+       
 
         void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -80,18 +68,7 @@ namespace domofon40
 
         }
 
-        //void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        //{
-        //    if (dataGridView1.Columns[e.ColumnIndex] == примColumn)
-        //    {
-        //        if (e.FormattedValue == null)
-        //        {
-        //            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
-        //        }
-        //    }
-        //}
-
-
+    
         void записать()
         {
             if (label1.Visible)
@@ -126,7 +103,6 @@ namespace domofon40
                             de.Entry(tRow).State = EntityState.Modified;
                         }
 
-                        //   de.повторы.Include("сотрудники");
                         dataGridView1.Refresh();
                         label1.Visible = true;
                     }
@@ -161,7 +137,6 @@ namespace domofon40
                     if (клКалендарь.выбран)
                     {
                         tRow.дата_с = клКалендарь.дата.Value;
-                        //       de.Entry(tRow).State = EntityState.Modified;
                         label1.Visible = true;
                         dataGridView1.Refresh();
                     }
@@ -278,22 +253,7 @@ namespace domofon40
             if (bindingSource1.Count > 0 && de.повторы.Local.Any(n => n.в_задание))
             {
                 повторы tRow = bindingSource1.Current as повторы;
-                //клМастер.мастер = tRow.мастер;
-                //клМастер.выбран = false;
-                //выбор_бригады выборМастера = new выбор_бригады();
-                //выборМастера.Text = "Выберите мастера";
-                //выборМастера.ShowDialog();
-                //if (клМастер.выбран || выборМастера.DialogResult == DialogResult.OK)
-                //{
-                //    сотрудники sRow = de.сотрудники.Local.Single(n => n.сотрудник == клМастер.мастер);
-
-                //    foreach (повторы uRow in de.повторы.Local
-                //    .Where(n => n.в_задание))
-                //    {
-                //        uRow.мастер = sRow.сотрудник;
-                //        uRow.сотрудники = sRow;
-                //    }
-                //    dataGridView1.Refresh();
+               
 
                     Cursor = Cursors.WaitCursor;
 
@@ -338,26 +298,18 @@ namespace domofon40
                             //  int строкаРаб = 0;
 
                             var tables = package.MainDocumentPart.Document.Body.Elements<Table>();
-                            //Table table1 = tables.First();
-                            //Table table2 = tables.Last();
+                          
                             Table table1 = tables.ElementAt(0);
                             Table table2 = tables.ElementAt(1);
 
-                        //string фио = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).фио;
-                        //string должность = de.сотрудник.Single(n => n.сотрудник1 == КодМастера).должность;
-
+                       
                         string текст = "Задание на повторное подключение  ";
-                            //+ sRow.должность.Trim() + "   " + sRow.фио;
+                          
                             клXML.ChangeTextInCell(table1, 0, 0, текст + "    " + DateTime.Today.ToLongDateString());
 
                             TableRow lastRow = table2.Elements<TableRow>().Last();
 
-                            //var queryTemp = dsTemp.квартиры.ToArray();
-                            //if (checkBox2.Checked)
-                            //{
-                            //    queryTemp = queryTemp
-                            //        .Where(n => n.отключить || n.подключить || n.повторно).ToArray();
-                            //}
+                           
 
                             int j = 0;
 
@@ -397,9 +349,7 @@ namespace domofon40
                             клXML.ChangeTextInCell(table2, j, 2, (j - 1).ToString());
                             клXML.ChangeTextInCell(table2, j, 3, "");
                             клXML.ChangeTextInCell(table2, j, 4, "");
-                            //клXML.ChangeTextInCell(table2, j, 5, "");
-                            //клXML.ChangeTextInCell(table2, j, 6, "");
-                            //клXML.ChangeTextInCell(table2, j, 7, "");
+                           
 
 
                         }
